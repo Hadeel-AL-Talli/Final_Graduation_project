@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'modules/launch_module/on_boarding.dart';
+import 'modules/launch_module/welcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,9 +18,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '',
+      initialRoute: '/on_boarding_screen',
       routes: {
-         
+        '/on_boarding_screen': (context) => OnBoarding(),
+        '/welcome_screen': (context) => const WelcomeScreen(),
       },
     );
   }
