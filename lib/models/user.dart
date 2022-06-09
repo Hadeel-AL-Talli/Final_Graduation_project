@@ -11,8 +11,8 @@ class User {
   late String gender;
   late bool active;
   late bool verified;
-  late int cityId;
-  late int storeId;
+  late String cityId;
+  late String storeId;
   late String? fcmToken;
   late String token;
   late String tokenType;

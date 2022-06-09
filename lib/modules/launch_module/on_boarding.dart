@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../models/boarding_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class OnBoarding extends StatefulWidget {
@@ -141,11 +142,11 @@ class _OnBoardingState extends State<OnBoarding> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
-            const SizedBox(
-              height: 16,
+             SizedBox(
+              height: 16.h,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              padding:  EdgeInsets.symmetric(horizontal: 18.w),
               child: Text(
                 '${model.title}',
                 textAlign: TextAlign.center,
@@ -156,8 +157,8 @@ class _OnBoardingState extends State<OnBoarding> {
                     fontWeight: FontWeight.w400),
               ),
             ),
-            const SizedBox(
-              height: 40,
+             SizedBox(
+              height: 40.h,
             ),
             Expanded(
               child: Padding(

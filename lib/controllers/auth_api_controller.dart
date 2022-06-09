@@ -119,6 +119,12 @@ class AuthApiController with ApiHelper {
 
     if (response.statusCode == 200) {
       print(jsonDecode(response.body)['code']);
+      showSnackBar(
+
+        context,
+        message: jsonDecode(response.body)['code'].toString(),
+        error: false,
+      );
       return true;
     } else if (response.statusCode == 400) {
       showSnackBar(

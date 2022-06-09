@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/components/custom_button.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -15,20 +15,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: SafeArea(
           child: Column(
         children: [
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           Image.asset('images/onboarding4.png'),
-          const SizedBox(
-            height: 30,
+           SizedBox(
+            height: 30.h,
           ),
           Container(
-              margin: const EdgeInsets.only(left: 30),
+              margin:  EdgeInsets.only(left: 30.w),
               alignment: Alignment.topLeft,
               child: Image.asset(
                 'images/logo.png',
-                width: 48,
-                height: 48,
+                width: 48.w,
+                height: 48.h,
               )),
           const Text('Welcome to',
               style: TextStyle(
@@ -42,8 +42,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
                   fontFamily: 'Poppins')),
-          const SizedBox(
-            height: 40,
+           SizedBox(
+            height: 40.h,
           ),
           CustomButton(
               onPress: () {
@@ -51,19 +51,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               },
               text: 'Sign In',
               color: const Color(0xffF59B14)),
-          const SizedBox(
-            height: 20,
+           SizedBox(
+            height: 20.h,
           ),
           GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/register');
             },
-            child: const Text('Register',
+            child:  Text('Register',
                 style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold,
-                    fontSize: 15)),
+                    fontSize: 15.sp)),
           )
         ],
       )),
