@@ -26,10 +26,10 @@ class Product {
     nameAr = json['name_ar'];
     infoEn = json['info_en'];
     infoAr = json['info_ar'];
-    price = json['price'];
-    quantity = json['quantity'];
+    price = json['price'].toString();
+    quantity = json['quantity'].toString();
     //overalRate = json['overal_rate'];
-    subCategoryId = json['sub_category_id'];
+    subCategoryId = json['sub_category_id'].toString();
     productRate = json['product_rate'];
     offerPrice = json['offer_price'];
     isFavorite = json['is_favorite'];

@@ -95,7 +95,7 @@ class _HomeState extends State<Home> {
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
                                 image: NetworkImage(
-                                    '${controller.homeResponse!.slider[itemIndex].imageUrl}'),
+                                    controller.homeResponse!.slider[itemIndex].imageUrl),
                                 fit: BoxFit.fill),
                           ),
                         ),
