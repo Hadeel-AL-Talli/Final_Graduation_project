@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/layout/BnScreens/home.dart';
 import 'package:graduation_project/layout/main_screen.dart';
+import 'package:graduation_project/locale/local.dart';
+import 'package:graduation_project/locale/locale_controller.dart';
 import 'package:graduation_project/modules/Auth/forget_password.dart';
 import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
@@ -32,6 +34,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    MyLocaleController controller =  Get.put(MyLocaleController());
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: (BuildContext context, Widget? child) {
@@ -42,6 +45,8 @@ class _MyAppState extends State<MyApp> {
           theme: MyTheme.lightTheme,
           darkTheme: MyTheme.darkTheme,
           debugShowCheckedModeBanner: false,
+          locale:controller.initialLang ,
+            translations: MyLocale(),
           initialRoute: '/splash_screen',
           routes: {
             '/splash_screen': (context) => const SplashScreen(),
