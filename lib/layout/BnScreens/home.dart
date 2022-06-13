@@ -34,22 +34,22 @@ class _HomeState extends State<Home> {
     HomeGetxController().getHome();
   }
 
-  // final themeController = Get.find<ThemeController>();
+  final themeController = Get.find<ThemeController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
             child: IconButton(
                 icon: const Icon(
                   Icons.brightness_4_outlined,
-                  color: Colors.black,
                 ),
                 onPressed: () {
-                  // themeController.switchTheme();
+                  themeController.switchTheme();
                 }),
           )
         ],
@@ -94,9 +94,9 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             image: DecorationImage(
-                                image: NetworkImage(
-                                    controller.homeResponse!.slider[itemIndex].imageUrl),
-                                fit: BoxFit.fill),
+                                image: NetworkImage(controller
+                                    .homeResponse!.slider[itemIndex].imageUrl),
+                                fit: BoxFit.cover),
                           ),
                         ),
                       ),
@@ -107,15 +107,26 @@ class _HomeState extends State<Home> {
                   height: 15.h,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(
-                        fontFamily: 'Muli',
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      'Categories',
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            fontFamily: 'Muli',
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                      // TextStyle(
+                      //     fontFamily: 'Muli',
+                      //     fontSize: 22.sp,
+                      //     fontWeight: FontWeight.bold),
+                      // Theme.of(context).textTheme.labelMedium
+                      // Theme.of(context).primaryTextTheme.bodyLarge
+
+                      // fontFamily: 'Muli',
+                      // fontSize: 22.sp,
+                      // fontWeight: FontWeight.bold,
+                      // )
+                    )),
                 const SizedBox(
                   height: 5,
                 ),
@@ -144,7 +155,7 @@ class _HomeState extends State<Home> {
                               borderRadius: BorderRadius.circular(120),
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
+                                    color: Theme.of(context).shadowColor,
                                     spreadRadius: 3.0,
                                     blurRadius: 5.0)
                               ],
@@ -192,10 +203,15 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     'Latest Products',
-                    style: TextStyle(
-                        fontFamily: 'Muli',
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          fontFamily: 'Muli',
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    // TextStyle(
+                    //     fontFamily: 'Muli',
+                    //     fontSize: 20.sp,
+                    //     fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
@@ -218,11 +234,12 @@ class _HomeState extends State<Home> {
                                 borderRadius: BorderRadius.circular(20.0),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
+                                      color: Theme.of(context).shadowColor,
+                                      // Colors.grey.withOpacity(0.2),
                                       spreadRadius: 3.0,
                                       blurRadius: 5.0)
                                 ],
-                                color: Colors.white),
+                                color: Theme.of(context).primaryColor),
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                               child: Column(
@@ -255,16 +272,23 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
-                                      controller.homeResponse!
-                                          .latestProducts[index].nameEn,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 14.0,
-                                          height: 1.3,
-                                          fontFamily: 'Muli',
-                                          color: Color(0xFF575E67)),
-                                    ),
+                                        controller.homeResponse!
+                                            .latestProducts[index].nameEn,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall
+                                            ?.copyWith(
+                                              height: 1.3,
+                                              fontFamily: 'Muli',
+                                            )
+                                        // const TextStyle(
+                                        //     fontSize: 14.0,
+                                        //     height: 1.3,
+                                        //     fontFamily: 'Muli',
+                                        //     color: Color(0xFF575E67)),
+                                        ),
                                     Row(
                                       children: [
                                         Text(
@@ -297,10 +321,21 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
                     'Famous Products',
-                    style: TextStyle(
-                        fontFamily: 'Muli',
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                          fontFamily: 'Muli',
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    // Theme.of(context).textTheme.bodyLarge
+
+                    //       fontFamily: 'Muli',
+                    //       fontSize: 20.sp,
+                    //       fontWeight: FontWeight.bold,
+                    //       ),
+                    //  TextStyle(
+                    //     fontFamily: 'Muli',
+                    //     fontSize: 20.sp,
+                    //     fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
@@ -323,11 +358,12 @@ class _HomeState extends State<Home> {
                                 borderRadius: BorderRadius.circular(20.0),
                                 boxShadow: [
                                   BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
+                                      color: Theme.of(context).shadowColor,
+                                      //Colors.grey.withOpacity(0.2),
                                       spreadRadius: 3.0,
                                       blurRadius: 5.0)
                                 ],
-                                color: Colors.white),
+                                color: Theme.of(context).primaryColor),
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                               child: Column(
@@ -360,16 +396,23 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
-                                      controller.homeResponse!
-                                          .famousProducts[index].nameEn,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                          fontSize: 14.0,
-                                          height: 1.3,
-                                          fontFamily: 'Muli',
-                                          color: Color(0xFF575E67)),
-                                    ),
+                                        controller.homeResponse!
+                                            .famousProducts[index].nameEn,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .labelSmall
+                                            ?.copyWith(
+                                              height: 1.3,
+                                              fontFamily: 'Muli',
+                                            )
+                                        // const TextStyle(
+                                        //     fontSize: 14.0,
+                                        //     height: 1.3,
+                                        //     fontFamily: 'Muli',
+                                        //     color: Color(0xFF575E67)),
+                                        ),
                                     Row(
                                       children: [
                                         Text(

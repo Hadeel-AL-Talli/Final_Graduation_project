@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/components/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -16,34 +16,60 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: SafeArea(
           child: Column(
         children: [
-           SizedBox(
+          SizedBox(
             height: 20.h,
           ),
           Image.asset('images/onboarding4.png'),
-           SizedBox(
+          SizedBox(
             height: 30.h,
           ),
           Container(
-              margin:  EdgeInsets.only(left: 30.w),
+              margin: EdgeInsets.only(left: 30.w),
               alignment: Alignment.topLeft,
               child: Image.asset(
                 'images/logo.png',
                 width: 48.w,
                 height: 48.h,
               )),
-           Text("Welcome to".tr,
-              style: TextStyle(
-                  color: Colors.black,
+
+          Text('Welcome to',
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                  fontFamily: 'Poppins')),
-           Text("Pal-Pazzar".tr,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                  fontFamily: 'Poppins')),
-           SizedBox(
+                  fontSize: 15.sp
+                ),
+//            Text("Welcome to".tr,
+//               style: TextStyle(
+//                   color: Colors.black,
+//                   fontWeight: FontWeight.bold,
+//                   fontSize: 40,
+//                   fontFamily: 'Poppins')),
+//            Text("Pal-Pazzar".tr,
+//               style: TextStyle(
+//                   color: Colors.black,
+
+//                   fontWeight: FontWeight.bold,
+//                   fontSize: 40,
+//                   fontFamily: 'Poppins')
+              // TextStyle(
+              //     color: Colors.black,
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 40,
+              //     fontFamily: 'Poppins')
+              ),
+          Text(
+            'Pal-Pazzar',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+                fontFamily: 'Poppins'),
+            // TextStyle(
+            //     color: Colors.black,
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 40,
+            //     fontFamily: 'Poppins')
+          ),
+          SizedBox(
             height: 40.h,
           ),
           CustomButton(
@@ -52,19 +78,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               },
               text: 'Sign In',
               color: const Color(0xffF59B14)),
-           SizedBox(
+          SizedBox(
             height: 20.h,
           ),
           GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/register');
             },
-            child:  Text('Register',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15.sp)),
+            child: Text(
+              'Register',
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.sp),
+              // TextStyle(
+              //     color: Colors.black,
+              //     fontFamily: 'Poppins',
+              //     fontWeight: FontWeight.bold,
+              //     fontSize: 15.sp)
+            ),
           )
         ],
       )),

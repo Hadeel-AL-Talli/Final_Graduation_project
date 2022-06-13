@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../models/boarding_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 
 class OnBoarding extends StatefulWidget {
   OnBoarding({Key? key}) : super(key: key);
@@ -49,10 +49,8 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         actions: [
           TextButton(
               onPressed: () {
@@ -60,7 +58,8 @@ class _OnBoardingState extends State<OnBoarding> {
               },
               child: const Text(
                 'SKIP',
-                style: TextStyle(color: Color(0xfff59B14)),
+                style: TextStyle(
+                    color: Color(0xfff59B14), fontSize: 16, fontFamily: 'Muli'),
               ))
         ],
       ),
@@ -142,22 +141,25 @@ class _OnBoardingState extends State<OnBoarding> {
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
-             SizedBox(
+            SizedBox(
               height: 16.h,
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 18.w),
-              child: Text(
-                '${model.title}',
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    color: Color(0xFF979797),
-                    fontSize: 13,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 18.w),
+              child: Text('${model.title}',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontSize: 12,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400)
+                  // const TextStyle(
+                  //     color: Color(0xFF979797),
+                  //     fontSize: 13,
+                  //     fontFamily: 'Poppins',
+                  //     fontWeight: FontWeight.w400),
+                  ),
             ),
-             SizedBox(
+            SizedBox(
               height: 40.h,
             ),
             Expanded(

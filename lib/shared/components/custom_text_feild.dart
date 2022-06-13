@@ -19,17 +19,26 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),
       decoration: InputDecoration(
           hintText: hint,
-          hintStyle: TextStyle(fontFamily: 'Poppins'),
-          prefixIcon: Icon(prefixIcon , color: Colors.black,),
+          hintStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
+                fontFamily: 'Poppins',
+                fontSize: 16,
+              ),
+
+          // TextStyle(fontFamily: 'Poppins'),
+          prefixIcon: Icon(
+            prefixIcon,
+            color: Theme.of(context).textTheme.labelLarge?.color,
+          ),
           enabledBorder: border(),
-          focusedBorder: border(borderColor: Colors.black)
-      ),
+          focusedBorder: border(borderColor: Theme.of(context).focusColor
+              //  borderColor: Colors.black
+              )),
     );
   }
 
