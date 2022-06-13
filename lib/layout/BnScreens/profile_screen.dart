@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/route_manager.dart';
+
 import 'package:graduation_project/controllers/auth_api_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation_project/modules/Account/contact_request.dart';
+import 'package:graduation_project/modules/Account/faq.dart';
+import 'package:graduation_project/modules/Account/personal_info.dart';
+import 'package:graduation_project/modules/Account/settings.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -33,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
            
             title: Text('Profile'),
             onTap: (){
-              //Get.to(PersonalInfo());
+              Get.to(PersonalInfo());
             },
             
           ),
@@ -69,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             leading: Icon(Icons.settings , color: Color(0xffF59B14),),
             title: Text('Settings'),
             onTap: (){
-             // Get.to(Settings());
+              Get.to(Settings());
             },
             
           ),
@@ -78,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             leading: Icon(Icons.chat , color: Color(0xffF59B14),),
             title: Text('Contact Us'),
             onTap: (){
-             // Get.to(ContactRequest());
+              Get.to(ContactRequest());
             },
             
           ),
@@ -87,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             leading: Icon(Icons.question_answer_sharp , color: Color(0xffF59B14),),
             title: Text('FAQ'),
             onTap: (){
-              //Get.to(FAQ());
+              Get.to(FAQ());
             },
             
           ),

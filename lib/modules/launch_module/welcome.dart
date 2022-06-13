@@ -31,11 +31,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: 48.w,
                 height: 48.h,
               )),
+
           Text('Welcome to',
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
-                  fontFamily: 'Poppins')
+                  fontSize: 15.sp
+                ),
+//            Text("Welcome to".tr,
+//               style: TextStyle(
+//                   color: Colors.black,
+//                   fontWeight: FontWeight.bold,
+//                   fontSize: 40,
+//                   fontFamily: 'Poppins')),
+//            Text("Pal-Pazzar".tr,
+//               style: TextStyle(
+//                   color: Colors.black,
+
+//                   fontWeight: FontWeight.bold,
+//                   fontSize: 40,
+//                   fontFamily: 'Poppins')
               // TextStyle(
               //     color: Colors.black,
               //     fontWeight: FontWeight.bold,

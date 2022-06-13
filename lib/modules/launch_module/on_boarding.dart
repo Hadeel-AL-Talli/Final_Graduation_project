@@ -3,6 +3,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../models/boarding_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
 class OnBoarding extends StatefulWidget {
   OnBoarding({Key? key}) : super(key: key);
 
@@ -18,7 +19,7 @@ class _OnBoardingState extends State<OnBoarding> {
   List<BoardingModel> boardeing = [
     BoardingModel(
         image: 'images/onboarding1.png',
-        name: 'Welcome to Pal-Bazaar',
+        name: "welcome".tr,
         title:
             'It is the online store that offers all the distinctive Palestinian products in one place'),
     BoardingModel(
