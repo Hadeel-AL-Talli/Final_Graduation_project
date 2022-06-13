@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/models/category.dart';
 
-
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
 
@@ -28,14 +27,21 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.popAndPushNamed(context, '/main_screen');
-        },icon: Icon(Icons.arrow_back_ios,color: Colors.black,)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.popAndPushNamed(context, '/main_screen');
+            },
+            icon: const Icon(
+              Icons.arrow_back_ios,
+            )),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Categories', style: TextStyle(color: Colors.black , fontFamily: 'Poppins'), ),
+        title: Text(
+          'Categories',
+          style:
+              Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
+        ),
       ),
-
       body: FutureBuilder<List<Category>>(
         future: _future,
         builder: (context, snapshot) {
@@ -44,9 +50,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             _categories = snapshot.data ?? [];
             return GridView.builder(
-
               physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               itemCount: _categories.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
@@ -56,39 +61,34 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                   // Navigator.push(context, MaterialPageRoute(builder: (context) => SubCategoriesScreen(id: _categories[index].id , name: _categories[index].nameEn,)));
+                    // Navigator.push(context, MaterialPageRoute(builder: (context) => SubCategoriesScreen(id: _categories[index].id , name: _categories[index].nameEn,)));
                   },
                   child: Stack(
-                    
-                           fit: StackFit.expand,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl: _categories[index].imageUrl,
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                                placeholder: (context, url) => const Center(
-                                    child: CircularProgressIndicator()),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                              
-                              Container(
-                                color: Colors.black.withOpacity(0.4),
-                                alignment: Alignment.center,
-                                height: 60,
-                                child: Text(
-                                  _categories[index].nameEn,
-                                  style:const TextStyle(
-                                      color: Color(0xffF59B14),
-                                      fontSize: 35,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              )
-
-                            ],
-                            
-                          ),
+                    fit: StackFit.expand,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl: _categories[index].imageUrl,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        placeholder: (context, url) =>
+                            const Center(child: CircularProgressIndicator()),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
+                      Container(
+                        color: Colors.black.withOpacity(0.4),
+                        alignment: Alignment.center,
+                        height: 60,
+                        child: Text(
+                          _categories[index].nameEn,
+                          style: const TextStyle(
+                              color: Color(0xffF59B14),
+                              fontSize: 35,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )
+                    ],
+                  ),
                   // child: Card(
                   //   elevation: 4,
                   //   shape: RoundedRectangleBorder(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const KPrimaryColor = Color(0xfff59B14);
 
-const DarkScaffoldBackgroundColor = Color(0xff0e0d12);
+const DarkScaffoldBackgroundColor = Color(0xff000000);
 
 const LightScaffoldBackgroundColor = Colors.white;
 

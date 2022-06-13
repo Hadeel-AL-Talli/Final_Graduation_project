@@ -8,26 +8,27 @@ import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation_project/shared/network/style/colors.dart';
 
 class Register extends StatefulWidget {
-  const Register({ Key? key }) : super(key: key);
+  const Register({Key? key}) : super(key: key);
 
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> with ApiHelper {
-   DropDownController dropDownController = DropDownController();
+  DropDownController dropDownController = DropDownController();
   List<City> _cities = <City>[];
   late Future<List<City>> _future;
-  bool createDrop=false;
-  late City dropdownvalue ;
-  late String indexcity ;
+  bool createDrop = false;
+  late City dropdownvalue;
+  late String indexcity;
   String _gender = 'M';
   late TextEditingController _phoneTextEditingController;
   late TextEditingController _nameTextEditingController;
   late TextEditingController _passwordTextEditingController;
-int _cityId = 1;
+  int _cityId = 1;
   @override
   void initState() {
     // TODO: implement initState
@@ -37,6 +38,7 @@ int _cityId = 1;
     _passwordTextEditingController = TextEditingController();
     super.initState();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -45,16 +47,21 @@ int _cityId = 1;
     _nameTextEditingController.dispose();
     _passwordTextEditingController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
-          Image.asset('images/Pattern1.png',fit: BoxFit.fitHeight,height: double.infinity,),
+          Image.asset(
+            'images/Pattern1.png',
+            fit: BoxFit.fitHeight,
+            height: double.infinity,
+          ),
           SingleChildScrollView(
             child: Column(
               children: [
-                 SizedBox(height: 70.h),
+                SizedBox(height: 70.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -62,72 +69,87 @@ int _cityId = 1;
                       'images/logo.png',
                       width: 40.w,
                     ),
-                     SizedBox(width: 12.w),
-                     Text('Pal-Pazzar',
+                    SizedBox(width: 12.w),
+                    Text('Pal-Pazzar',
                         style: TextStyle(
                             color: Color(0xffF59B14),
                             fontWeight: FontWeight.bold,
                             fontSize: 40.sp,
                             fontFamily: 'Poppins')),
-                   
                   ],
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 50.h,
                 ),
                 Container(
                   margin: const EdgeInsets.all(20.0),
-                   height: 700.h,
+                  height: 700.h,
                   width: 500.w,
                   decoration: BoxDecoration(
-                      color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                      color: Theme.of(context).primaryColor,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Theme.of(context).shadowColor,
+                            // Colors.grey.withOpacity(0.2),
+                            spreadRadius: 3.0,
+                            blurRadius: 5.0)
+                      ],
+                      borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                         SizedBox(
+                        SizedBox(
                           height: 20.h,
                         ),
-                         Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                           children: [
-                             GestureDetector(
-                               onTap: (){
-                                 Navigator.pushNamed(context, '/sign_in');
-                               },
-                               child: Text(
-                                 'Sign in',
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/sign_in');
+                              },
+                              child: Text(
+                                'Sign in',
                                 style: TextStyle(
                                     fontSize: 22.sp,
                                     color: Colors.grey,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Poppins'),
-                                                     ),
-                             ),
-                       
-                        GestureDetector(
-                          onTap: () {
-                           // Navigator.pushNamed(context, '/register');
-                          },
-                          child: Text('Register',  style: TextStyle(
-                            color: Colors.black,
-                                    fontSize: 22.sp,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Poppins'),),
-                        )
-                           ],
-                         ),
-                         SizedBox(
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // Navigator.pushNamed(context, '/register');
+                              },
+                              child: Text('Register',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge
+                                      ?.copyWith(
+                                          fontSize: 22.sp,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'Poppins')
+                                  // TextStyle(
+                                  //     color: Colors.black,
+                                  //     fontSize: 22.sp,
+                                  //     fontWeight: FontWeight.bold,
+                                  //     fontFamily: 'Poppins'),
+                                  ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
                           height: 50.h,
                         ),
-                          AppTextField(
+                        AppTextField(
                           hint: 'Name',
                           controller: _nameTextEditingController,
                           prefixIcon: Icons.person,
                           keyboardType: TextInputType.emailAddress,
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 16.h,
                         ),
                         AppTextField(
@@ -136,7 +158,7 @@ int _cityId = 1;
                           prefixIcon: Icons.phone,
                           keyboardType: TextInputType.phone,
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 16.h,
                         ),
                         AppTextField(
@@ -145,44 +167,74 @@ int _cityId = 1;
                           prefixIcon: Icons.lock,
                           obscureText: true,
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 10.h,
                         ),
-                          Row(
+                        Row(
                           children: [
                             Padding(
                               padding: EdgeInsets.only(left: 10.w),
-                              child: Text('City :', textAlign: TextAlign.left,
-                                style: TextStyle(color: Colors.black, fontSize: 20 , fontFamily: 'Poppins' , fontWeight: FontWeight.bold),),
+                              child: Text('City :',
+                                  textAlign: TextAlign.left,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium
+                                      ?.copyWith(
+                                          fontSize: 18,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.bold)
+                                  // TextStyle(
+                                  //     color: Colors.black,
+                                  //     fontSize: 20,
+                                  //     fontFamily: 'Poppins',
+                                  //     fontWeight: FontWeight.bold),
+                                  ),
                             ),
-                            SizedBox(width: 50.w,),
+                            SizedBox(
+                              width: 50.w,
+                            ),
                             FutureBuilder<List<City>>(
                               future: _future,
                               builder: (context, snapshot) {
-                                if (snapshot.connectionState == ConnectionState.waiting) {
-                                  return Center(child: CircularProgressIndicator());
-                                } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                } else if (snapshot.hasData &&
+                                    snapshot.data!.isNotEmpty) {
                                   _cities = snapshot.data ?? [];
-                                  if(!createDrop) dropdownvalue=_cities.first;
+                                  if (!createDrop)
+                                    dropdownvalue = _cities.first;
                                   return DropdownButton<City>(
                                     value: dropdownvalue,
-                                    icon: Icon(Icons.keyboard_arrow_down),
+                                    icon: Icon(
+                                      Icons.keyboard_arrow_down,
+                                      color: Theme.of(context).focusColor,
+                                    ),
                                     underline: SizedBox(),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge
+                                        ?.copyWith(
+                                            fontFamily: 'poppins',
+                                            fontSize: 14),
                                     items: _cities.map((e) {
-                                      return DropdownMenuItem<City>(child: Text(e.nameEn),value: e,);
+                                      return DropdownMenuItem<City>(
+                                        child: Text(e.nameEn),
+                                        value: e,
+                                      );
                                     }).toList(),
                                     onChanged: (value) {
                                       setState(() {
                                         dropdownvalue = value!;
-                                        createDrop=true;
-                                        _cityId=value.id;
+                                        createDrop = true;
+                                        _cityId = value.id;
                                         print(indexcity);
                                         print(dropdownvalue.nameEn);
                                       });
                                     },
                                   );
-                                }
-                                else {
+                                } else {
                                   return Center(
                                     child: Column(
                                       children: const [
@@ -203,22 +255,40 @@ int _cityId = 1;
                             ),
                           ],
                         ),
-                           Align(
+                        Align(
                           alignment: Alignment.topLeft,
-                          child: Text(
-                            'Gender',
-                            style: TextStyle(
-                              fontFamily: 'Poppins',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.sp,
-                            ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 11),
+                            child: Text('Gender',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium
+                                    ?.copyWith(
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.bold)
+                                // TextStyle(
+                                //   fontFamily: 'Poppins',
+                                //   color: Colors.black,
+                                //   fontWeight: FontWeight.bold,
+                                //   fontSize: 16.sp,
+                                // ),
+                                ),
                           ),
                         ),
                         RadioListTile<String>(
                           contentPadding: EdgeInsets.zero,
-                          title: const Text('Male',
-                              style: TextStyle(fontFamily: 'Poppins')),
+                          title: Text('Male',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.copyWith(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal)
+                              // TextStyle(fontFamily: 'Poppins')
+                              ),
+                          activeColor: KPrimaryColor,
                           value: 'M',
                           groupValue: _gender,
                           onChanged: (String? value) {
@@ -231,8 +301,17 @@ int _cityId = 1;
                         ),
                         RadioListTile<String>(
                           contentPadding: EdgeInsets.zero,
-                          title: const Text('Female',
-                              style: TextStyle(fontFamily: 'Poppins')),
+                          title: Text('Female',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.copyWith(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal)
+                              //  TextStyle(fontFamily: 'Poppins')
+                              ),
+                          activeColor: KPrimaryColor,
                           value: 'F',
                           groupValue: _gender,
                           onChanged: (String? value) {
@@ -243,7 +322,7 @@ int _cityId = 1;
                             }
                           },
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 10.h,
                         ),
                         CustomButton(
@@ -252,36 +331,29 @@ int _cityId = 1;
                             },
                             text: 'Register',
                             color: Color(0xffF59B14)),
-                        
-                       
                       ],
                     ),
                   ),
-
                 ),
               ],
             ),
           )
-
         ],
       ),
     );
   }
 
   Future<void> performRegister() async {
-
     if (checkData()) {
-
       await register();
     }
-
   }
 
   bool checkData() {
     if (_phoneTextEditingController.text.isNotEmpty &&
         _nameTextEditingController.text.isNotEmpty &&
         _passwordTextEditingController.text.isNotEmpty &&
-         _cities.isNotEmpty &&
+        _cities.isNotEmpty &&
         _gender.isNotEmpty) {
       return true;
     }
@@ -296,24 +368,20 @@ int _cityId = 1;
   Future<void> register() async {
     bool status = await AuthApiController().register(context, user: user);
 
-    if (status){
+    if (status) {
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) {
-           return   VerifyCode(phone: _phoneTextEditingController.text);
-
-          }
-        ),
+        MaterialPageRoute(builder: (context) {
+          return VerifyCode(phone: _phoneTextEditingController.text);
+        }),
       );
-     
-  }
+    }
   }
 
   RegisterUser get user {
     RegisterUser user = RegisterUser();
     user.name = _nameTextEditingController.text;
-    user.password=_passwordTextEditingController.text;
+    user.password = _passwordTextEditingController.text;
     user.mobile = _phoneTextEditingController.text;
     user.gender = _gender;
     user.cityId = _cityId;

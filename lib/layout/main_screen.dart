@@ -35,6 +35,8 @@ class _MainScreenState extends State<MainScreen> {
         containerHeight: 65,
         showElevation: false,
         selectedIndex: _currentIndex,
+        backgroundColor:
+            Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         onItemSelected: (int value) {
           setState(() {
             _currentIndex = value;
@@ -66,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: const Icon(Icons.shopping_cart_outlined,
                   size: 25, color: KPrimaryColor),
               title: const Text(
-                'Favorite',
+                'Cart',
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,
