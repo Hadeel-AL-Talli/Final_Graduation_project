@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/components/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -30,13 +31,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 width: 48.w,
                 height: 48.h,
               )),
-          const Text('Welcome to',
+           Text("Welcome to".tr,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
                   fontFamily: 'Poppins')),
-          const Text('Pal-Pazzar',
+           Text("Pal-Pazzar".tr,
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,

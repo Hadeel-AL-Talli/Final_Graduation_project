@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/locale/locale_controller.dart';
 import 'package:graduation_project/modules/Account/change_password_screen.dart';
 
 class Settings extends StatefulWidget {
@@ -14,6 +15,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    MyLocaleController controller = Get.find();
     return Scaffold(
     appBar:  AppBar(
 
@@ -25,26 +27,33 @@ class _SettingsState extends State<Settings> {
        
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text('Settings' , style:TextStyle(fontFamily: 'Poppins' , fontWeight: FontWeight.bold, fontSize:18 , color: Colors.black)),),
+        title: Text("Settings".tr , style:TextStyle(fontFamily: 'Poppins' , fontWeight: FontWeight.bold, fontSize:18 , color: Colors.black)),),
 
       body: ListView(
         children: [
        ListTile(
          leading: Icon(Icons.notifications_active , color: Color(0xffF59B14),),
-         title: Text('Notifications'),
+         title: Text("Notifications".tr),
          
        ),
-        ListTile(
-         leading: Icon(Icons.language , color: Color(0xffF59B14),),
-         title: Text('Languages'),
-         onTap: (){
-          // LanguageGetxController.to.changeLanguage();
-         },
-         
-       ),
+      
+
+        ExpansionTile(
+          leading: Icon(Icons.language , color: Color(0xffF59B14),),
+          title: Text("Language".tr),
+          children: [
+            TextButton(onPressed: (){
+              controller.changeLang("en");
+            }, child: Text('English')),
+            TextButton(onPressed: (){
+              controller.changeLang("ar");
+            }, child: Text('العربية')),
+
+          ],
+        ),
           ListTile(
          leading: Icon(Icons.lock , color: Color(0xffF59B14),),
-         title: Text('Change Password'),
+         title: Text("Change Password".tr),
          onTap: (){
            Get.to(ChangePasswordScreen());
          },
