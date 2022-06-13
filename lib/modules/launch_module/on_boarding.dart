@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../models/boarding_model.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
 
 class OnBoarding extends StatefulWidget {
   OnBoarding({Key? key}) : super(key: key);
