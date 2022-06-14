@@ -17,18 +17,20 @@ class CodeTextField extends StatelessWidget {
     return TextField(
       controller: textEditingController,
       focusNode: focusNode,
+
       maxLength: 1,
       keyboardType: TextInputType.number,
       textAlign: TextAlign.center,
       onChanged: onChanged,
-      style: const TextStyle(
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
+      style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),
+      // const TextStyle(
+      //   color: Colors.black,
+      //   fontWeight: FontWeight.bold,
+      // ),
       decoration: InputDecoration(
           counterText: '',
           enabledBorder: border(),
-          focusedBorder: border(borderColor: Colors.black)),
+          focusedBorder: border(borderColor: Theme.of(context).focusColor)),
     );
   }
 

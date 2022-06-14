@@ -58,7 +58,10 @@ class _HomeState extends State<Home> {
         builder: (controller) {
           if (controller.loading) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                backgroundColor: KPrimaryColor,
+                valueColor: AlwaysStoppedAnimation(Colors.grey),
+              ),
             );
           } else if (controller.homeResponse != null) {
             return ListView(
@@ -171,7 +174,11 @@ class _HomeState extends State<Home> {
                                   fit: BoxFit.cover,
                                   width: double.infinity,
                                   placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator()),
+                                      child: CircularProgressIndicator(
+                                    backgroundColor: KPrimaryColor,
+                                    valueColor:
+                                        AlwaysStoppedAnimation(Colors.grey),
+                                  )),
                                   errorWidget: (context, url, error) =>
                                       const Icon(Icons.error),
                                 ),
@@ -263,8 +270,11 @@ class _HomeState extends State<Home> {
                                       width: double.infinity,
                                       placeholder: (context, url) =>
                                           const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
+                                              child: CircularProgressIndicator(
+                                        backgroundColor: KPrimaryColor,
+                                        valueColor:
+                                            AlwaysStoppedAnimation(Colors.grey),
+                                      )),
                                       errorWidget: (context, url, error) =>
                                           const Icon(Icons.error),
                                     ),
@@ -387,8 +397,11 @@ class _HomeState extends State<Home> {
                                       width: double.infinity,
                                       placeholder: (context, url) =>
                                           const Center(
-                                              child:
-                                                  CircularProgressIndicator()),
+                                              child: CircularProgressIndicator(
+                                        backgroundColor: KPrimaryColor,
+                                        valueColor:
+                                            AlwaysStoppedAnimation(Colors.grey),
+                                      )),
                                       errorWidget: (context, url, error) =>
                                           const Icon(Icons.error),
                                     ),

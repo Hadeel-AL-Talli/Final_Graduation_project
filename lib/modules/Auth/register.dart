@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> with ApiHelper {
   late Future<List<City>> _future;
   bool createDrop = false;
   late City dropdownvalue;
-  late String indexcity;
+  //late String indexcity;
   String _gender = 'M';
   late TextEditingController _phoneTextEditingController;
   late TextEditingController _nameTextEditingController;
@@ -207,6 +207,8 @@ class _RegisterState extends State<Register> with ApiHelper {
                                     dropdownvalue = _cities.first;
                                   return DropdownButton<City>(
                                     value: dropdownvalue,
+                                    dropdownColor:
+                                        Theme.of(context).primaryColor,
                                     icon: Icon(
                                       Icons.keyboard_arrow_down,
                                       color: Theme.of(context).focusColor,
@@ -216,8 +218,9 @@ class _RegisterState extends State<Register> with ApiHelper {
                                         .textTheme
                                         .labelLarge
                                         ?.copyWith(
-                                            fontFamily: 'poppins',
-                                            fontSize: 14),
+                                          fontFamily: 'poppins',
+                                          fontSize: 14,
+                                        ),
                                     items: _cities.map((e) {
                                       return DropdownMenuItem<City>(
                                         child: Text(e.nameEn),
@@ -229,7 +232,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                                         dropdownvalue = value!;
                                         createDrop = true;
                                         _cityId = value.id;
-                                        print(indexcity);
+                                       // print(indexcity);
                                         print(dropdownvalue.nameEn);
                                       });
                                     },
