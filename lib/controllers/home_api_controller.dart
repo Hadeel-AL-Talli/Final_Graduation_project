@@ -56,13 +56,17 @@ class HomeApiController with ApiHelper {
 
   Future<List<Product>> getProducts(String id) async {
     var url = Uri.parse(ApiSetting.products.replaceFirst("{id}", id));
+
     print(url);
     var response = await http.get(url, headers: headers);
+    print(response.statusCode);
     if (response.statusCode == 200) {
+  
       var productsJsonArray = jsonDecode(response.body)['list'] as List;
       return productsJsonArray
           .map((jsonObject) => Product.fromJson(jsonObject))
           .toList();
+          
     }
     return [];
   }
