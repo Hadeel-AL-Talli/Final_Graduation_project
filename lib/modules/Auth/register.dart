@@ -23,7 +23,7 @@ class _RegisterState extends State<Register> with ApiHelper {
   late Future<List<City>> _future;
   bool createDrop = false;
   late City dropdownvalue;
-  late String indexcity;
+  //late String indexcity;
   String _gender = 'M';
   late TextEditingController _phoneTextEditingController;
   late TextEditingController _nameTextEditingController;
@@ -229,7 +229,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                                         dropdownvalue = value!;
                                         createDrop = true;
                                         _cityId = value.id;
-                                        print(indexcity);
+                                       // print(indexcity);
                                         print(dropdownvalue.nameEn);
                                       });
                                     },
