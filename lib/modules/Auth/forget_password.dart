@@ -6,10 +6,8 @@ import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 
-
-
 class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({ Key? key }) : super(key: key);
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
   _ForgetPasswordState createState() => _ForgetPasswordState();
@@ -31,16 +29,21 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
     super.dispose();
     _phoneTextEditingController.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset('images/Pattern1.png',fit: BoxFit.fitHeight,height: double.infinity,),
+          Image.asset(
+            'images/Pattern1.png',
+            fit: BoxFit.fitHeight,
+            height: double.infinity,
+          ),
           SingleChildScrollView(
             child: Column(
               children: [
-                 SizedBox(height: 85.h),
+                SizedBox(height: 85.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -48,17 +51,16 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                       'images/logo.png',
                       width: 40.w,
                     ),
-                     SizedBox(width: 12.w),
-                     Text('Pal-Pazzar',
+                    SizedBox(width: 12.w),
+                    Text('Pal-Pazzar',
                         style: TextStyle(
                             color: Color(0xffF59B14),
                             fontWeight: FontWeight.bold,
                             fontSize: 40.sp,
                             fontFamily: 'Poppins')),
-                   
                   ],
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 50.h,
                 ),
                 Container(
@@ -66,37 +68,76 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                   height: 500.h,
                   width: 500.w,
                   decoration: BoxDecoration(
-                      color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                      color: Theme.of(context).primaryColor,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Theme.of(context).shadowColor,
+                            // Colors.grey.withOpacity(0.2),
+                            spreadRadius: 3.0,
+                            blurRadius: 5.0)
+                      ],
+                      borderRadius: BorderRadius.circular(20)),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       //mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                         SizedBox(
+                        SizedBox(
                           height: 20.h,
                         ),
-                         Row(
-                           
-                           children: [
-                             InkWell(
-                               onTap: (){Navigator.pop(context);},
-                               child: Icon(Icons.arrow_back_ios, color: Colors.black,)) ,
-                               SizedBox(width: 30.w,),
-                             Text(
-                               'Forget Password',
-                              style: TextStyle(
-                                  fontSize: 22.sp,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Poppins'),
+                        Row(
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .labelLarge
+                                        ?.color,
+                                  ),
+                                )),
+                            SizedBox(
+                              width: 30.w,
+                            ),
+                            Text('Forget Password',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge
+                                    ?.copyWith(
+                                        fontSize: 22.sp,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Poppins')
+                                // TextStyle(
+                                //     fontSize: 22.sp,
+                                //     fontWeight: FontWeight.bold,
+                                //     fontFamily: 'Poppins'),
+                                ),
+                          ],
                         ),
-                           ],
-                         ),
-                         Text('Please enter your phone number, we will send an verify code.',textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Colors.grey,
-                            fontSize: 14.sp)),
-                         SizedBox(
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 5),
+                          child: Text(
+                              'Please enter your phone number, we will send an verify code.',
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      fontFamily: 'Poppins', fontSize: 11.sp)
+                              // TextStyle(
+                              //     fontFamily: 'Poppins',
+                              //     color: Colors.grey,
+                              //     fontSize: 14.sp)
+                              ),
+                        ),
+                        SizedBox(
                           height: 50.h,
                         ),
                         AppTextField(
@@ -105,37 +146,32 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                           prefixIcon: Icons.phone,
                           keyboardType: TextInputType.phone,
                         ),
-                         SizedBox(
+                        SizedBox(
                           height: 16.h,
                         ),
-                       
-                         SizedBox(
+                        SizedBox(
                           height: 16.h,
                         ),
-                       
-                        
                         CustomButton(
-                            onPress: () async => await performForgetPassword() ,
+                            onPress: () async => await performForgetPassword(),
                             text: 'Send ',
                             color: Color(0xffF59B14)),
-                         SizedBox(
+                        SizedBox(
                           height: 10.h,
                         ),
-                       
                       ],
                     ),
                   ),
-
                 ),
               ],
             ),
           )
-
         ],
       ),
     );
   }
-Future<void> performForgetPassword() async {
+
+  Future<void> performForgetPassword() async {
     if (checkData()) {
       await forgetPassword();
     }
@@ -158,7 +194,7 @@ Future<void> performForgetPassword() async {
       context,
       phone: _phoneTextEditingController.text,
     );
-    
+
     if (status) {
       Navigator.pushReplacement(
         context,
@@ -169,6 +205,4 @@ Future<void> performForgetPassword() async {
       );
     }
   }
-
-
 }
