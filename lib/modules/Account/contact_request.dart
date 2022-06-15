@@ -8,7 +8,6 @@ import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 
-
 class ContactRequest extends StatefulWidget {
   const ContactRequest({Key? key}) : super(key: key);
 
@@ -26,6 +25,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
     _subjectTextEditingController = TextEditingController();
     _messageTextEditingController = TextEditingController();
   }
+
   @override
   void dispose() {
     _subjectTextEditingController.dispose();
@@ -33,23 +33,31 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
     // TODO: implement dispose
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
-
         leading: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back_ios, color: Colors.black,)),
-        centerTitle: true,
+            child: const Icon(
+              Icons.arrow_back_ios,
+            )),
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text('Contact Us' , style:TextStyle(fontFamily: 'Poppins' , fontWeight: FontWeight.bold, fontSize:18 , color: Colors.black)),),
-
-
+        title: Text(
+          'Contact Us',
+          style:
+              Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
+          // style: TextStyle(
+          //     fontFamily: 'Poppins',
+          //     fontWeight: FontWeight.bold,
+          //     fontSize: 18,
+          //     color: Colors.black)
+        ),
+      ),
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
@@ -58,7 +66,15 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
             height: 500.h,
             width: 500.w,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                color: Theme.of(context).primaryColor,
+                boxShadow: [
+                  BoxShadow(
+                      color: Theme.of(context).shadowColor,
+                      // Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3.0,
+                      blurRadius: 5.0)
+                ],
+                borderRadius: BorderRadius.circular(20)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -67,13 +83,16 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text(
-                    'Send a message for us !  ',
-                    style: TextStyle(
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Poppins'),
-                  ),
+                  Text('Send a message for us !  ',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Poppins')
+                      // TextStyle(
+                      //     fontSize: 22.sp,
+                      //     fontWeight: FontWeight.bold,
+                      //     fontFamily: 'Poppins'),
+                      ),
                   SizedBox(
                     height: 50.h,
                   ),
@@ -90,16 +109,14 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                     hint: 'Message',
                     controller: _messageTextEditingController,
                     prefixIcon: Icons.message,
-
                   ),
-
                   SizedBox(
                     height: 80.h,
                   ),
                   CustomButton(
-                      onPress: () async => await performContactRequest(),
-                      text: 'Send ', color: Color(0xffF59B14),
-
+                    onPress: () async => await performContactRequest(),
+                    text: 'Send ',
+                    color: Color(0xffF59B14),
                   )
                 ],
               ),
@@ -118,8 +135,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
 
   bool checkData() {
     if (_subjectTextEditingController.text.isNotEmpty &&
-        _messageTextEditingController.text.isNotEmpty )
-        {
+        _messageTextEditingController.text.isNotEmpty) {
       return true;
     }
     showSnackBar(
@@ -131,7 +147,8 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
   }
 
   Future<void> Request() async {
-    bool status = await HomeApiController().contactRequest(context, contactRequest: contactRequest);
+    bool status = await HomeApiController()
+        .contactRequest(context, contactRequest: contactRequest);
     if (status) Navigator.pop(context);
   }
 
