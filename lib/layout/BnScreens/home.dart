@@ -10,6 +10,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/get/home_getx_controller.dart';
 import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/models/product.dart';
+import 'package:graduation_project/modules/SubCategories/sub_category.dart';
+
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
 import '../../controllers/theme_controller.dart';
 import '../../shared/network/style/colors.dart';
@@ -112,7 +115,8 @@ class _HomeState extends State<Home> {
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      'Categories',
+                      
+                      "Categories".tr,
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             fontFamily: 'Muli',
                             fontSize: 20.sp,
@@ -143,12 +147,12 @@ class _HomeState extends State<Home> {
                     itemCount: controller.homeResponse!.categories.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        // onTap: () => Get.to(
-                        //   SubCategoriesScreen(
-                        //     id: controller.homeResponse!.categories[index].id,
-                        //     name: controller.homeResponse!.categories[index].nameEn,
-                        //   ),
-                        // ),
+                        onTap: () => Get.to(
+                          SubCategoriesScreen(
+                            id: controller.homeResponse!.categories[index].id,
+                            name: controller.homeResponse!.categories[index].nameEn,
+                          ),
+                        ),
 
                         child: Padding(
                           padding: const EdgeInsets.all(10),
@@ -187,8 +191,10 @@ class _HomeState extends State<Home> {
                                   alignment: Alignment.center,
                                   height: 60,
                                   child: Text(
+                                    SharedPrefController().language =='en'?
                                     controller
-                                        .homeResponse!.categories[index].nameEn,
+                                        .homeResponse!.categories[index].nameEn : controller
+                                        .homeResponse!.categories[index].nameAr ,
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -209,7 +215,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    'Latest Products',
+                    "Latest Products".tr,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
                           fontFamily: 'Muli',
                           fontSize: 20.sp,
@@ -221,12 +227,12 @@ class _HomeState extends State<Home> {
                     //     fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
+                 SizedBox(
+                  height: 5.h,
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  height: 301,
+                  height: 320.h,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -282,8 +288,10 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
+                                      SharedPrefController().language == 'en'?
                                         controller.homeResponse!
-                                            .latestProducts[index].nameEn,
+                                            .latestProducts[index].nameEn :controller.homeResponse!
+                                            .latestProducts[index].nameAr ,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)
@@ -330,7 +338,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    'Famous Products',
+                    "Famous Products".tr,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
                           fontFamily: 'Muli',
                           fontSize: 20.sp,
@@ -353,7 +361,7 @@ class _HomeState extends State<Home> {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  height: 301,
+                  height: 320.h,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -409,8 +417,10 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
+                                      SharedPrefController().language =='en'?
                                         controller.homeResponse!
-                                            .famousProducts[index].nameEn,
+                                            .famousProducts[index].nameEn:controller.homeResponse!
+                                            .famousProducts[index].nameAr,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)

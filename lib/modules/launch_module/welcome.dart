@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/components/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: 48.h,
               )),
           Text(
-            'Welcome to',
+            "Welcome to".tr,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontFamily: 'Poppins',
                 fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             //     fontFamily: 'Poppins')
           ),
           Text(
-            'Pal-Pazzar',
+            "Pal-Pazzar".tr,
             style: Theme.of(context).textTheme.labelLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 fontSize: 40,
@@ -75,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               onPress: () {
                 Navigator.pushNamed(context, '/sign_in');
               },
-              text: 'Sign In',
+              text:"Sign In".tr,
               color: const Color(0xffF59B14)),
           SizedBox(
             height: 20.h,
@@ -85,7 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Navigator.pushNamed(context, '/register');
             },
             child: Text(
-              'Register',
+              "Register".tr,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.bold,

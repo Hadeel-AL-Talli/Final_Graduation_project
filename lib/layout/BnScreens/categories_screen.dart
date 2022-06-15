@@ -7,7 +7,8 @@ import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/modules/SubCategories/sub_category.dart';
 
 
-
+import 'package:get/get.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Categories',
+          "Categories".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
@@ -67,7 +68,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 return InkWell(
                   onTap: () {
 
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => SubCategoriesScreen(id: _categories[index].id , name: _categories[index].nameEn,)));
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => SubCategoriesScreen(id: _categories[index].id , name:SharedPrefController().language =='en'? _categories[index].nameEn:_categories[index].nameAr,)));
 
                      
                   },
@@ -87,7 +88,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         alignment: Alignment.center,
                         height: 60,
                         child: Text(
-                          _categories[index].nameEn,
+                          SharedPrefController().language =='en'?
+                          _categories[index].nameEn: _categories[index].nameAr,
                           style: const TextStyle(
                               color: Color(0xffF59B14),
                               fontSize: 35,

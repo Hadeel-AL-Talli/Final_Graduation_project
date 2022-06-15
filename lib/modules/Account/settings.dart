@@ -29,6 +29,7 @@ class _SettingsState extends State<Settings> {
             )),
         elevation: 0,
         backgroundColor: Colors.transparent,
+
         title: Text(
           "Settings".tr,
           style:
@@ -39,6 +40,31 @@ class _SettingsState extends State<Settings> {
           //     fontWeight: FontWeight.bold,
           //     fontSize: 18,
           //     color: Colors.black)
+
+       // title: Text("Settings".tr , style:TextStyle(fontFamily: 'Poppins' , fontWeight: FontWeight.bold, fontSize:18 , color: Colors.black)),),
+
+      body: ListView(
+        children: [
+       ListTile(
+         leading: Icon(Icons.notifications_active , color: Color(0xffF59B14),),
+         title: Text("Notifications".tr),
+         
+       ),
+      
+
+        ExpansionTile(
+          leading: Icon(Icons.language , color: Color(0xffF59B14),),
+          title: Text("Language".tr),
+          children: [
+            TextButton(onPressed: (){
+              controller.changeLang("en");
+            }, child: Text('English', style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20))),
+            TextButton(onPressed: (){
+              controller.changeLang("ar");
+            }, child: Text('العربية',style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20))),
+
+          ],
+
         ),
       ),
       body: Column(

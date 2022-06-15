@@ -21,17 +21,17 @@ class _OnBoardingState extends State<OnBoarding> {
         image: 'images/onboarding1.png',
         name: "welcome".tr,
         title:
-            'It is the online store that offers all the distinctive Palestinian products in one place'),
+            "online store".tr),
     BoardingModel(
         image: 'images/onboarding2.png',
-        name: 'Fast Delivery',
+        name: "Fast Delivery".tr,
         title:
-            'We follow a delivery policy that ensures that the product reaches your doorstep in the shortest time.'),
+            "we follow".tr),
     BoardingModel(
         image: 'images/onboarding3.png',
-        name: 'Buy products and enjoy them',
+        name: "Buy products and enjoy them".tr,
         title:
-            'With Pal Bazaar, you will get what you need as soon as possible'),
+            "With Pal Bazaar, you will get what you need as soon as possible".tr),
   ];
 
   @override
@@ -56,8 +56,8 @@ class _OnBoardingState extends State<OnBoarding> {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/welcome_screen');
               },
-              child: const Text(
-                'SKIP',
+              child:  Text(
+                "skip".tr,
                 style: TextStyle(
                     color: Color(0xfff59B14), fontSize: 16, fontFamily: 'Muli'),
               ))

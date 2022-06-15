@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/models/product_details.dart';
 import 'package:graduation_project/modules/SubCategories/products_screen.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
 class SubCategoriesScreen extends StatefulWidget {
   const SubCategoriesScreen({Key? key , required this.id, required this.name}) : super(key: key);
@@ -63,7 +64,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
 
            return  GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProudctScreen(id: widget.id,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProudctScreen(id: _subCategories[index].id,)));
       },
       child: Column(
        
@@ -77,7 +78,8 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               children: [
                 Image.network(_subCategories[index].imageUrl, width: double.infinity, height: 250,),
                 Text(
-                  _subCategories[index].nameEn,
+                  SharedPrefController().language == 'en'?
+                  _subCategories[index].nameEn:_subCategories[index].nameAr,
                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
                               fontFamily: 'Muli',
                               fontSize: 20,

@@ -8,6 +8,7 @@ import 'package:graduation_project/modules/Auth/sign_in.dart';
 import 'package:graduation_project/shared/components/code_text_feild.dart';
 import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
+import 'package:get/get.dart';
 
 class VerifyCode extends StatefulWidget {
   
@@ -117,14 +118,14 @@ class _VerifyCodeState extends State<VerifyCode> with ApiHelper {
                             height: 20,
                           ),
                           Text(
-                            'Verify Account',
+                            "Verify Account".tr,
                             style: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.bold,fontFamily: 'Poppins')
                           ),
                           const SizedBox(
                             height: 20,
                           ),
                           Text(
-                            'Please enter verify code, that we''ve sent to your phone number',
+                            "Please enter verify code".tr,
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 15,
@@ -188,7 +189,7 @@ class _VerifyCodeState extends State<VerifyCode> with ApiHelper {
                           ),
                           const SizedBox(height: 50),
                           
-                          CustomButton(onPress: ()async => await performActivate(), text: 'Activate', color:Color(0xffF59B14) )
+                          CustomButton(onPress: ()async => await performActivate(), text: "Activate".tr, color:Color(0xffF59B14) )
                            
                         ],
                       ),

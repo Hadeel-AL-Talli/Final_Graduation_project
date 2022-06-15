@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/shared/components/product_widget.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
 import '../../models/product.dart';
 
@@ -38,7 +39,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title:  Text(
-          'Products',
+          "Products".tr,
           style: Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20)
         ),
         leading: IconButton(
@@ -66,7 +67,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
              itemBuilder: (context, index){
              // return Text(_products[index].nameEn,style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20));
-            return ProductWidget(imageUrl: _products[index].imageUrl, name: _products[index].nameEn, price: _products[index].price);
+            return ProductWidget(imageUrl: _products[index].imageUrl, name:SharedPrefController().language=='en'? _products[index].nameEn:_products[index].nameAr, price: _products[index].price);
              });
            }
 
