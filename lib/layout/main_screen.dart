@@ -9,6 +9,7 @@ import 'package:graduation_project/layout/BnScreens/profile_screen.dart';
 import 'package:graduation_project/models/bn_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -49,8 +50,8 @@ class _MainScreenState extends State<MainScreen> {
                 size: 25,
                 color: KPrimaryColor,
               ),
-              title: const Text(
-                'Home',
+              title:  Text(
+                "Home".tr,
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,
@@ -58,8 +59,8 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavyBarItem(
               icon: const Icon(Icons.category_outlined,
                   size: 25, color: KPrimaryColor),
-              title: const Text(
-                'Categories',
+              title:  Text(
+                "Categories".tr,
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,
@@ -67,8 +68,8 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavyBarItem(
               icon: const Icon(Icons.shopping_cart_outlined,
                   size: 25, color: KPrimaryColor),
-              title: const Text(
-                'Cart',
+              title:  Text(
+                "Cart".tr,
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,
@@ -76,8 +77,8 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavyBarItem(
               icon: const Icon(Icons.favorite_border,
                   size: 25, color: KPrimaryColor),
-              title: const Text(
-                'Favorite',
+              title:  Text(
+                "Favorite".tr,
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,
@@ -85,8 +86,8 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavyBarItem(
               icon: const Icon(Icons.person_outline_rounded,
                   size: 25, color: KPrimaryColor),
-              title: const Text(
-                'Profile',
+              title:  Text(
+                "Profile".tr,
               ),
               textAlign: TextAlign.center,
               activeColor: KPrimaryColor,

@@ -29,7 +29,19 @@ class MyLocale extends Translations{
        "Male":"ذكر",
        "Female":"أنثى",
        "Categories":"التصنيفات",
-       "Latest Products":"أحدث المنتجات"
+       "Latest Products":"أحدث المنتجات",
+       "Please enter":"الرجاء إدخال رقم هاتفك ، وسوف نرسل رمز التحقق.",
+       "send":"إرسال",
+       "Verify Account":"تفعيل الحساب",
+       "Please enter verify code":"الرجاء إدخال رمز التحقق الذي أرسلناه إلى رقم هاتفك",
+       "Activate":"تفعيل",
+       "Famous Products":"الاكثر مبيعاً",
+       "Home":"الرئيسية",
+       "Cart":"السلة",
+       "Favorite":"المفضلة",
+       "Profile":"حسابي",
+       "Products":"المنتجات"
+      
        
        
 
@@ -59,8 +71,18 @@ class MyLocale extends Translations{
       "Male":"Male",
       "Female":"Female",
       "Categories":"Categories",
-      "Latest Products":"Latest Products"
-      
+      "Latest Products":"Latest Products",
+      "Please enter":"Please enter your phone number, we will send an verify code.",
+      "send":"Send",
+      "Verify Account":"Verify Account",
+      "Please enter verify code":"Please enter verify code, that we''ve sent to your phone number",
+      "Activate":"Activate",
+      "Famous Products":"Famous Products",
+      "Home":"Home",
+      "Cart":"Cart",
+      "Favorite":"Favorite",
+      "Profile":"Profile",
+      "Products":"Products"
 
     }
   };

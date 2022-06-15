@@ -11,7 +11,7 @@ import 'package:graduation_project/get/home_getx_controller.dart';
 import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/models/product.dart';
 import 'package:graduation_project/modules/SubCategories/sub_category.dart';
-import 'package:graduation_project/modules/SubCategory/sub_category.dart';
+
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
 import '../../controllers/theme_controller.dart';
@@ -116,7 +116,7 @@ class _HomeState extends State<Home> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
                       
-                      "Categories",
+                      "Categories".tr,
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             fontFamily: 'Muli',
                             fontSize: 20.sp,
@@ -191,8 +191,10 @@ class _HomeState extends State<Home> {
                                   alignment: Alignment.center,
                                   height: 60,
                                   child: Text(
+                                    SharedPrefController().language =='en'?
                                     controller
-                                        .homeResponse!.categories[index].nameEn,
+                                        .homeResponse!.categories[index].nameEn : controller
+                                        .homeResponse!.categories[index].nameAr ,
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -336,7 +338,7 @@ class _HomeState extends State<Home> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    'Famous Products',
+                    "Famous Products".tr,
                     style: Theme.of(context).textTheme.labelMedium?.copyWith(
                           fontFamily: 'Muli',
                           fontSize: 20.sp,
@@ -359,7 +361,7 @@ class _HomeState extends State<Home> {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  height: 301,
+                  height: 320.h,
                   child: ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -415,8 +417,10 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
+                                      SharedPrefController().language =='en'?
                                         controller.homeResponse!
-                                            .famousProducts[index].nameEn,
+                                            .famousProducts[index].nameEn:controller.homeResponse!
+                                            .famousProducts[index].nameAr,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)

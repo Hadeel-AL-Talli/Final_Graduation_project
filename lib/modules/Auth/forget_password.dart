@@ -5,7 +5,7 @@ import 'package:graduation_project/modules/Auth/reset_password.dart';
 import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
-
+import 'package:get/get.dart';
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
 
@@ -105,7 +105,7 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                             SizedBox(
                               width: 30.w,
                             ),
-                            Text('Forget Password',
+                            Text("Forget Password ? ".tr,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge
@@ -124,7 +124,7 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 5),
                           child: Text(
-                              'Please enter your phone number, we will send an verify code.',
+                              "Please enter".tr,
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme
@@ -141,7 +141,7 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                           height: 50.h,
                         ),
                         AppTextField(
-                          hint: 'Phone number',
+                          hint: "Phone number".tr,
                           controller: _phoneTextEditingController,
                           prefixIcon: Icons.phone,
                           keyboardType: TextInputType.phone,
@@ -154,7 +154,7 @@ class _ForgetPasswordState extends State<ForgetPassword> with ApiHelper {
                         ),
                         CustomButton(
                             onPress: () async => await performForgetPassword(),
-                            text: 'Send ',
+                            text: "send".tr,
                             color: Color(0xffF59B14)),
                         SizedBox(
                           height: 10.h,
