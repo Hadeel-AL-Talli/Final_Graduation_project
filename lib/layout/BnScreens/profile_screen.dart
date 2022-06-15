@@ -76,15 +76,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Icons.person,
                         size: 30.0,
                         // color: Colors.white
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                         // Color(0xffF59B14),
                       ),
                       title: Text(
                         'Profile',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {
                         Get.to(PersonalInfo());
@@ -116,14 +119,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         'images/order.svg',
                         height: 22,
                         width: 22,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
                         'Order',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {},
                     ),
@@ -152,14 +158,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       leading: Icon(
                         Icons.location_on,
                         size: 30.0,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
                         'Address',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {},
                     ),
@@ -187,15 +196,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ListTile(
                       leading: Icon(
                         Icons.payment,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                         size: 30.0,
                       ),
                       title: Text(
                         'Payment',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {},
                     ),
@@ -224,14 +236,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       leading: Icon(
                         Icons.settings,
                         size: 30,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
                         'Settings',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {
                         Get.to(Settings());
@@ -262,14 +277,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       leading: Icon(
                         Icons.chat,
                         size: 30,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
                         'Contact Us',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {
                         Get.to(ContactRequest());
@@ -299,15 +317,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ListTile(
                       leading: Icon(
                         Icons.question_answer_sharp,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                         size: 30,
                       ),
                       title: Text(
                         'FAQ',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () {
                         Get.to(FAQ());
@@ -337,16 +358,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ListTile(
                       leading: Icon(
                         Icons.logout,
-                        color: Theme.of(context).textTheme.labelLarge?.color,
+                        color: Theme.of(context).textTheme.labelMedium?.color,
                         size: 30,
                       ),
                       // leading: SvgPicture.asset('images/logout.svg'),
                       title: Text(
                         'Logout',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                fontFamily: 'Muli',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
                       ),
                       onTap: () async {
                         await logout(context);
