@@ -11,6 +11,7 @@ import 'package:graduation_project/modules/Account/faq.dart';
 import 'package:graduation_project/modules/Account/personal_info.dart';
 import 'package:graduation_project/modules/Account/settings.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
+import 'package:get/get.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Icons.arrow_back_ios,
               )),
           title: Text(
-            'Account',
+            "Profile".tr,
             style:
                 Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
             // TextStyle(

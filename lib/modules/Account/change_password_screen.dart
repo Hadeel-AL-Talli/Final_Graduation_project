@@ -8,6 +8,7 @@ import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
 
@@ -50,7 +51,7 @@ late TextEditingController _confirmpasswordTextEditingController;
               Navigator.pop(context);
             },
             child: Icon(Icons.arrow_back_ios, color: Colors.black,)),
-    backgroundColor: Colors.transparent, elevation: 0, title: Text('Change Password' , style: TextStyle(color: Colors.black, fontFamily: 'Poppins'),),),
+    backgroundColor: Colors.transparent, elevation: 0, title: Text("Change Password".tr , style: TextStyle(color: Colors.black, fontFamily: 'Poppins'),),),
       
       body: SingleChildScrollView(
         child: Column(
@@ -68,7 +69,7 @@ late TextEditingController _confirmpasswordTextEditingController;
                     height: 50.h,
                   ),
                   AppTextField(
-                    hint: 'password',
+                    hint: "password".tr,
                     controller: _currentpasswordTextEditingController,
                     prefixIcon: Icons.lock,
                     keyboardType: TextInputType.text,
@@ -77,7 +78,7 @@ late TextEditingController _confirmpasswordTextEditingController;
                     height: 16.h,
                   ),
                   AppTextField(
-                    hint: ' New password',
+                    hint: "New password".tr,
                     controller: _passwordTextEditingController,
                     prefixIcon: Icons.lock,
                     obscureText: true,
@@ -86,7 +87,7 @@ late TextEditingController _confirmpasswordTextEditingController;
                     height: 16.h,
                   ),
                   AppTextField(
-                    hint: ' Confirm password',
+                    hint: "Confirm password".tr,
                     controller: _confirmpasswordTextEditingController,
                     prefixIcon: Icons.lock,
 
@@ -98,7 +99,7 @@ late TextEditingController _confirmpasswordTextEditingController;
                       onPress: () async {
                        await performChangePassword();
                       },
-                      text: 'Save',
+                      text: "Save".tr,
                       color: Color(0xffF59B14)),
 
                 ],

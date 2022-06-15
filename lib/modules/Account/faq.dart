@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/models/faq.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 class FAQ extends StatefulWidget {
   const FAQ({Key? key}) : super(key: key);
 
@@ -48,10 +49,14 @@ class _FAQState extends State<FAQ> {
               padding: EdgeInsets.all(20),
                  itemCount: _faq.length,
                 itemBuilder: (context , index){
-                  return ExpansionTile(title: Text(_faq[index].questionEn , style: TextStyle(fontFamily: 'Poppins' , fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold ), ) ,children: [
+                  return ExpansionTile(title: Text(
+                    SharedPrefController().language =='en'?
+                    _faq[index].questionEn :_faq[index].questionAr, style: TextStyle(fontFamily: 'Poppins' , fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold ), ) ,children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(_faq[index].answerEn, style: TextStyle(fontFamily: 'Poppins' , color: Colors.grey),),
+                      child: Text(
+                        SharedPrefController().language =='en'?
+                        _faq[index].answerEn:_faq[index].answerAr, style: TextStyle(fontFamily: 'Poppins' , color: Colors.grey),),
                     )
                   ], );
                

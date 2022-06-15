@@ -40,7 +40,11 @@ class MyLocale extends Translations{
        "Cart":"السلة",
        "Favorite":"المفضلة",
        "Profile":"حسابي",
-       "Products":"المنتجات"
+       "Products":"المنتجات",
+       "New password":"كلمة مرور جديدة",
+       "Confirm password":"تأكيد كلمة المرور",
+       "Save":"حفظ"
+      
       
        
        
@@ -82,7 +86,10 @@ class MyLocale extends Translations{
       "Cart":"Cart",
       "Favorite":"Favorite",
       "Profile":"Profile",
-      "Products":"Products"
+      "Products":"Products",
+      "New password":"New password",
+      "Confirm password":" Confirm password",
+      "Save":"Save"
 
     }
   };
