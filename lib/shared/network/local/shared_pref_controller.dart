@@ -71,9 +71,9 @@ class SharedPrefController {
     await _sharedPreferences.setString(PrefKeys.language.toString(), lang);
   }
 
- // String get language => _sharedPreferences.getString(PrefKeys.language.toString()) ?? 'en';
+  String get language => _sharedPreferences.getString(PrefKeys.language.toString()) ?? 'en';
 
-  String get languageCode => _sharedPreferences.getString('language_code') ?? 'en';
+  //String get languageCode => _sharedPreferences.getString('language_code') ?? 'en';
 }
 
 

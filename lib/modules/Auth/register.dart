@@ -9,6 +9,7 @@ import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
+import 'package:get/get.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -111,7 +112,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                                 Navigator.pushNamed(context, '/sign_in');
                               },
                               child: Text(
-                                'Sign in',
+                                "Sign In".tr,
                                 style: TextStyle(
                                     fontSize: 22.sp,
                                     color: Colors.grey,
@@ -123,7 +124,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                               onTap: () {
                                 // Navigator.pushNamed(context, '/register');
                               },
-                              child: Text('Register',
+                              child: Text("Register".tr,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge
@@ -144,7 +145,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                           height: 50.h,
                         ),
                         AppTextField(
-                          hint: 'Name',
+                          hint: "Name".tr,
                           controller: _nameTextEditingController,
                           prefixIcon: Icons.person,
                           keyboardType: TextInputType.emailAddress,
@@ -153,7 +154,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                           height: 16.h,
                         ),
                         AppTextField(
-                          hint: 'Phone number',
+                          hint: "Phone number".tr,
                           controller: _phoneTextEditingController,
                           prefixIcon: Icons.phone,
                           keyboardType: TextInputType.phone,
@@ -162,7 +163,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                           height: 16.h,
                         ),
                         AppTextField(
-                          hint: 'password',
+                          hint: "password".tr,
                           controller: _passwordTextEditingController,
                           prefixIcon: Icons.lock,
                           obscureText: true,
@@ -174,7 +175,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                           children: [
                             Padding(
                               padding: EdgeInsets.only(left: 10.w),
-                              child: Text('City :',
+                              child: Text("City :".tr,
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context)
                                       .textTheme
@@ -258,11 +259,9 @@ class _RegisterState extends State<Register> with ApiHelper {
                             ),
                           ],
                         ),
-                        Align(
-                          alignment: Alignment.topLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 11),
-                            child: Text('Gender',
+                       
+                         
+                             Text("Gender".tr,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium
@@ -277,11 +276,11 @@ class _RegisterState extends State<Register> with ApiHelper {
                                 //   fontSize: 16.sp,
                                 // ),
                                 ),
-                          ),
-                        ),
+
+                        
                         RadioListTile<String>(
                           contentPadding: EdgeInsets.zero,
-                          title: Text('Male',
+                          title: Text("Male".tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelLarge
@@ -304,7 +303,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                         ),
                         RadioListTile<String>(
                           contentPadding: EdgeInsets.zero,
-                          title: Text('Female',
+                          title: Text("Female".tr,
                               style: Theme.of(context)
                                   .textTheme
                                   .labelLarge
@@ -332,7 +331,7 @@ class _RegisterState extends State<Register> with ApiHelper {
                             onPress: () async {
                               await performRegister();
                             },
-                            text: 'Register',
+                            text: "Register".tr,
                             color: Color(0xffF59B14)),
                       ],
                     ),

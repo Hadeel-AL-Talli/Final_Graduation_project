@@ -63,7 +63,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
 
            return  GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProudctScreen(id: widget.id,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>ProudctScreen(id: _subCategories[index].id,)));
       },
       child: Column(
        

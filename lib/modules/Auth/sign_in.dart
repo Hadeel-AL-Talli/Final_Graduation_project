@@ -5,6 +5,7 @@ import 'package:graduation_project/controllers/auth_api_controller.dart';
 import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
+import 'package:get/get.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -94,7 +95,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                           children: [
                             Text(
                                 //'AppLocalizations.of(context)!.signIn',
-                                'Sign in',
+                                "Sign In".tr,
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelLarge
@@ -112,7 +113,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                                 Navigator.pushNamed(context, '/register');
                               },
                               child: Text(
-                                'Register',
+                                "Register".tr,
                                 style: TextStyle(
                                     color: Colors.grey,
                                     fontSize: 22.sp,
@@ -126,7 +127,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                           height: 50.h,
                         ),
                         AppTextField(
-                          hint: 'Phone number',
+                          hint: "Phone number".tr,
                           controller: _phoneTextEditingController,
                           prefixIcon: Icons.phone,
                           keyboardType: TextInputType.phone,
@@ -135,7 +136,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                           height: 16.h,
                         ),
                         AppTextField(
-                          hint: 'password',
+                          hint: "password".tr,
                           controller: _passwordTextEditingController,
                           prefixIcon: Icons.lock,
                           obscureText: true,
@@ -149,7 +150,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                             },
                             child: Align(
                               alignment: Alignment.topRight,
-                              child: Text('Forget Password ? ',
+                              child: Text("Forget Password ? ".tr,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge
@@ -168,7 +169,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                         ),
                         CustomButton(
                             onPress: () async => await performLogin(),
-                            text: 'Sign In',
+                            text: "Sign In".tr,
                             color: Color(0xffF59B14)),
                         SizedBox(
                           height: 10.h,

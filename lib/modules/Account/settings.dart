@@ -44,10 +44,10 @@ class _SettingsState extends State<Settings> {
           children: [
             TextButton(onPressed: (){
               controller.changeLang("en");
-            }, child: Text('English')),
+            }, child: Text('English', style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20))),
             TextButton(onPressed: (){
               controller.changeLang("ar");
-            }, child: Text('العربية')),
+            }, child: Text('العربية',style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20))),
 
           ],
         ),
