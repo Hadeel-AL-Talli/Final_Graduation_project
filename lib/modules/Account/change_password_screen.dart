@@ -8,11 +8,7 @@ import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-<<<<<<< HEAD
-import 'package:get/get.dart';
-=======
 
->>>>>>> 04040c096e9facd96bfdb660c6a4d569d03a4811
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
 
@@ -52,11 +48,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
             onTap: () {
               Navigator.pop(context);
             },
-<<<<<<< HEAD
-            child: Icon(Icons.arrow_back_ios, color: Colors.black,)),
-    backgroundColor: Colors.transparent, elevation: 0, title: Text("Change Password".tr , style: TextStyle(color: Colors.black, fontFamily: 'Poppins'),),),
-      
-=======
             child: const Icon(
               Icons.arrow_back_ios,
             )),
@@ -68,56 +59,11 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
       ),
->>>>>>> 04040c096e9facd96bfdb660c6a4d569d03a4811
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
               padding: const EdgeInsets.all(20),
-<<<<<<< HEAD
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                 
-                  SizedBox(
-                    height: 50.h,
-                  ),
-                  AppTextField(
-                    hint: "password".tr,
-                    controller: _currentpasswordTextEditingController,
-                    prefixIcon: Icons.lock,
-                    keyboardType: TextInputType.text,
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  AppTextField(
-                    hint: "New password".tr,
-                    controller: _passwordTextEditingController,
-                    prefixIcon: Icons.lock,
-                    obscureText: true,
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  AppTextField(
-                    hint: "Confirm password".tr,
-                    controller: _confirmpasswordTextEditingController,
-                    prefixIcon: Icons.lock,
-
-                  ),
-                  SizedBox(
-                    height: 70.h,
-                  ),
-                  CustomButton(
-                      onPress: () async {
-                       await performChangePassword();
-                      },
-                      text: "Save".tr,
-                      color: Color(0xffF59B14)),
-
-                ],
-=======
               child: Container(
                 decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
@@ -181,7 +127,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                     ),
                   ],
                 ),
->>>>>>> 04040c096e9facd96bfdb660c6a4d569d03a4811
               ),
             ),
           ],
