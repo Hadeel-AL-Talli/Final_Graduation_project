@@ -115,7 +115,6 @@ class _HomeState extends State<Home> {
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      
                       "Categories".tr,
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
                             fontFamily: 'Muli',
@@ -150,10 +149,10 @@ class _HomeState extends State<Home> {
                         onTap: () => Get.to(
                           SubCategoriesScreen(
                             id: controller.homeResponse!.categories[index].id,
-                            name: controller.homeResponse!.categories[index].nameEn,
+                            name: controller
+                                .homeResponse!.categories[index].nameEn,
                           ),
                         ),
-
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Container(
@@ -191,10 +190,11 @@ class _HomeState extends State<Home> {
                                   alignment: Alignment.center,
                                   height: 60,
                                   child: Text(
-                                    SharedPrefController().language =='en'?
-                                    controller
-                                        .homeResponse!.categories[index].nameEn : controller
-                                        .homeResponse!.categories[index].nameAr ,
+                                    SharedPrefController().language == 'en'
+                                        ? controller.homeResponse!
+                                            .categories[index].nameEn
+                                        : controller.homeResponse!
+                                            .categories[index].nameAr,
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -227,7 +227,7 @@ class _HomeState extends State<Home> {
                     //     fontWeight: FontWeight.bold),
                   ),
                 ),
-                 SizedBox(
+                SizedBox(
                   height: 5.h,
                 ),
                 Container(
@@ -288,10 +288,11 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
-                                      SharedPrefController().language == 'en'?
-                                        controller.homeResponse!
-                                            .latestProducts[index].nameEn :controller.homeResponse!
-                                            .latestProducts[index].nameAr ,
+                                        SharedPrefController().language == 'en'
+                                            ? controller.homeResponse!
+                                                .latestProducts[index].nameEn
+                                            : controller.homeResponse!
+                                                .latestProducts[index].nameAr,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)
@@ -417,10 +418,11 @@ class _HomeState extends State<Home> {
                                       height: 3,
                                     ),
                                     Text(
-                                      SharedPrefController().language =='en'?
-                                        controller.homeResponse!
-                                            .famousProducts[index].nameEn:controller.homeResponse!
-                                            .famousProducts[index].nameAr,
+                                        SharedPrefController().language == 'en'
+                                            ? controller.homeResponse!
+                                                .famousProducts[index].nameEn
+                                            : controller.homeResponse!
+                                                .famousProducts[index].nameAr,
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)

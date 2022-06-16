@@ -1,55 +1,88 @@
 import 'package:flutter/material.dart';
 
-
+import '../network/style/colors.dart';
 
 class ProductWidget extends StatelessWidget {
-  String imageUrl ;
-  String name ;
+  String imageUrl;
+  String name;
   String price;
-  
- //  Function function;
+
+  //  Function function;
   //final List<Product> products;
-   ProductWidget({ required this.imageUrl ,required this.name ,required this.price,  Key? key  }) : super(key: key);
+  ProductWidget(
+      {required this.imageUrl,
+      required this.name,
+      required this.price,
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-     // onTap: function(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-   Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              // For  demo we use fixed height  and width
-              // Now we dont need them
-              // height: 180,
-              // width: 160,
-              decoration: BoxDecoration(
-                color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              // child: Hero(
-                
-              //   tag: 'tag',
-              //   child: Image.asset(imageUrl),
-              // ),
+      // onTap: function(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20.0),
+              boxShadow: [
+                BoxShadow(
+                    color: Theme.of(context).shadowColor,
+                    // Colors.grey.withOpacity(0.2),
+                    spreadRadius: 3.0,
+                    blurRadius: 5.0)
+              ],
+              color: Theme.of(context).primaryColor),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    height: 180,
+                    width: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    )),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                    // products is out demo list
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    name,
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          height: 1.3,
+                          fontFamily: 'Muli',
+                        )),
+                Row(
+                  children: [
+                    Text(
+                      '$price \$',
+                      style: const TextStyle(
+                          fontSize: 14.0,
+                          height: 1.3,
+                          fontFamily: 'Muli',
+                          color: KPrimaryColor),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                        icon: const Icon(
+                          Icons.favorite_border,
+                          color: KPrimaryColor,
+                        ),
+                        onPressed: () {})
+                  ],
+                )
+              ],
             ),
           ),
-          Image.network(imageUrl),
-           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Text(
-              // products is out demo list
-              name,
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-          Text(
-            price,
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
-        ],
+        ),
       ),
     );
   }
