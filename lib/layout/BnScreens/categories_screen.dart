@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/models/category.dart';
 
-import 'package:graduation_project/modules/SubCategories/sub_category.dart';
 
 import 'package:get/get.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
+
+import '../../modules/SubCategories/sub_categories.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
