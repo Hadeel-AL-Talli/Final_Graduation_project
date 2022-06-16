@@ -19,11 +19,6 @@ class SubCategoriesScreen extends StatefulWidget {
 }
 
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
-<<<<<<< HEAD
-  
-=======
-  int selectedIndex = 0;
->>>>>>> bb1d7a4197d7cefc21e68639f456967abd9009b1
   late Future<List<SubCategory>> _future;
   List<SubCategory> _subCategories = <SubCategory>[];
 
@@ -39,15 +34,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-<<<<<<< HEAD
-          
-           widget.name,
-            style:  Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
-=======
             widget.name,
             style:
                 Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
->>>>>>> bb1d7a4197d7cefc21e68639f456967abd9009b1
           ),
           elevation: 0,
           backgroundColor: Colors.transparent,
