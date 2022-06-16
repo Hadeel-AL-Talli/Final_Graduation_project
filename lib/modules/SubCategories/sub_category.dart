@@ -17,7 +17,7 @@ class SubCategoriesScreen extends StatefulWidget {
 }
 
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
-  int selectedIndex =0;
+  
   late Future<List<SubCategory>> _future;
   List<SubCategory> _subCategories = <SubCategory>[];
 
@@ -33,7 +33,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
        appBar: AppBar(
         
           title: Text(
-            
+          
            widget.name,
             style:  Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           ),

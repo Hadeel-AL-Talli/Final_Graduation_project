@@ -8,7 +8,7 @@ import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({Key? key}) : super(key: key);
 
@@ -54,7 +54,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          'Change Password',
+          "Change Password".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
@@ -84,7 +84,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AppTextField(
-                        hint: 'password',
+                        hint: "password".tr,
                         controller: _currentpasswordTextEditingController,
                         prefixIcon: Icons.lock,
                         keyboardType: TextInputType.text,
@@ -96,7 +96,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AppTextField(
-                        hint: ' New password',
+                        hint: "New password".tr,
                         controller: _passwordTextEditingController,
                         prefixIcon: Icons.lock,
                         obscureText: true,
@@ -108,7 +108,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AppTextField(
-                        hint: ' Confirm password',
+                        hint: "Confirm password".tr,
                         controller: _confirmpasswordTextEditingController,
                         prefixIcon: Icons.lock,
                       ),
@@ -120,7 +120,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                         onPress: () async {
                           await performChangePassword();
                         },
-                        text: 'Save',
+                        text: "Save".tr,
                         color: Color(0xffF59B14)),
                     SizedBox(
                       height: 50.h,

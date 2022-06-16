@@ -43,7 +43,19 @@ class MyLocale extends Translations{
        "Products":"المنتجات",
        "New password":"كلمة مرور جديدة",
        "Confirm password":"تأكيد كلمة المرور",
-       "Save":"حفظ"
+       "Save":"حفظ",
+       "FAQ":"الأسئلة الشائعة",
+       "Update Profile":"تعديل الملف الشخصي ",
+       "Order":"الطلبات",
+       "Address":"العنوان",
+       "Payment":"وسيلة الدفع",
+       "Settings":"الإعدادات",
+       "Contact Us":"تواصل معنا",
+       "Logout":"تسجيل خروج",
+       "Contact Us":"تواصل معنا",
+       "Send a message for us":"أرسل لنا رسالة!",
+       "Subject":"العنوان",
+       "Message":"الرسالة"
       
       
        
@@ -89,7 +101,19 @@ class MyLocale extends Translations{
       "Products":"Products",
       "New password":"New password",
       "Confirm password":" Confirm password",
-      "Save":"Save"
+      "Save":"Save",
+      "FAQ":"FAQ",
+      "Update Profile":"Update Profile",
+      "Order":"Order",
+      "Address":"Address",
+      "Payment":"Payment",
+      "Settings":"Settings",
+      "Contact Us":"Contact Us",
+      "Logout":"Logout",
+      "Contact Us":"Contact Us",
+      "Send a message for us": "Send a message for us !",
+      "Subject":"Subject",
+      "Message":"Message"
 
     }
   };

@@ -74,7 +74,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           CustomButton(
               onPress: () {
-                Navigator.pushNamed(context, '/sign_in');
+                Navigator.pushReplacementNamed(context, '/sign_in');
               },
               text:"Sign In".tr,
               color: const Color(0xffF59B14)),
@@ -83,7 +83,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/register');
+              Navigator.pushReplacementNamed(context, '/register');
             },
             child: Text(
               "Register".tr,

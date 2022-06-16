@@ -10,6 +10,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/network/style/colors.dart';
+import 'package:get/get.dart';
 
 class PersonalInfo extends StatefulWidget {
   const PersonalInfo({Key? key}) : super(key: key);
@@ -65,7 +66,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
         ],
         backgroundColor: Colors.transparent,
         title: Text(
-          'Edit Profile',
+          "Update Profile".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           // TextStyle(
@@ -89,7 +90,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                       SizedBox(
                         height: 52.h,
                       ),
-                      Text("Name  ",
+                      Text("Name".tr,
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium
@@ -118,7 +119,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                         height: 20.h,
                       ),
 
-                      Text("Gender",
+                      Text("Gender".tr,
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium
@@ -134,7 +135,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                         children: [
                           Expanded(
                             child: RadioListTile<String>(
-                              title: Text('Male',
+                              title: Text("Male".tr,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge
@@ -159,7 +160,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                           ),
                           Expanded(
                             child: RadioListTile<String>(
-                              title: Text('Female',
+                              title: Text("Female".tr,
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelLarge
@@ -186,7 +187,7 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                         height: 10.h,
                       ),
 
-                      Text("City :",
+                      Text("City :".tr,
                           style: Theme.of(context)
                               .textTheme
                               .labelMedium
@@ -228,7 +229,9 @@ class _PersonalInfoState extends State<PersonalInfo> with ApiHelper {
                                   ),
                               items: city.map((e) {
                                 return DropdownMenuItem<City>(
-                                  child: Text(e.nameEn),
+                                  child: Text(
+                                    SharedPrefController().language == 'en'?
+                                    e.nameEn:e.nameAr),
                                   value: e,
                                 );
                               }).toList(),
