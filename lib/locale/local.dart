@@ -55,7 +55,10 @@ class MyLocale extends Translations{
        "Contact Us":"تواصل معنا",
        "Send a message for us":"أرسل لنا رسالة!",
        "Subject":"العنوان",
-       "Message":"الرسالة"
+       "Message":"الرسالة",
+       "Product Description":"وصف المنتج",
+       "Add To Cart":"أضف إلى السلة",
+       "Product Details":"تفاصيل المنتج"
       
       
        
@@ -113,7 +116,10 @@ class MyLocale extends Translations{
       "Contact Us":"Contact Us",
       "Send a message for us": "Send a message for us !",
       "Subject":"Subject",
-      "Message":"Message"
+      "Message":"Message",
+      "Product Description":"Product Description",
+      "Add To Cart":"Add To Cart",
+      "Product Details":"Product Details"
 
     }
   };

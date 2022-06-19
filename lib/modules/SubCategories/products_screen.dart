@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
+import 'package:graduation_project/layout/BnScreens/product_details_screen.dart';
 import 'package:graduation_project/shared/components/product_widget.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
@@ -49,7 +50,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
             future: _future,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                print('watit');
+                print('waiting');
 
                 return Center(
                   child: CircularProgressIndicator(),
@@ -71,12 +72,18 @@ class _ProudctScreenState extends State<ProudctScreen> {
                       ),
                       itemBuilder: (context, index) {
                         // return Text(_products[index].nameEn,style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20));
-                        return ProductWidget(
-                            imageUrl: _products[index].imageUrl,
-                            name: SharedPrefController().language == 'en'
-                                ? _products[index].nameEn
-                                : _products[index].nameAr,
-                            price: _products[index].price);
+                        return InkWell(
+                          onTap: (){
+           Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: _products[index])));
+
+                          },
+                          child: ProductWidget(
+                              imageUrl: _products[index].imageUrl,
+                              name: SharedPrefController().language == 'en'
+                                  ? _products[index].nameEn
+                                  : _products[index].nameAr,
+                              price: _products[index].price),
+                        );
                       }),
                 );
               } else {

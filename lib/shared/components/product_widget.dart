@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../network/style/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductWidget extends StatelessWidget {
   String imageUrl;
@@ -39,8 +40,8 @@ class ProductWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    height: 180,
-                    width: 200,
+                    height: 160.h,
+                    width: 200.w,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.network(

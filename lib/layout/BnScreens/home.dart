@@ -9,6 +9,7 @@ import 'package:graduation_project/get/home_getx_controller.dart';
 import 'package:graduation_project/layout/BnScreens/product_details_screen.dart';
 import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/models/product.dart';
+import 'package:graduation_project/models/product_details.dart';
 
 
 
@@ -26,9 +27,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   HomeGetxController _homeGetxController = Get.put(HomeGetxController());
-
+ 
   List<Category> _categories = <Category>[];
   List<Product> product = <Product>[];
+  List<ProudctDetails> productDetails = <ProudctDetails>[];
   @override
   void initState() {
     // TODO: implement initState
@@ -242,9 +244,8 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Get.to(
-                              const ProductDetailsScreen(),
-                            );
+           //Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index].id.toString())));
+
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(
@@ -387,9 +388,7 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Get.to(
-                              const ProductDetailsScreen(),
-                            );
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(
