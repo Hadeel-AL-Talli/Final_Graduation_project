@@ -25,9 +25,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
           leading: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.popAndPushNamed(context, '/main_screen');
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
@@ -81,7 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         // Color(0xffF59B14),
                       ),
                       title: Text(
-                        'Profile',
+                        "Update Profile".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -123,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
-                        'Order',
+                        "Order".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -162,7 +163,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
-                        'Address',
+                        "Address".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -201,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         size: 30.0,
                       ),
                       title: Text(
-                        'Payment',
+                        "Payment".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -240,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
-                        'Settings',
+                        "Settings".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -281,7 +282,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         color: Theme.of(context).textTheme.labelMedium?.color,
                       ),
                       title: Text(
-                        'Contact Us',
+                        "Contact Us".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -322,7 +323,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         size: 30,
                       ),
                       title: Text(
-                        'FAQ',
+                        "FAQ".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium
@@ -364,7 +365,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       // leading: SvgPicture.asset('images/logout.svg'),
                       title: Text(
-                        'Logout',
+                        "Logout".tr,
                         style: Theme.of(context)
                             .textTheme
                             .labelMedium

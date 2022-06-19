@@ -9,9 +9,12 @@ import 'package:graduation_project/get/home_getx_controller.dart';
 import 'package:graduation_project/layout/BnScreens/product_details_screen.dart';
 import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/models/product.dart';
-import 'package:graduation_project/modules/SubCategories/sub_category.dart';
+
+
+
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import '../../controllers/theme_controller.dart';
+import '../../modules/SubCategories/sub_categories.dart';
 import '../../shared/network/style/colors.dart';
 
 class Home extends StatefulWidget {

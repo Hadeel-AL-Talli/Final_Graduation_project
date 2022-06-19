@@ -7,7 +7,7 @@ import 'package:graduation_project/models/contact_request.dart';
 import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
-
+import 'package:get/get.dart';
 class ContactRequest extends StatefulWidget {
   const ContactRequest({Key? key}) : super(key: key);
 
@@ -48,7 +48,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text(
-          'Contact Us',
+          "Contact Us".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           // style: TextStyle(
@@ -83,7 +83,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text('Send a message for us !  ',
+                  Text("Send a message for us".tr,
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                     height: 50.h,
                   ),
                   AppTextField(
-                    hint: 'Subject',
+                    hint: "Subject".tr,
                     controller: _subjectTextEditingController,
                     prefixIcon: Icons.subject,
                     keyboardType: TextInputType.text,
@@ -106,7 +106,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                     height: 16.h,
                   ),
                   AppTextField(
-                    hint: 'Message',
+                    hint: "Message".tr,
                     controller: _messageTextEditingController,
                     prefixIcon: Icons.message,
                   ),
@@ -115,7 +115,7 @@ class _ContactRequestState extends State<ContactRequest> with ApiHelper {
                   ),
                   CustomButton(
                     onPress: () async => await performContactRequest(),
-                    text: 'Send ',
+                    text: "send".tr,
                     color: Color(0xffF59B14),
                   )
                 ],

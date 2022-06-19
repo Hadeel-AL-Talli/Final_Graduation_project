@@ -6,6 +6,7 @@ import 'package:graduation_project/models/register_user.dart';
 import 'package:graduation_project/modules/Auth/verify_screen.dart';
 import 'package:graduation_project/shared/components/custom_button.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -224,7 +225,9 @@ class _RegisterState extends State<Register> with ApiHelper {
                                         ),
                                     items: _cities.map((e) {
                                       return DropdownMenuItem<City>(
-                                        child: Text(e.nameEn),
+                                        child: Text(
+                                          SharedPrefController().language =='en'?
+                                          e.nameEn: e.nameAr),
                                         value: e,
                                       );
                                     }).toList(),

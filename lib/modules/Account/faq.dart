@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/models/faq.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
-
+import 'package:get/get.dart';
 class FAQ extends StatefulWidget {
   const FAQ({Key? key}) : super(key: key);
 
@@ -37,7 +37,7 @@ class _FAQState extends State<FAQ> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text(
-          'FAQ',
+          "FAQ".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
