@@ -58,7 +58,7 @@ class _OnBoardingState extends State<OnBoarding> {
               },
               child:  Text(
                 "skip".tr,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Color(0xfff59B14), fontSize: 16, fontFamily: 'Muli'),
               ))
         ],

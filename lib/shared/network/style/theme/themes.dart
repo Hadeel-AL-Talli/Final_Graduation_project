@@ -10,28 +10,34 @@ class MyTheme {
     shadowColor: const Color(0xff0e0d12),
     focusColor: KPrimaryColor,
     textTheme: const TextTheme(
-        labelMedium: TextStyle(
-          color: KPrimaryColor,
-          fontFamily: 'Muli',
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),
-        labelSmall: TextStyle(
+      labelMedium: TextStyle(
+        color: KPrimaryColor,
+        fontFamily: 'Muli',
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      labelSmall: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Muli',
+        fontSize: 14,
+        height: 1.3,
+      ),
+      labelLarge: TextStyle(
           color: Colors.white,
-          fontFamily: 'Muli',
-          fontSize: 14,
-          height: 1.3,
-        ),
-        labelLarge: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 40,
-            fontFamily: 'Poppins'),
-        bodySmall: TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w400)),
+          fontWeight: FontWeight.bold,
+          fontSize: 40,
+          fontFamily: 'Poppins'),
+      bodySmall: TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w400),
+      displayLarge: TextStyle(
+          color: Colors.white,
+          fontSize: 12,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w400),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
@@ -56,28 +62,34 @@ class MyTheme {
     shadowColor: Colors.grey.withOpacity(0.3),
     focusColor: Colors.grey,
     textTheme: const TextTheme(
-        labelMedium: TextStyle(
+      labelMedium: TextStyle(
+        color: Colors.black,
+        fontFamily: 'Muli',
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+      labelSmall: TextStyle(
+        color: Color(0xFF575E67),
+        fontFamily: 'Muli',
+        fontSize: 14,
+        height: 1.3,
+      ),
+      labelLarge: TextStyle(
           color: Colors.black,
-          fontFamily: 'Muli',
-          fontSize: 24,
           fontWeight: FontWeight.bold,
-        ),
-        labelSmall: TextStyle(
-          color: Color(0xFF575E67),
-          fontFamily: 'Muli',
-          fontSize: 14,
-          height: 1.3,
-        ),
-        labelLarge: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-            fontSize: 40,
-            fontFamily: 'Poppins'),
-        bodySmall: TextStyle(
-            color: Color(0xFF979797),
-            fontSize: 12,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w400)),
+          fontSize: 40,
+          fontFamily: 'Poppins'),
+      bodySmall: TextStyle(
+          color: Color(0xFF979797),
+          fontSize: 12,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w400),
+      displayLarge: TextStyle(
+          color: KPrimaryColor,
+          fontSize: 12,
+          fontFamily: 'Poppins',
+          fontWeight: FontWeight.w400),
+    ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         elevation: 0,
