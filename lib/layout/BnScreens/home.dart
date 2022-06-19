@@ -149,8 +149,10 @@ class _HomeState extends State<Home> {
                         onTap: () => Get.to(
                           SubCategoriesScreen(
                             id: controller.homeResponse!.categories[index].id,
-                            name: controller
-                                .homeResponse!.categories[index].nameEn,
+                            name:SharedPrefController().language =='en'?
+                             controller
+                                .homeResponse!.categories[index].nameEn:  controller
+                                .homeResponse!.categories[index].nameAr,
                           ),
                         ),
                         child: Padding(
