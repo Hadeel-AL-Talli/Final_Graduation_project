@@ -68,7 +68,7 @@ class SubCategory {
   late int id;
   late String nameEn;
   late String nameAr;
-  late int categoryId;
+  late String categoryId;
   late String image;
   late String imageUrl;
 
