@@ -10,8 +10,7 @@ import 'package:graduation_project/layout/BnScreens/product_details_screen.dart'
 import 'package:graduation_project/models/category.dart';
 import 'package:graduation_project/models/product.dart';
 import 'package:graduation_project/models/product_details.dart';
-
-
+import 'package:graduation_project/modules/search/search_screen.dart';
 
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import '../../controllers/theme_controller.dart';
@@ -27,7 +26,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   HomeGetxController _homeGetxController = Get.put(HomeGetxController());
- 
+
   List<Category> _categories = <Category>[];
   List<Product> product = <Product>[];
   List<ProudctDetails> productDetails = <ProudctDetails>[];
@@ -46,6 +45,19 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+          ),
+          child: IconButton(
+              icon: const Icon(
+                Icons.search_rounded,
+                size: 27,
+              ),
+              onPressed: () {
+                Get.to(SearchScreen());
+              }),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -151,10 +163,11 @@ class _HomeState extends State<Home> {
                         onTap: () => Get.to(
                           SubCategoriesScreen(
                             id: controller.homeResponse!.categories[index].id,
-                            name:SharedPrefController().language =='en'?
-                             controller
-                                .homeResponse!.categories[index].nameEn:  controller
-                                .homeResponse!.categories[index].nameAr,
+                            name: SharedPrefController().language == 'en'
+                                ? controller
+                                    .homeResponse!.categories[index].nameEn
+                                : controller
+                                    .homeResponse!.categories[index].nameAr,
                           ),
                         ),
                         child: Padding(
@@ -244,8 +257,7 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-           //Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index].id.toString())));
-
+                            //Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index].id.toString())));
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(
@@ -388,7 +400,11 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductDetailsScreen(
+                                        product: product[index])));
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(
