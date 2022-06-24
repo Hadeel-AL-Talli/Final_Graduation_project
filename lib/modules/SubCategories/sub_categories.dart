@@ -67,7 +67,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProudctScreen(
-                                    id: _subCategories[index].id,
+                                    id: _subCategories[index].id
                                   )));
                     },
                     child: Column(

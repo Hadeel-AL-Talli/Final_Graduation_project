@@ -58,7 +58,8 @@ class MyLocale extends Translations{
        "Message":"الرسالة",
        "Product Description":"وصف المنتج",
        "Add To Cart":"أضف إلى السلة",
-       "Product Details":"تفاصيل المنتج"
+       "Product Details":"تفاصيل المنتج",
+       "Favorite":"المفضلة"
       
       
        
@@ -119,7 +120,8 @@ class MyLocale extends Translations{
       "Message":"Message",
       "Product Description":"Product Description",
       "Add To Cart":"Add To Cart",
-      "Product Details":"Product Details"
+      "Product Details":"Product Details",
+      "Favorite":"Favorite"
 
     }
   };

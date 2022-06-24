@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/layout/BnScreens/product_details_screen.dart';
+import 'package:graduation_project/models/product_details.dart';
 import 'package:graduation_project/shared/components/product_widget.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 
@@ -19,8 +20,8 @@ class ProudctScreen extends StatefulWidget {
 }
 
 class _ProudctScreenState extends State<ProudctScreen> {
-  late Future<List<Product>> _future;
-  List<Product> _products = <Product>[];
+  late Future<List<ProudctDetails>> _future;
+  List<ProudctDetails> _products = <ProudctDetails>[];
   void initState() {
     super.initState();
 
@@ -46,7 +47,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
             },
           ),
         ),
-        body: FutureBuilder<List<Product>>(
+        body: FutureBuilder<List<ProudctDetails>>(
             future: _future,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -82,7 +83,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
                               name: SharedPrefController().language == 'en'
                                   ? _products[index].nameEn
                                   : _products[index].nameAr,
-                              price: _products[index].price),
+                              price: _products[index].price.toString()),
                         );
                       }),
                 );
