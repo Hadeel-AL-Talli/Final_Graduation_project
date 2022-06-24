@@ -5,12 +5,12 @@ class ProudctDetails {
   late String infoEn;
   late String infoAr;
   late double price;
-  late int quantity;
+  late String quantity;
   late double overalRate;
-  late int subCategoryId;
+  late String subCategoryId;
   late double productRate;
   late double? offerPrice;
-  late bool isFavorite;
+  late  bool isFavorite;
   late String imageUrl;
   late List<Images > images;
   late SubCategory? subCategory;

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/get/favorite_controller.dart';
 import 'package:graduation_project/models/product_details.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
@@ -20,14 +21,14 @@ class ProductDetailsScreen extends StatefulWidget {
     required this.product
   }) : super(key: key);
 
-  final Product product;
+  final ProudctDetails product;
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen>with ApiHelper {
- 
+ FavoriteGetController controller = Get.put(FavoriteGetController());
 late Future<Product?> _future;
   
   @override
@@ -182,13 +183,44 @@ late Future<Product?> _future;
                          
                             ),
                         const Spacer(),
-                        IconButton(
-                            icon: const Icon(
-                              Icons.favorite_outlined,
-                              color: KPrimaryColor,
-                              size: 30,
-                            ),
-                            onPressed: () {}),
+                        GetX<FavoriteGetController>(
+                          builder: ((FavoriteGetController controller) {
+                            return GestureDetector(
+                                    onTap: () {
+                                      controller.addFavoriteProducts(
+                                          product:
+                                              controller.productDetails.value!,
+                                          context: context);
+                                    },
+                                    child: Container(
+                                      width: 55,
+                                      height: 55,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: controller.productDetails
+                                                  .value!.isFavorite
+                                              ? Colors.red
+                                              : Colors.grey),
+                                      child: const Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                          }),
+                          
+                        ),
+                        //  return  IconButton(
+                        //       icon:  Icon(
+                        //         Icons.favorite_outlined,
+                        //         color:controller.productDetails.value!.isFavorite? 
+                        //          KPrimaryColor : Colors.grey,
+                        //         size: 30,
+                        //       ),
+                        //       onPressed: () {
+                        //         controller.addFavoriteProducts(product: controller.productDetails.value!, context: context);
+                        //       });
+                       
             
                       ],
                     ),
