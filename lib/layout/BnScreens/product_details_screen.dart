@@ -69,7 +69,7 @@ late Future<Product?> _future;
             return const Center(child: CircularProgressIndicator());
              }
              else if (snapshot.hasData ){
-             
+             print('has data');
               return ListView(
                
                 
