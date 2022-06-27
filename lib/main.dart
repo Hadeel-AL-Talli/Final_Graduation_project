@@ -19,6 +19,7 @@ import 'controllers/theme_controller.dart';
 import 'layout/BnScreens/product_details_screen.dart';
 import 'modules/launch_module/on_boarding.dart';
 import 'modules/launch_module/welcome.dart';
+import 'modules/search/search_screen.dart';
 import 'shared/network/style/theme/themes.dart';
 
 void main() async {
@@ -63,6 +64,8 @@ class _MyAppState extends State<MyApp> {
             '/forget_password': (context) => const ForgetPassword(),
             '/home_screen': (context) => const Home(),
             '/main_screen': (context) => const MainScreen(),
+            '/search_screen': (context) =>  SearchScreen(),
+
           },
         );
       },

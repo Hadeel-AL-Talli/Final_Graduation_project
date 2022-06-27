@@ -40,7 +40,7 @@ class ProductWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    height: 160.h,
+                    height: 180.h,
                     width: 200.w,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),

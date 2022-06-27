@@ -67,16 +67,19 @@ class _ProudctScreenState extends State<ProudctScreen> {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 1 / 1.45,
+                        childAspectRatio: 1 / 1.4,
                         // mainAxisSpacing: 10,
                         // crossAxisSpacing: 10
                       ),
                       itemBuilder: (context, index) {
                         // return Text(_products[index].nameEn,style:Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20));
                         return InkWell(
-                          onTap: (){
-           Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: _products[index])));
-
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ProductDetailsScreen(
+                                        product: _products[index])));
                           },
                           child: ProductWidget(
                               imageUrl: _products[index].imageUrl,
