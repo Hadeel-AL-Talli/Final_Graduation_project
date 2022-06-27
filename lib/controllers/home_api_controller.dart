@@ -54,7 +54,7 @@ class HomeApiController with ApiHelper {
     return [];
   }
 
-  Future<List<Product>> getProducts(String id) async {
+  Future<List<ProudctDetails>> getProducts(String id) async {
     var url = Uri.parse(ApiSetting.products.replaceFirst("{id}", id));
 
     print(url);
@@ -64,7 +64,7 @@ class HomeApiController with ApiHelper {
   
       var productsJsonArray = jsonDecode(response.body)['list'] as List;
       return productsJsonArray
-          .map((jsonObject) => Product.fromJson(jsonObject))
+          .map((jsonObject) => ProudctDetails.fromJson(jsonObject))
           .toList();
           
     }
