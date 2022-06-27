@@ -401,7 +401,7 @@ class _HomeState extends State<Home> {
                         return GestureDetector(
                           onTap: () {
 
-                           Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
+                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
 
                           },
                           child: Padding(
