@@ -44,11 +44,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+       
+        title: Image.asset('images/logo.png', width: 50,),
+        centerTitle: true,
         automaticallyImplyLeading: false,
         leading: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
           ),
+          
           child: IconButton(
               icon: const Icon(
                 Icons.search_rounded,

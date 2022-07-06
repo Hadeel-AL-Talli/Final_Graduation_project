@@ -149,7 +149,7 @@ class _SignInState extends State<SignIn> with ApiHelper {
                               Navigator.pushNamed(context, '/forget_password');
                             },
                             child: Align(
-                              alignment: Alignment.topRight,
+                              alignment: AlignmentDirectional.topEnd,
                               child: Text("Forget Password ? ".tr,
                                   style: Theme.of(context)
                                       .textTheme

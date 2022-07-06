@@ -183,33 +183,33 @@ late Future<Product?> _future;
                          
                             ),
                         const Spacer(),
-                        GetX<FavoriteGetController>(
-                          builder: ((FavoriteGetController controller) {
-                            return GestureDetector(
-                                    onTap: () {
-                                      controller.addFavoriteProducts(
-                                          product:
-                                              controller.productDetails.value!,
-                                          context: context);
-                                    },
-                                    child: Container(
-                                      width: 55,
-                                      height: 55,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: controller.productDetails
-                                                  .value!.isFavorite
-                                              ? Colors.red
-                                              : Colors.grey),
-                                      child: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  );
-                          }),
+                        // GetX<FavoriteGetController>(
+                        //   builder: ((FavoriteGetController controller) {
+                        //     return GestureDetector(
+                        //             onTap: () {
+                        //               controller.addFavoriteProducts(
+                        //                   product:
+                        //                       controller.productDetails.value!,
+                        //                   context: context);
+                        //             },
+                        //             child: Container(
+                        //               width: 55,
+                        //               height: 55,
+                        //               decoration: BoxDecoration(
+                        //                   shape: BoxShape.circle,
+                        //                   color: controller.productDetails
+                        //                           .value!.isFavorite
+                        //                       ? Colors.red
+                        //                       : Colors.grey),
+                        //               child: const Icon(
+                        //                 Icons.favorite,
+                        //                 color: Colors.white,
+                        //               ),
+                        //             ),
+                        //           );
+                        //   }),
                           
-                        ),
+                        // ),
                         //  return  IconButton(
                         //       icon:  Icon(
                         //         Icons.favorite_outlined,
