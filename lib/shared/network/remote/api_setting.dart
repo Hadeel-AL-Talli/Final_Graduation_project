@@ -28,6 +28,8 @@ class ApiSetting {
 
 
   static const favoriteProducts = _apiUrl +'favorite-products';
+
+  static const createAddress = _apiUrl +'addresses';
   static const storeApiKey = '1915d427-70db-443b-ab9c-84a467c96887';
 
 
