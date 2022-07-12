@@ -10,6 +10,7 @@ class AddresssApiController with ApiHelper{
   Future<bool> createAddress(BuildContext context,
       {required CreateAddress address}) async {
     var url = Uri.parse(ApiSetting.createAddress);
+    print(url);
     var response = await http.post(url, body: {
       'name': address.name,
       'contact_number': address.contact_number,
