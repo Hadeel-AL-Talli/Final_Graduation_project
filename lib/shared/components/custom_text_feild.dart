@@ -27,7 +27,7 @@ class AppTextField extends StatelessWidget {
           hintText: hint,
           hintStyle: Theme.of(context).textTheme.labelSmall?.copyWith(
                 fontFamily: 'Poppins',
-                fontSize: 16,
+                fontSize: 15,
               ),
 
           // TextStyle(fontFamily: 'Poppins'),

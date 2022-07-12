@@ -10,6 +10,8 @@ import 'package:graduation_project/modules/Account/contact_request.dart';
 import 'package:graduation_project/modules/Account/faq.dart';
 import 'package:graduation_project/modules/Account/personal_info.dart';
 import 'package:graduation_project/modules/Account/settings.dart';
+import 'package:graduation_project/modules/address/create_address.dart';
+import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +27,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
           leading: IconButton(
               onPressed: () {
                 Navigator.popAndPushNamed(context, '/main_screen');
@@ -172,7 +173,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const GetAddresses());
+                      },
                     ),
                   ),
                 ),
