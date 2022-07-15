@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:graduation_project/controllers/home_api_controller.dart';
 import 'package:graduation_project/layout/BnScreens/home.dart';
+import 'package:graduation_project/layout/BnScreens/profile_screen.dart';
 import 'package:graduation_project/layout/main_screen.dart';
 import 'package:graduation_project/locale/local.dart';
 import 'package:graduation_project/locale/locale_controller.dart';
@@ -12,6 +13,9 @@ import 'package:graduation_project/models/product.dart';
 import 'package:graduation_project/modules/Auth/forget_password.dart';
 import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
+import 'package:graduation_project/modules/address/create_address.dart';
+import 'package:graduation_project/modules/address/get_addresses.dart';
+import 'package:graduation_project/modules/address/update_address.dart';
 import 'package:graduation_project/modules/launch_module/splash_screen.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -65,6 +69,12 @@ class _MyAppState extends State<MyApp> {
             '/home_screen': (context) => const Home(),
             '/main_screen': (context) => const MainScreen(),
             '/search_screen': (context) =>  SearchScreen(),
+            '/create_address_screen': (context) =>  const CreateAddressScreen(),
+            '/get_addresses': (context) =>  const GetAddresses(),
+            '/profile_screen': (context) =>  const ProfileScreen(),
+            '/update_address_screen': (context) =>  const UpdateAddressScreen(),
+
+
 
           },
         );
