@@ -59,7 +59,12 @@ class MyLocale extends Translations{
        "Product Description":"وصف المنتج",
        "Add To Cart":"أضف إلى السلة",
        "Product Details":"تفاصيل المنتج",
-       "Favorite":"المفضلة"
+       "Favorite":"المفضلة",
+       "Add Address":"إضافة عنوان",
+       "Your Name":"اسمك",
+       "Street Address":"اسم الشارع",
+       "Address Info ...":"العنوان بالتفصيل",
+       "Your Phone Number":"رقم هاتفك"
       
       
        
@@ -121,7 +126,12 @@ class MyLocale extends Translations{
       "Product Description":"Product Description",
       "Add To Cart":"Add To Cart",
       "Product Details":"Product Details",
-      "Favorite":"Favorite"
+      "Favorite":"Favorite",
+      "Add Address":"Add Address",
+      "Your Name":"Your Name",
+      "Street Address":"Street Address",
+      "Address Info ...":"Address Info ...",
+      "Your Phone Number":"Your Phone Number"
 
     }
   };
