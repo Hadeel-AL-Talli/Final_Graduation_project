@@ -16,6 +16,8 @@ import 'package:graduation_project/modules/Auth/sign_in.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/modules/address/update_address.dart';
+
+
 import 'package:graduation_project/modules/launch_module/splash_screen.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -72,7 +74,8 @@ class _MyAppState extends State<MyApp> {
             '/create_address_screen': (context) =>  const CreateAddressScreen(),
             '/get_addresses': (context) =>  const GetAddresses(),
             '/profile_screen': (context) =>  const ProfileScreen(),
-            '/update_address_screen': (context) =>  const UpdateAddressScreen(),
+
+
 
 
 

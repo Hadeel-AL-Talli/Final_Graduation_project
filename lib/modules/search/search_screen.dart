@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 
 import '../../shared/network/style/colors.dart';
@@ -27,7 +25,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Search",
+            'Search',
             style:
                 Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           ),

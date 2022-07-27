@@ -14,33 +14,34 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class _FavouriteScreenState extends State<FavouriteScreen> {
-   late Future<List<ProudctDetails>> _future;
-   List<ProudctDetails> _favourite = <ProudctDetails>[];
-    @override
+  late Future<List<ProudctDetails>> _future;
+  List<ProudctDetails> _favourite = <ProudctDetails>[];
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _future = FavoriteProductApiController().getFavoriteProducts();
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar:AppBar(
-          elevation: 0,
-          title: Text("Favorite".tr,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelMedium
-                  ?.copyWith(fontSize: 20)),
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back_ios,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text("Favorite".tr,
+            style: Theme.of(context)
+                .textTheme
+                .labelMedium
+                ?.copyWith(fontSize: 20)),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
           ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
+      ),
       body: FutureBuilder<List<ProudctDetails>>(
         future: _future,
         builder: (context, snapshot) {
@@ -82,20 +83,19 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                         fit: BoxFit.cover,
                         height: 150,
                       ),
-
                     ),
                   ),
                 );
               },
             );
           } else {
-             return Center(
-                  child: Text('No Data',
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelMedium
-                          ?.copyWith(fontSize: 20)),
-                );
+            return Center(
+              child: Text('No Data',
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium
+                      ?.copyWith(fontSize: 20)),
+            );
           }
         },
       ),

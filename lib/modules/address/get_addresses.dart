@@ -3,6 +3,7 @@ import 'package:graduation_project/controllers/address_api_controller.dart';
 import 'package:graduation_project/get/drop_down_controller.dart';
 import 'package:graduation_project/models/city.dart';
 import 'package:graduation_project/models/get_addresses_model.dart';
+import 'package:graduation_project/modules/address/update_address.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 
@@ -101,7 +102,7 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                                     .textTheme
                                     .labelLarge
                                     ?.copyWith(
-                                        fontSize: 14,
+                                        fontSize: 16,
                                         height: 1.3,
                                         fontFamily: 'Muli',
                                         fontWeight: FontWeight.w900)),
@@ -121,86 +122,33 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                             const SizedBox(
                               height: 7,
                             ),
-                            Row(
-                              children: [
-                                Text(
-                                  _addresses[index].contact_number,
-                                  style: const TextStyle(
-                                      fontSize: 14.0,
-                                      height: 1.3,
-                                      fontFamily: 'Muli',
-                                      color: KPrimaryColor),
-                                ),
-                                const Spacer(),
-                                FutureBuilder<List<City>>(
-                                  future: _future,
-                                  builder: (context, snapshot) {
-                                    if (snapshot.connectionState ==
-                                        ConnectionState.waiting) {
-                                      return const Center(
-                                          child: CircularProgressIndicator());
-                                    } else if (snapshot.hasData &&
-                                        snapshot.data!.isNotEmpty) {
-                                      _cities = snapshot.data ?? [];
-                                      if (!createDrop) {
-                                        dropdownvalue = _cities.first;
-                                      }
-                                      return DropdownButton<City>(
-                                        value: dropdownvalue,
-                                        dropdownColor:
-                                            Theme.of(context).primaryColor,
-                                        icon: Icon(
-                                          Icons.keyboard_arrow_down,
-                                          color: Theme.of(context).focusColor,
-                                        ),
-                                        underline: const SizedBox(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelLarge
-                                            ?.copyWith(
-                                              fontFamily: 'poppins',
-                                              fontSize: 14,
-                                            ),
-                                        items: _cities.map((e) {
-                                          return DropdownMenuItem<City>(
-                                            value: e,
-                                            child: Text(SharedPrefController()
-                                                        .language ==
-                                                    'en'
-                                                ? e.nameEn
-                                                : e.nameAr),
-                                          );
-                                        }).toList(),
-                                        onChanged: (value) {
-                                          setState(() {
-                                            dropdownvalue = value!;
-                                            createDrop = true;
-                                            _cityId = value.id;
-                                            // print(indexcity);
-                                            print(dropdownvalue.nameEn);
-                                          });
-                                        },
-                                      );
-                                    } else {
-                                      return Center(
-                                        child: Column(
-                                          children: const [
-                                            Icon(Icons.warning, size: 80),
-                                            Text(
-                                              'NO DATA',
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 24,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ],
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    _addresses[index].contact_number,
+                                    style: const TextStyle(
+                                        fontSize: 16.0,
+                                        height: 1.3,
+                                        fontFamily: 'Muli',
+                                        color: KPrimaryColor),
+                                  ),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Text(
+                                      _addresses[index].city.nameEn,
+                                      style: const TextStyle(
+                                          fontSize: 16.0,
+                                          height: 1.3,
+                                          fontFamily: 'Muli',
+                                          color: KPrimaryColor),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 7,
@@ -219,8 +167,30 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                                                 BorderRadius.circular(5)),
                                       ),
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/update_address_screen');
+                                        // Navigator.pushNamed(
+                                        //     context, '/update_address_screen');
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UpdateAddressScreen(
+                                                      addressId:
+                                                          _addresses[index].id,
+                                                      addressName:
+                                                          _addresses[index]
+                                                              .name,
+                                                      addressDescription:
+                                                          _addresses[index]
+                                                              .info,
+                                                      addressPhoneNumber:
+                                                          _addresses[index]
+                                                              .contact_number,
+                                                      addressCity:
+                                                          _addresses[index]
+                                                              .city
+                                                              .nameEn,
+                                                    )));
                                       },
                                       child: const Padding(
                                         padding:
@@ -239,6 +209,7 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
+                                        print('set state');
                                         AddresssApiController().delAddresses(
                                             context,
                                             id: _addresses[index]

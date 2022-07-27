@@ -17,7 +17,20 @@ import 'package:graduation_project/shared/network/local/shared_pref_controller.d
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 
 class UpdateAddressScreen extends StatefulWidget {
-  const UpdateAddressScreen({Key? key}) : super(key: key);
+  UpdateAddressScreen(
+      {Key? key,
+      this.addressName,
+      this.addressDescription,
+      this.addressId,
+      this.addressPhoneNumber,
+      this.addressCity})
+      : super(key: key);
+
+  int? addressId;
+  String? addressName;
+  String? addressDescription;
+  String? addressPhoneNumber;
+  String? addressCity;
 
   @override
   State<UpdateAddressScreen> createState() => _UpdateAddressScreenState();
@@ -31,27 +44,25 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
   bool createDrop = false;
   late City dropdownvalue;
   String index = '1';
-  int addressIndex = 1;
   bool createDropDown = false;
   late TextEditingController _addressNameTextEditingController;
   late TextEditingController _addressInfoTextEditingController;
   late TextEditingController _addressPhoneNumberTextEditingController;
-
-  late Future<List<GetAddressesModel>> _futureAddresses;
 
   List<GetAddressesModel> _addresses = <GetAddressesModel>[];
 
   @override
   void initState() {
     // TODO: implement initState
+    super.initState();
     _future = DropDownController().getcities();
     _addressPhoneNumberTextEditingController = TextEditingController();
     _addressNameTextEditingController = TextEditingController();
     _addressInfoTextEditingController = TextEditingController();
-
-    super.initState();
-    // _addresses[addressIndex].name = _addressNameTextEditingController.text;
-    _futureAddresses = AddresssApiController().getAddresses();
+    _addressNameTextEditingController.text = widget.addressName!;
+    _addressInfoTextEditingController.text = widget.addressDescription!;
+    _addressPhoneNumberTextEditingController.text = widget.addressPhoneNumber!;
+    
 
     // _addressesModel.contact_number =
     //     _addressPhoneNumberTextEditingController.text;
@@ -70,38 +81,109 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.popAndPushNamed(context, '/get_addresses');
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-            )),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text(
-          "Update Address",
-          style:
-              Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
+        appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.popAndPushNamed(context, '/get_addresses');
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+              )),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          title: Text(
+            "Update Address",
+            style:
+                Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
+          ),
         ),
-      ),
-      body: FutureBuilder<List<GetAddressesModel>>(
-        future: _futureAddresses,
-        builder: (context, snapshot) {
-          if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-            _addresses = snapshot.data ?? [];
-            return SingleChildScrollView(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Name',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AppTextField(
+                    hint: '',
+                    controller: _addressNameTextEditingController,
+                    prefixIcon: Icons.location_on,
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Street Address',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AppTextField(
+                    hint: '',
+                    controller: _addressInfoTextEditingController,
+                    prefixIcon: Icons.person,
+                    keyboardType: TextInputType.text,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Text(
+                    'Phone Number',
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins'),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: AppTextField(
+                    hint: '',
+                    controller: _addressPhoneNumberTextEditingController,
+                    prefixIcon: Icons.phone,
+                    keyboardType: TextInputType.phone,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Text(
-                        'Name',
+                        'City',
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
@@ -109,193 +191,110 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      width: 30,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AppTextField(
-                        hint: '',
-                        controller: _addressNameTextEditingController,
-                        prefixIcon: Icons.location_on,
-                        keyboardType: TextInputType.text,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Street Address',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AppTextField(
-                        hint: "Address Info ...",
-                        controller: _addressInfoTextEditingController,
-                        prefixIcon: Icons.person,
-                        keyboardType: TextInputType.text,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Phone Number',
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Poppins'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: AppTextField(
-                        hint: "Your Phone Number",
-                        controller: _addressPhoneNumberTextEditingController,
-                        prefixIcon: Icons.phone,
-                        keyboardType: TextInputType.phone,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            'City',
+                    FutureBuilder<List<City>>(
+                      future: _future,
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        } else if (snapshot.hasData &&
+                            snapshot.data!.isNotEmpty) {
+                          _cities = snapshot.data ?? [];
+                          if (!createDrop) dropdownvalue = _cities.first;
+                          return DropdownButton<City>(
+                            value: dropdownvalue,
+                            dropdownColor: Theme.of(context).primaryColor,
+                            icon: Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Theme.of(context).focusColor,
+                            ),
+                            underline: const SizedBox(),
                             style: Theme.of(context)
                                 .textTheme
                                 .labelLarge
                                 ?.copyWith(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Poppins'),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        FutureBuilder<List<City>>(
-                          future: _future,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            } else if (snapshot.hasData &&
-                                snapshot.data!.isNotEmpty) {
-                              _cities = snapshot.data ?? [];
-                              if (!createDrop) dropdownvalue = _cities.first;
-                              return DropdownButton<City>(
-                                value: dropdownvalue,
-                                dropdownColor: Theme.of(context).primaryColor,
-                                icon: Icon(
-                                  Icons.keyboard_arrow_down,
-                                  color: Theme.of(context).focusColor,
+                                  fontFamily: 'poppins',
+                                  fontSize: 14,
                                 ),
-                                underline: const SizedBox(),
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelLarge
-                                    ?.copyWith(
-                                      fontFamily: 'poppins',
-                                      fontSize: 14,
-                                    ),
-                                items: _cities.map((e) {
-                                  return DropdownMenuItem<City>(
-                                    value: e,
-                                    child: Text(
-                                        SharedPrefController().language == 'en'
-                                            ? e.nameEn
-                                            : e.nameAr),
-                                  );
-                                }).toList(),
-                                onChanged: (value) {
-                                  setState(() {
-                                    dropdownvalue = value!;
-                                    createDrop = true;
-                                    index = value.id.toString();
-                                    // print(indexcity);
-                                    print(dropdownvalue.nameEn);
-                                  });
-                                },
+                            items: _cities.map((e) {
+                              return DropdownMenuItem<City>(
+                                value: e,
+                                child: Text(
+                                    SharedPrefController().language == 'en'
+                                        ? e.nameEn
+                                        : e.nameAr),
                               );
-                            } else {
-                              return Center(
-                                child: Column(
-                                  children: const [
-                                    Icon(Icons.warning, size: 80),
-                                    Text(
-                                      'NO DATA',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Container(
-                        width: double.infinity,
-                        child: CustomButton(
-                            onPress: () async {
-                              await performUpdateAddress();
+                            }).toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                dropdownvalue = value!;
+                                createDrop = true;
+                                index = value.id.toString();
+                                // print(indexcity);
+                                print(dropdownvalue.nameEn);
+                              });
                             },
-                            text: 'Update Address',
-                            color: KPrimaryColor),
-                      ),
-                    )
+                          );
+                        } else {
+                          return Center(
+                            child: Column(
+                              children: const [
+                                Icon(Icons.warning, size: 80),
+                                Text(
+                                  'NO DATA',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 24,
+                                  ),
+                                )
+                              ],
+                            ),
+                          );
+                        }
+                      },
+                    ),
                   ],
                 ),
-              ),
-            );
-          }else {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.warning, size: 80),
-                Center(
-                  child: Text(
-                    'No Data !',
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold),
-                  ),
+                const SizedBox(
+                  height: 50,
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    width: double.infinity,
+                    child: CustomButton(
+                        onPress: () async {
+                          await performUpdateAddress();
+                        },
+                        text: 'Update Address',
+                        color: KPrimaryColor),
+                  ),
+                )
               ],
-            );
-          }
-        },
-      ),
-    );
+            ),
+          ),
+        ));
+    // } else {
+    //   return Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: const [
+    //       Icon(Icons.warning, size: 80),
+    //       Center(
+    //         child: Text(
+    //           'No Data !',
+    //           style: TextStyle(
+    //               fontFamily: 'Poppins',
+    //               fontSize: 22,
+    //               fontWeight: FontWeight.bold),
+    //         ),
+    //       ),
+    //     ],
+    //   );
+    // }
   }
 
   Future<void> performUpdateAddress() async {
@@ -305,8 +304,8 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
   }
 
   Future<void> UpdateAddress() async {
-    bool status = await AddresssApiController()
-        .updateAddress(context, id: addressIndex.toString(), address: address);
+    bool status = await AddresssApiController().updateAddress(context,
+        id: widget.addressId.toString(), address: address);
     // name: _addressNameTextEditingController.text,
     // cityId: index,
     // id: _addressesModel.id.toString(),
@@ -336,7 +335,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
 
   GetAddressesModel get address {
     GetAddressesModel address = GetAddressesModel();
-    address.id = _addresses[addressIndex].id;
+    address.id = widget.addressId!;
     address.name = _addressNameTextEditingController.text;
     address.info = _addressInfoTextEditingController.text;
     address.contact_number = _addressPhoneNumberTextEditingController.text;

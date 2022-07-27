@@ -71,11 +71,11 @@ class AddresssApiController with ApiHelper {
     }
 
     return false;
+    
   }
 
   Future<bool> updateAddress(BuildContext context,
-      { required String id,
-      required GetAddressesModel address}) async {
+      {required String id, required GetAddressesModel address}) async {
     var url = Uri.parse(ApiSetting.deleteAddress.replaceFirst("{id}", id));
     var response = await http.put(url,
         body: {
@@ -103,9 +103,3 @@ class AddresssApiController with ApiHelper {
     return false;
   }
 }
-
-
-
-
-
-
