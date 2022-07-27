@@ -1,4 +1,4 @@
- class ProudctDetails {
+class ProudctDetails {
   late int id;
   late String nameEn;
   late String nameAr;
@@ -14,7 +14,7 @@
   late SubCategory? subCategory;
 
   ProudctDetails();
-   Map<String , dynamic> toJson(){
+  Map<String , dynamic> toJson(){
 final Map<String, dynamic> data = new Map<String, dynamic>();
 data['id'] = this.id;
 data['nameEn'] = this.nameEn;
@@ -25,6 +25,7 @@ data['infoEn']= this.infoEn;
 data['image_url'] = this.imageUrl;
 return data;
    }
+
   ProudctDetails.fromJson(Map<String, dynamic> json) {
     print(json);
     id = json['id'];
@@ -59,7 +60,7 @@ class Images {
 
   Images.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-// objectId = json['object_id'];
+    // objectId = json['object_id'];
     url = json['url'];
     imageUrl = json['image_url'];
   }

@@ -12,7 +12,6 @@ import 'package:graduation_project/models/city.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
-import 'package:get/get.dart';
 
 class CreateAddressScreen extends StatefulWidget {
   const CreateAddressScreen({Key? key}) : super(key: key);
@@ -66,7 +65,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "Add Address".tr,
+          "Add Address",
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
@@ -80,7 +79,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
-                  "Name".tr,
+                  'Name',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -93,7 +92,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: AppTextField(
-                  hint: "Your Name".tr,
+                  hint: "Your Name",
                   controller: _addressNameTextEditingController,
                   prefixIcon: Icons.location_on,
                   keyboardType: TextInputType.text,
@@ -105,7 +104,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
-                  "Street Address".tr,
+                  'Street Address',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -118,7 +117,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: AppTextField(
-                  hint: "Address Info ...".tr,
+                  hint: "Address Info ...",
                   controller: _addressInfoTextEditingController,
                   prefixIcon: Icons.person,
                   keyboardType: TextInputType.text,
@@ -130,7 +129,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5),
                 child: Text(
-                  "Phone number".tr,
+                  'Phone Number',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                       fontSize: 17,
                       fontWeight: FontWeight.w500,
@@ -143,7 +142,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: AppTextField(
-                  hint: "Your Phone Number".tr,
+                  hint: "Your Phone Number",
                   controller: _addressPhoneNumberTextEditingController,
                   prefixIcon: Icons.phone,
                   keyboardType: TextInputType.phone,
@@ -157,7 +156,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
-                      "City :".tr,
+                      'City',
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           fontSize: 17,
                           fontWeight: FontWeight.w500,
@@ -240,7 +239,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
                       onPress: () async {
                         await performCreateAddress();
                       },
-                      text: "Add Address".tr,
+                      text: 'Add Address',
                       color: KPrimaryColor),
                 ),
               )

@@ -72,14 +72,14 @@ class HomeApiController with ApiHelper {
   }
 
 
-  Future<Product?> getProductDetails(String id) async {
+  Future<ProudctDetails?> getProductDetails(String id) async {
     var url = Uri.parse(ApiSetting.productDetails.replaceFirst("{id}", id));
     print(url);
     var response = await http.get(url, headers: headers);
     print(response.statusCode);
     if (response.statusCode == 200) {
       var productsJsonObject = jsonDecode(response.body)['object'];
-      return Product.fromJson(productsJsonObject);
+      return ProudctDetails.fromJson(productsJsonObject);
     }
   }
 

@@ -13,14 +13,14 @@ import 'package:graduation_project/models/product.dart';
 import 'package:graduation_project/modules/Auth/forget_password.dart';
 import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
-import 'package:graduation_project/modules/Cart/controller/db_controller.dart';
-
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
+import 'package:graduation_project/modules/address/update_address.dart';
+
+
 import 'package:graduation_project/modules/launch_module/splash_screen.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
-import 'package:provider/provider.dart';
 import 'controllers/theme_controller.dart';
 import 'layout/BnScreens/product_details_screen.dart';
 import 'modules/launch_module/on_boarding.dart';
@@ -31,9 +31,7 @@ import 'shared/network/style/theme/themes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefController().initPref();
-   await DbController().initDatabase();
   await GetStorage.init();
-  
   runApp(const MyApp());
 }
 
@@ -54,33 +52,35 @@ class _MyAppState extends State<MyApp> {
       designSize: Size(375, 812),
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
-            themeMode: themeController.theme,
-            // ThemeMode.light,
-            theme: MyTheme.lightTheme,
-            darkTheme: MyTheme.darkTheme,
-            debugShowCheckedModeBanner: false,
-            locale: controller.initialLang,
-            translations: MyLocale(),
-            // home: ProductDetailsScreen(),
-            initialRoute: '/splash_screen',
-            routes: {
-              '/splash_screen': (context) => const SplashScreen(),
-              '/on_boarding_screen': (context) => OnBoarding(),
-              '/welcome_screen': (context) => const WelcomeScreen(),
-              '/register': (context) => const Register(),
-              '/sign_in': (context) => const SignIn(),
-              '/forget_password': (context) => const ForgetPassword(),
-              '/home_screen': (context) => const Home(),
-              '/main_screen': (context) => const MainScreen(),
-              '/search_screen': (context) =>  SearchScreen(),
-              '/create_address_screen': (context) =>  const CreateAddressScreen(),
-              '/get_addresses': (context) =>  const GetAddresses(),
-              '/profile_screen': (context) =>  const ProfileScreen(),
-        
-        
-            },
-          );
-        
+          themeMode: themeController.theme,
+          // ThemeMode.light,
+          theme: MyTheme.lightTheme,
+          darkTheme: MyTheme.darkTheme,
+          debugShowCheckedModeBanner: false,
+          locale: controller.initialLang,
+          translations: MyLocale(),
+          // home: ProductDetailsScreen(),
+          initialRoute: '/splash_screen',
+          routes: {
+            '/splash_screen': (context) => const SplashScreen(),
+            '/on_boarding_screen': (context) => OnBoarding(),
+            '/welcome_screen': (context) => const WelcomeScreen(),
+            '/register': (context) => const Register(),
+            '/sign_in': (context) => const SignIn(),
+            '/forget_password': (context) => const ForgetPassword(),
+            '/home_screen': (context) => const Home(),
+            '/main_screen': (context) => const MainScreen(),
+            '/search_screen': (context) =>  SearchScreen(),
+            '/create_address_screen': (context) =>  const CreateAddressScreen(),
+            '/get_addresses': (context) =>  const GetAddresses(),
+            '/profile_screen': (context) =>  const ProfileScreen(),
+
+
+
+
+
+          },
+        );
       },
     );
   }
