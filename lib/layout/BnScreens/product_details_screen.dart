@@ -116,43 +116,112 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                           height: 20.h,
                         ),
 
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(20),
-                        //   ),
-                        //   child: CarouselSlider(
-                        //     options: CarouselOptions(
-                        //       height: 400,
-                        //       initialPage: 0,
-                        //       enableInfiniteScroll: true,
-                        //       reverse: false,
-                        //       autoPlay: true,
-                        //       autoPlayInterval: const Duration(seconds: 3),
-                        //       autoPlayAnimationDuration:
-                        //           const Duration(milliseconds: 800),
-                        //       autoPlayCurve: Curves.fastOutSlowIn,
-                        //       // enlargeCenterPage: true,
-                        //       scrollDirection: Axis.horizontal,
-                        //     ),
-                        //     items:
-                        //         .map((Images image) {
-                        //       return Builder(
-                        //         builder: (BuildContext context) {
-                        //           return CachedNetworkImage(
-                        //             imageUrl: image.imageUrl,
-                        //             fit: BoxFit.cover,
-                        //             height: 400,
-                        //             width: 300,
-                        //             placeholder: (context, url) => const Center(
-                        //                 child: CircularProgressIndicator()),
-                        //             errorWidget: (context, url, error) =>
-                        //                 const Icon(Icons.error),
-                        //           );
-                        //         },
-                        //       );
-                        //     }).toList(),
-                        //   ),
-                        // ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                 
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(20),
+                      //   ),
+                      //   child: CarouselSlider(
+                      //     options: CarouselOptions(
+                      //       height: 400,
+                      //       initialPage: 0,
+                      //       enableInfiniteScroll: true,
+                      //       reverse: false,
+                      //       autoPlay: true,
+                      //       autoPlayInterval: const Duration(seconds: 3),
+                      //       autoPlayAnimationDuration:
+                      //           const Duration(milliseconds: 800),
+                      //       autoPlayCurve: Curves.fastOutSlowIn,
+                      //       // enlargeCenterPage: true,
+                      //       scrollDirection: Axis.horizontal,
+                      //     ),
+                      //     items: 
+                      //         .map((Images image) {
+                      //       return Builder(
+                      //         builder: (BuildContext context) {
+                      //           return CachedNetworkImage(
+                      //             imageUrl: image.imageUrl,
+                      //             fit: BoxFit.cover,
+                      //             height: 400,
+                      //             width: 300,
+                      //             placeholder: (context, url) => const Center(
+                      //                 child: CircularProgressIndicator()),
+                      //             errorWidget: (context, url, error) =>
+                      //                 const Icon(Icons.error),
+                      //           );
+                      //         },
+                      //       );
+                      //     }).toList(),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+            
+                
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Text(
+                            SharedPrefController().language== 'en'
+                                            ? snapshot.data!.nameEn
+                                            : snapshot.data!.nameAr
+                            ,
+                            style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                  fontFamily: 'Muli',
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.bold,
+                                )
+            
+                         
+                            ),
+                        const Spacer(),
+                        GetX<FavoriteGetController>(
+                          builder: ((FavoriteGetController controller) {
+                            return GestureDetector(
+                                    onTap: () {
+                                      controller.addFavoriteProducts(
+                                          product:
+                                              controller.productDetails.value!,
+                                          context: context);
+                                    },
+                                    child: Container(
+                                      width: 55,
+                                      height: 55,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: controller.productDetails
+                                                  .value!.isFavorite
+                                              ? Colors.red
+                                              : Colors.grey),
+                                      child: const Icon(
+                                        Icons.favorite,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  );
+                          }),
+                          
+                        ),
+                        //  return  IconButton(
+                        //       icon:  Icon(
+                        //         Icons.favorite_outlined,
+                        //         color:controller.productDetails.value!.isFavorite? 
+                        //          KPrimaryColor : Colors.grey,
+                        //         size: 30,
+                        //       ),
+                        //       onPressed: () {
+                        //         controller.addFavoriteProducts(product: controller.productDetails.value!, context: context);
+                        //       });
+                       
+            
+
                       ],
                     ),
                     SizedBox(
@@ -254,8 +323,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                             fontWeight: FontWeight.w400),
                       ),
                     ),
-                    SizedBox(
-                      height: 80.h,
+
                     ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
