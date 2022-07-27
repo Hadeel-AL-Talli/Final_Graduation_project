@@ -60,8 +60,9 @@ class AddresssApiController with ApiHelper {
         context,
         message: jsonDecode(response.body)['message'],
       );
-
+     
       return true;
+      
     } else {
       showSnackBar(
         context,
@@ -77,6 +78,7 @@ class AddresssApiController with ApiHelper {
   Future<bool> updateAddress(BuildContext context,
       {required String id, required GetAddressesModel address}) async {
     var url = Uri.parse(ApiSetting.deleteAddress.replaceFirst("{id}", id));
+    print(url);
     var response = await http.put(url,
         body: {
           'name': address.name,

@@ -9,7 +9,6 @@ class MyLocale extends Translations{
       "Pal-Pazzar":"بال بازار",
       "welcome": "أهلاً بك في بال بازار",
        "Settings":"الإعدادات",
-       "Notifications":"الإشعارات",
        "Language":"اللغة",
        "Change Password":"تغيير كلمة المرور ",
        "online store":"هو المتجر الإلكتروني الذي يقدم جميع المنتجات الفلسطينية المميزة في مكان واحد",
@@ -64,7 +63,8 @@ class MyLocale extends Translations{
        "Your Name":"اسمك",
        "Street Address":"اسم الشارع",
        "Address Info ...":"العنوان بالتفصيل",
-       "Your Phone Number":"رقم هاتفك"
+       "Your Phone Number":"رقم هاتفك",
+       "Addresses":"العناوين"
       
       
        
@@ -131,7 +131,8 @@ class MyLocale extends Translations{
       "Your Name":"Your Name",
       "Street Address":"Street Address",
       "Address Info ...":"Address Info ...",
-      "Your Phone Number":"Your Phone Number"
+      "Your Phone Number":"Your Phone Number",
+      "Addresses":"Addresses"
 
     }
   };
