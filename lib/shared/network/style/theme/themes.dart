@@ -9,6 +9,7 @@ class MyTheme {
     primaryColor: const Color(0xff29282d),
     shadowColor: const Color(0xff0e0d12),
     focusColor: KPrimaryColor,
+    errorColor: const Color(0xff29282d),
     textTheme: const TextTheme(
       labelMedium: TextStyle(
         color: KPrimaryColor,
@@ -61,6 +62,7 @@ class MyTheme {
     primaryColor: Colors.white,
     shadowColor: Colors.grey.withOpacity(0.3),
     focusColor: Colors.grey,
+    errorColor: KPrimaryColor,
     textTheme: const TextTheme(
       labelMedium: TextStyle(
         color: Colors.black,

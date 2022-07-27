@@ -1,5 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/controllers/address_api_controller.dart';
+import 'package:graduation_project/get/drop_down_controller.dart';
+import 'package:graduation_project/models/city.dart';
+import 'package:graduation_project/models/get_addresses_model.dart';
+import 'package:graduation_project/modules/address/update_address.dart';
+import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 
 import '../../shared/network/local/shared_pref_controller.dart';
@@ -11,7 +16,25 @@ class GetAddresses extends StatefulWidget {
   State<GetAddresses> createState() => _GetAddressesState();
 }
 
-class _GetAddressesState extends State<GetAddresses> {
+class _GetAddressesState extends State<GetAddresses> with ApiHelper {
+  DropDownController dropDownController = DropDownController();
+  List<City> _cities = <City>[];
+  late Future<List<City>> _future;
+  bool createDrop = false;
+  late City dropdownvalue;
+  int _cityId = 1;
+
+  late Future<List<GetAddressesModel>> _futureAddresses;
+
+  List<GetAddressesModel> _addresses = <GetAddressesModel>[];
+
+  @override
+  void initState() {
+    _future = DropDownController().getcities();
+    super.initState();
+    _futureAddresses = AddresssApiController().getAddresses();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,77 +64,191 @@ class _GetAddressesState extends State<GetAddresses> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-                top: 10.0, bottom: 10.0, left: 5.0, right: 10.0),
-            child: Container(
-              width: 180,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Theme.of(context).shadowColor,
-                        //Colors.grey.withOpacity(0.2),
-                        spreadRadius: 3.0,
-                        blurRadius: 5.0)
-                  ],
-                  color: Theme.of(context).primaryColor),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Priscekila',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style:
-                              Theme.of(context).textTheme.labelSmall?.copyWith(
-                                    height: 1.3,
-                                    fontFamily: 'Muli',
-                                  )
-                          // const TextStyle(
-                          //     fontSize: 14.0,
-                          //     height: 1.3,
-                          //     fontFamily: 'Muli',
-                          //     color: Color(0xFF575E67)),
-                          ),
-                      Text(
-                          '3711 Spring Hill Rd undefined Tallahassee, Nevada 52874 United States',
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style:
-                              Theme.of(context).textTheme.labelSmall?.copyWith(
-                                    height: 1.3,
-                                    fontFamily: 'Muli',
-                                  )
-                          // const TextStyle(
-                          //     fontSize: 14.0,
-                          //     height: 1.3,
-                          //     fontFamily: 'Muli',
-                          //     color: Color(0xFF575E67)),
-                          ),
-                      Row(
-                        children: const [
-                          Text(
-                            '0597370501',
-                            style: TextStyle(
-                                fontSize: 14.0,
-                                height: 1.3,
-                                fontFamily: 'Muli',
-                                color: KPrimaryColor),
-                          ),
-                          Spacer(),
-                        ],
-                      ),
-                    ]),
+      body: FutureBuilder<List<GetAddressesModel>>(
+        future: _futureAddresses,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+            _addresses = snapshot.data ?? [];
+            return GridView.builder(
+              physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              itemCount: _addresses.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                childAspectRatio: 1.59,
+                mainAxisSpacing: 20,
               ),
-            ),
-          ),
-        ],
-      )),
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        border: Border.all(
+                            width: 2, color: Theme.of(context).errorColor),
+                        color: Theme.of(context).primaryColor),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(_addresses[index].name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelLarge
+                                    ?.copyWith(
+                                        fontSize: 16,
+                                        height: 1.3,
+                                        fontFamily: 'Muli',
+                                        fontWeight: FontWeight.w900)),
+                            const SizedBox(
+                              height: 9,
+                            ),
+                            Text(_addresses[index].info,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelSmall
+                                    ?.copyWith(
+                                      height: 1.3,
+                                      fontFamily: 'Muli',
+                                    )),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    _addresses[index].contact_number,
+                                    style: const TextStyle(
+                                        fontSize: 16.0,
+                                        height: 1.3,
+                                        fontFamily: 'Muli',
+                                        color: KPrimaryColor),
+                                  ),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Text(
+                                      _addresses[index].city.nameEn,
+                                      style: const TextStyle(
+                                          fontSize: 16.0,
+                                          height: 1.3,
+                                          fontFamily: 'Muli',
+                                          color: KPrimaryColor),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 7,
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(5)),
+                                    width: 100,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: KPrimaryColor,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(5)),
+                                      ),
+                                      onPressed: () {
+                                        // Navigator.pushNamed(
+                                        //     context, '/update_address_screen');
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    UpdateAddressScreen(
+                                                      addressId:
+                                                          _addresses[index].id,
+                                                      addressName:
+                                                          _addresses[index]
+                                                              .name,
+                                                      addressDescription:
+                                                          _addresses[index]
+                                                              .info,
+                                                      addressPhoneNumber:
+                                                          _addresses[index]
+                                                              .contact_number,
+                                                      addressCity:
+                                                          _addresses[index]
+                                                              .city
+                                                              .nameEn,
+                                                    )));
+                                      },
+                                      child: const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 17),
+                                        child: Text('Edit',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w900,
+                                                fontFamily: 'Muli')),
+                                      ),
+                                    )),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        print('set state');
+                                        AddresssApiController().delAddresses(
+                                            context,
+                                            id: _addresses[index]
+                                                .id
+                                                .toString());
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.delete,
+                                      size: 30,
+                                      color: Theme.of(context).focusColor,
+                                    ))
+                              ],
+                            )
+                          ]),
+                    ),
+                  ),
+                );
+              },
+            );
+          } else {
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.warning, size: 80),
+                Center(
+                  child: Text(
+                    'No Data !',
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      ),
     );
   }
 }
