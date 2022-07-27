@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/get/favorite_controller.dart';
 import 'package:graduation_project/models/product_details.dart';
+import 'package:graduation_project/modules/Cart/get/cart_getx_controller.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -29,7 +30,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
   late Future<ProudctDetails?> _future;
-
+CartGetxController cartcontroller = Get.put(CartGetxController());
   @override
   void initState() {
     // TODO: implement initState
@@ -260,8 +261,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () {},
-                        text: "Add To Cart",
+                        onPress: () async{
+                          await create();
+                        },
+                        text: "Add To Cart".tr,
                         color: KPrimaryColor,
                       ),
                     )
@@ -285,5 +288,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                 );
               }
             }));
+  }
+
+
+  Future<void> create() async {
+    
+    bool created = await CartGetxController.to.createCart(widget.product);
+    
+    String message = created ? 'Added successfully' : 'Failed to add';
+    showSnackBar(context, message: message, error: !created);
   }
 }
