@@ -6,11 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:graduation_project/get/favorite_controller.dart';
 import 'package:graduation_project/models/product_details.dart';
+import 'package:graduation_project/modules/Cart/get/cart_getx_controller.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import '../../models/product_detail_img_model.dart';
+
 import '../../shared/components/custom_button.dart';
 import '/controllers/home_api_controller.dart';
 import '/models/product.dart';
@@ -28,6 +31,10 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen>with ApiHelper {
+
+   final CartGetxController cartcontroller =
+      Get.put<CartGetxController>(CartGetxController());
+
  FavoriteGetController controller = Get.put(FavoriteGetController());
 late Future<Product?> _future;
   
@@ -44,6 +51,7 @@ late Future<Product?> _future;
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           title: Text(
@@ -183,33 +191,33 @@ late Future<Product?> _future;
                          
                             ),
                         const Spacer(),
-                        GetX<FavoriteGetController>(
-                          builder: ((FavoriteGetController controller) {
-                            return GestureDetector(
-                                    onTap: () {
-                                      controller.addFavoriteProducts(
-                                          product:
-                                              controller.productDetails.value!,
-                                          context: context);
-                                    },
-                                    child: Container(
-                                      width: 55,
-                                      height: 55,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: controller.productDetails
-                                                  .value!.isFavorite
-                                              ? Colors.red
-                                              : Colors.grey),
-                                      child: const Icon(
-                                        Icons.favorite,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                  );
-                          }),
+                        // GetX<FavoriteGetController>(
+                        //   builder: ((FavoriteGetController controller) {
+                        //     return GestureDetector(
+                        //             onTap: () {
+                        //               controller.addFavoriteProducts(
+                        //                   product:
+                        //                       controller.productDetails.value!,
+                        //                   context: context);
+                        //             },
+                        //             child: Container(
+                        //               width: 55,
+                        //               height: 55,
+                        //               decoration: BoxDecoration(
+                        //                   shape: BoxShape.circle,
+                        //                   color: controller.productDetails
+                        //                           .value!.isFavorite
+                        //                       ? Colors.red
+                        //                       : Colors.grey),
+                        //               child: const Icon(
+                        //                 Icons.favorite,
+                        //                 color: Colors.white,
+                        //               ),
+                        //             ),
+                        //           );
+                        //   }),
                           
-                        ),
+                        // ),
                         //  return  IconButton(
                         //       icon:  Icon(
                         //         Icons.favorite_outlined,
@@ -272,7 +280,10 @@ late Future<Product?> _future;
                   Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: CustomButton(
-                      onPress: () {},
+                      onPress: () async{
+                        // insert to cart table (local DB)
+                     await create();
+                      },
                       text:"Add To Cart".tr,
                       color: KPrimaryColor,
                     ),
@@ -305,5 +316,14 @@ late Future<Product?> _future;
      
 
         );
+  }
+
+
+  Future<void> create() async {
+    
+    bool created = await CartGetxController.to.createCart(widget.product);
+    
+    String message = created ? 'Added successfully' : 'Failed to add';
+    showSnackBar(context, message: message, error: !created);
   }
 }
