@@ -29,14 +29,14 @@ return data;
   ProudctDetails.fromJson(Map<String, dynamic> json) {
     print(json);
     id = json['id'];
-    nameEn = json['name_en'];
+    nameEn = json['name_en'] ;
     nameAr = json['name_ar'];
     infoEn = json['info_en'];
     infoAr = json['info_ar'];
     price = double.parse(json['price'].toString());
 
     subCategoryId = json['sub_category_id'];
-    isFavorite = json['is_favorite'];
+    isFavorite = json['is_favorite'] ;
     imageUrl = json['image_url'];
     if (json['images'] != null) {
       images = <Images>[];
