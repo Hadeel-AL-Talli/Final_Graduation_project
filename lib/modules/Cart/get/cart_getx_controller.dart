@@ -12,6 +12,7 @@ class CartGetxController extends GetxController{
 
   @override
   void onInit() {
+    
     readCart();
     super.onInit();
   } 

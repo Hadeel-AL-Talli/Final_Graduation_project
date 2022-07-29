@@ -30,7 +30,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
   late Future<ProudctDetails?> _future;
+  //Exception :- Null is Not subType of String 
 //CartGetxController cartcontroller = Get.put(CartGetxController());
+
   @override
   void initState() {
     // TODO: implement initState
@@ -261,8 +263,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () {
-                          //await create();
+                        onPress: () async{
+                          await create();
                         },
                         text: "Add To Cart".tr,
                         color: KPrimaryColor,
