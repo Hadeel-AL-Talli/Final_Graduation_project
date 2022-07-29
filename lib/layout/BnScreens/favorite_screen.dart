@@ -60,13 +60,13 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               ),
               itemBuilder: (context, index) {
                 return InkWell(
-                  // onTap: () {
-                  //   Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //           builder: (context) => ProductDetailsScreen(
-                  //               proudct: _favourite[index])));
-                  // },
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductDetailsScreen(
+                                product: _favourite[index])));
+                  },
                   child: SizedBox(
                     height: 350,
                     child: Card(

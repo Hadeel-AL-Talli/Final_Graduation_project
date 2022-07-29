@@ -30,7 +30,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
   late Future<ProudctDetails?> _future;
-CartGetxController cartcontroller = Get.put(CartGetxController());
+//CartGetxController cartcontroller = Get.put(CartGetxController());
   @override
   void initState() {
     // TODO: implement initState
@@ -261,8 +261,8 @@ CartGetxController cartcontroller = Get.put(CartGetxController());
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () async{
-                          await create();
+                        onPress: () {
+                          //await create();
                         },
                         text: "Add To Cart".tr,
                         color: KPrimaryColor,

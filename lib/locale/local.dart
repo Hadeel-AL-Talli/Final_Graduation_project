@@ -64,7 +64,8 @@ class MyLocale extends Translations{
        "Street Address":"اسم الشارع",
        "Address Info ...":"العنوان بالتفصيل",
        "Your Phone Number":"رقم هاتفك",
-       "Addresses":"العناوين"
+       "Addresses":"العناوين",
+       "Update Address":"تعديل العنوان"
       
       
        
@@ -132,7 +133,8 @@ class MyLocale extends Translations{
       "Street Address":"Street Address",
       "Address Info ...":"Address Info ...",
       "Your Phone Number":"Your Phone Number",
-      "Addresses":"Addresses"
+      "Addresses":"Addresses",
+      "Update Address":"Update Address"
 
     }
   };
