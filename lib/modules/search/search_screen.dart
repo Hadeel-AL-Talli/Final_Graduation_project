@@ -7,6 +7,7 @@ import '../../shared/network/style/colors.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({Key? key}) : super(key: key);
+  
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();

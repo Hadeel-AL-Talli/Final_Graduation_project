@@ -8,6 +8,7 @@ class AppTextField extends StatelessWidget {
     required this.prefixIcon,
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
+
   }) : super(key: key);
 
   final String hint;
