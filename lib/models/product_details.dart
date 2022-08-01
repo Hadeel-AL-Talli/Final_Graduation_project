@@ -29,7 +29,7 @@ return data;
   ProudctDetails.fromJson(Map<String, dynamic> json) {
     print(json);
     id = json['id'];
-    nameEn = json['name_en'] ;
+    nameEn = json['name_en'];
     nameAr = json['name_ar'];
     infoEn = json['info_en'];
     infoAr = json['info_ar'];
