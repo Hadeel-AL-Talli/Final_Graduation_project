@@ -28,16 +28,25 @@ return data;
 
   ProudctDetails.fromJson(Map<String, dynamic> json) {
     print(json);
-    id = json['id'];
-    nameEn = json['name_en'];
-    nameAr = json['name_ar'];
-    infoEn = json['info_en'];
-    infoAr = json['info_ar'];
-    price = double.parse(json['price'].toString());
+// <<<<<<< HEAD
+//     id = json['id'];
+//     nameEn = json['name_en'];
+//     nameAr = json['name_ar'];
+//     infoEn = json['info_en'];
+//     infoAr = json['info_ar'];
+//     price = double.parse(json['price'].toString());
+// =======
+    id = json['id']  == null ? null:json["id"];
+    nameEn = json['name_en']  == null ? "":json["name_en"] ;
+    nameAr = json['name_ar'] == null ? "":json["name_ar"];
+    infoEn = json['info_en'] == null ? "":json["info_en"];
+    infoAr = json['info_ar'] == null ? "":json["info_ar"];
+    price = json['price'] == null ? 0:double.parse(json['price'].toString());
 
-    subCategoryId = json['sub_category_id'];
-    isFavorite = json['is_favorite'] ;
-    imageUrl = json['image_url'];
+
+    subCategoryId = json['sub_category_id'] == null ? "":json["sub_category_id"];
+    isFavorite = json['is_favorite'] == null ? false:json["is_favorite"] ;
+    imageUrl = json['image_url'] == null ? "":json["image_url"];
     if (json['images'] != null) {
       images = <Images>[];
       json['images'].forEach((v) {
@@ -59,10 +68,10 @@ class Images {
   Images();
 
   Images.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] == null ? null:json['id'];
     // objectId = json['object_id'];
-    url = json['url'];
-    imageUrl = json['image_url'];
+    url = json['url'] == null ? null:json['url'];
+    imageUrl = json['image_url'] == null ? null:json['image_url'];
   }
 }
 
@@ -75,11 +84,11 @@ class SubCategory {
   late String imageUrl;
 
   SubCategory.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    nameEn = json['name_en'];
-    nameAr = json['name_ar'];
-    categoryId = json['category_id'];
-    image = json['image'];
-    imageUrl = json['image_url'];
+    id = json['id'] == null ? null:json["id"];
+    nameEn = json['name_en'] == null ? null:json["name_en"];
+    nameAr = json['name_ar'] == null ? null:json["name_ar"];
+    categoryId = json['category_id'] == null ? null:json["category_id"];
+    image = json['image'] == null ? null:json["image"];
+    imageUrl = json['image_url'] == null ? null:json["image_url"];
   }
 }

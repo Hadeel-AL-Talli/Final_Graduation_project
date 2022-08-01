@@ -29,9 +29,8 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
+  CartGetxController cartGetxController = Get.put(CartGetxController());
   late Future<ProudctDetails?> _future;
-  //Exception :- Null is Not subType of String 
-//CartGetxController cartcontroller = Get.put(CartGetxController());
 
   @override
   void initState() {
@@ -119,6 +118,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                           height: 20.h,
                         ),
 
+                        SizedBox(
+                          height: 20.h,
+                        ),
+
                         // Container(
                         //   decoration: BoxDecoration(
                         //     borderRadius: BorderRadius.circular(20),
@@ -157,6 +160,65 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                         //   ),
                         // ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        children: [
+                          Text(
+                              SharedPrefController().language == 'en'
+                                  ? snapshot.data!.nameEn
+                                  : snapshot.data!.nameAr,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium
+                                  ?.copyWith(
+                                    fontFamily: 'Muli',
+                                    fontSize: 20.sp,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                          const Spacer(),
+                          GetX<FavoriteGetController>(
+                            builder: ((FavoriteGetController controller) {
+                            
+                              return GestureDetector(
+                                onTap: () {
+                                  controller.addFavoriteProducts(
+                                      product: controller.productDetails.value!,
+                                      context: context);
+                                },
+                                child: Container(
+                                  width: 55,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: controller
+                                              .productDetails.value!.isFavorite
+                                          ? Colors.red
+                                          : Colors.grey),
+                                  child: const Icon(
+                                    Icons.favorite,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                          //  return  IconButton(
+                          //       icon:  Icon(
+                          //         Icons.favorite_outlined,
+                          //         color:controller.productDetails.value!.isFavorite?
+                          //          KPrimaryColor : Colors.grey,
+                          //         size: 30,
+                          //       ),
+                          //       onPressed: () {
+                          //         controller.addFavoriteProducts(product: controller.productDetails.value!, context: context);
+                          //       });
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 20.h,
@@ -257,16 +319,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                             fontWeight: FontWeight.w400),
                       ),
                     ),
-                    SizedBox(
-                      height: 80.h,
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () async{
-                          await create();
+                        onPress: () {
+                          cartGetxController.createCart(snapshot.data!);
                         },
-                        text: "Add To Cart".tr,
+                        text: "Add To Cart",
                         color: KPrimaryColor,
                       ),
                     )
@@ -290,14 +349,5 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                 );
               }
             }));
-  }
-
-
-  Future<void> create() async {
-    
-    bool created = await CartGetxController.to.createCart(widget.product);
-    
-    String message = created ? 'Added successfully' : 'Failed to add';
-    showSnackBar(context, message: message, error: !created);
   }
 }
