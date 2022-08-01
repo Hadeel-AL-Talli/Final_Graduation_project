@@ -28,6 +28,7 @@ class ApiSetting {
 
 
   static const favoriteProducts = _apiUrl +'favorite-products';
+  static const addFavoriteProducts = _apiUrl +'products/rate';
 
   static const createAddress = _apiUrl +'addresses';
 

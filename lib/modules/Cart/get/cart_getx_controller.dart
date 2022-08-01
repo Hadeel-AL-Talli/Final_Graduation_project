@@ -30,6 +30,7 @@ class CartGetxController extends GetxController{
       cart.add(proudctDetails);
      
     }
+    print(newRowId);
     return newRowId != 0;
   }
 

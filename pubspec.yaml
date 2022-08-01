@@ -98,7 +98,7 @@ flutter:
          - asset: fonts/Poppins-SemiBold.ttf
      - family: Muli
        fonts:
-        - asset: fonts\muli/muli-bold.ttf
+        - asset: fonts/muli/muli-bold.ttf
           weight: 800
   #
   # For details regarding fonts from package dependencies,
