@@ -34,6 +34,7 @@ void main() async {
   await SharedPrefController().initPref();
   await GetStorage.init();
   await DbController().initDatabase();
+  print((13/2).round());
   runApp(const MyApp());
 }
 
