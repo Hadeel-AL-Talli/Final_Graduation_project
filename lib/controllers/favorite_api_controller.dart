@@ -12,6 +12,8 @@ class FavoriteProductApiController with ApiHelper {
   Future<List<ProudctDetails>> getFavoriteProducts() async {
     var url = Uri.parse(ApiSetting.favoriteProducts);
     var response = await http.get(url, headers: headers);
+    print(url);
+    print(headers);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['list'] as List;
       List<ProudctDetails> favoriteProducts =

@@ -1,19 +1,31 @@
 class ProudctDetails {
-  late int id;
-  late String nameEn;
-  late String nameAr;
-  late String infoEn;
-  late String infoAr;
-  late double price;
+  late int? id;
+  late String? nameEn;
+  late String? nameAr;
+  late String? infoEn;
+  late String? infoAr;
+  late double? price;
 
-  late String subCategoryId;
+  late String? subCategoryId;
 
-  late bool isFavorite;
-  late String imageUrl;
-  late List<Images> images;
+  /*late*/ bool? isFavorite;
+  late String? imageUrl;
+  late List<Images>? images;
   late SubCategory? subCategory;
 
-  ProudctDetails();
+  ProudctDetails(
+      {this.id,
+      this.nameEn,
+      this.nameAr,
+      this.infoEn,
+      this.infoAr,
+      this.price,
+      this.subCategoryId,
+      this.isFavorite = false,
+      this.imageUrl,
+      this.images,
+      this.subCategory}); // ProudctDetails();
+
   Map<String , dynamic> toJson(){
 final Map<String, dynamic> data = new Map<String, dynamic>();
 data['id'] = this.id;
