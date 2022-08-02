@@ -65,7 +65,9 @@ class MyLocale extends Translations{
        "Address Info ...":"العنوان بالتفصيل",
        "Your Phone Number":"رقم هاتفك",
        "Addresses":"العناوين",
-       "Update Address":"تعديل العنوان"
+       "Update Address":"تعديل العنوان",
+       "Cards":"بطاقات الدفع",
+       "Add Card":"إضافة بطاقة"
       
       
        
@@ -134,7 +136,9 @@ class MyLocale extends Translations{
       "Address Info ...":"Address Info ...",
       "Your Phone Number":"Your Phone Number",
       "Addresses":"Addresses",
-      "Update Address":"Update Address"
+      "Update Address":"Update Address",
+      "Cards":"Cards",
+      "Add Card":"Add Card"
 
     }
   };

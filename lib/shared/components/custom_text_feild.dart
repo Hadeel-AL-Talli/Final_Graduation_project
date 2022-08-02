@@ -4,6 +4,7 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     Key? key,
     this.suffix,
+    this.max,
     required this.hint,
     required this.controller,
     required this.prefixIcon,
@@ -16,6 +17,7 @@ class AppTextField extends StatelessWidget {
   final TextEditingController controller;
   final IconData prefixIcon;
   final bool obscureText;
+  final int? max;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
-      
+      maxLength: max,
       style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),
       decoration: InputDecoration(
           hintText: hint,

@@ -28,14 +28,7 @@ return data;
 
   ProudctDetails.fromJson(Map<String, dynamic> json) {
     print(json);
-// <<<<<<< HEAD
-//     id = json['id'];
-//     nameEn = json['name_en'];
-//     nameAr = json['name_ar'];
-//     infoEn = json['info_en'];
-//     infoAr = json['info_ar'];
-//     price = double.parse(json['price'].toString());
-// =======
+
     id = json['id']  == null ? null:json["id"];
     nameEn = json['name_en']  == null ? "":json["name_en"] ;
     nameAr = json['name_ar'] == null ? "":json["name_ar"];
