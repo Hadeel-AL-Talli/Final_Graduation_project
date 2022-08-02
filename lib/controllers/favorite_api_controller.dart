@@ -40,7 +40,7 @@ class FavoriteProductApiController with ApiHelper {
     // return false;
 
     var request = http.MultipartRequest('POST', url);
-    request.fields.addAll({'product_id': '$id' ,"rate":"1"});
+    request.fields.addAll({'product_id': '$id' /*,"rate":"1"*/});
 
     request.headers.addAll(headers);
 
