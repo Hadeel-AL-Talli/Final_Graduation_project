@@ -168,20 +168,24 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          Text(
-                              SharedPrefController().language == 'en'
-                                  ? snapshot.data!.nameEn.toString()
-                                  : snapshot.data!.nameAr.toString(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(
-                                    fontFamily: 'Muli',
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                  )),
-                          const Spacer(),
+                          Expanded(
+                            child: Text(
+                                SharedPrefController().language == 'en'
+                                    ? snapshot.data!.nameEn.toString()
+                                    : snapshot.data!.nameAr.toString(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium
+                                    ?.copyWith(
+                                      fontFamily: 'Muli',
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                          ),
+                          // const Spacer(),
+                          SizedBox(width: 10,),
                           GetX<FavoriteGetController>(
+                            init: FavoriteGetController(),
                             builder: ((FavoriteGetController controller) {
                             
                               return GestureDetector(
