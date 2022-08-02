@@ -29,11 +29,12 @@ final  FavoriteProductApiController favoriteProductApiController =  FavoriteProd
     }
 
   Future<void> addFavoriteProducts({required ProudctDetails product,required BuildContext context}) async {
-    bool status = await  FavoriteProductApiController().addFavoriteProducts(context, id: product.id);
+    bool status = await  FavoriteProductApiController().addFavoriteProducts(context, id: product.id!);
     if(status && products.isNotEmpty){
       int index = products.indexWhere((element) => element.id == product.id);
       products[index].isFavorite == false ? favoriteProducts.add(product) : favoriteProducts.removeWhere((element) => element.id == products[index].id);
-      products[index].isFavorite = !products[index].isFavorite;
+      products[index].isFavorite = !products[index].isFavorite!;
+      if(productDetails.value != null )
      productDetails.value!.isFavorite = products[index].isFavorite ;
     }
     productDetails.refresh();

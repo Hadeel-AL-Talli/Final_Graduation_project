@@ -12,6 +12,8 @@ class FavoriteProductApiController with ApiHelper {
   Future<List<ProudctDetails>> getFavoriteProducts() async {
     var url = Uri.parse(ApiSetting.favoriteProducts);
     var response = await http.get(url, headers: headers);
+    print(url);
+    print(headers);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['list'] as List;
       List<ProudctDetails> favoriteProducts =
@@ -38,7 +40,7 @@ class FavoriteProductApiController with ApiHelper {
     // return false;
 
     var request = http.MultipartRequest('POST', url);
-    request.fields.addAll({'product_id': '$id' ,"rate":"1"});
+    request.fields.addAll({'product_id': '$id' /*,"rate":"1"*/});
 
     request.headers.addAll(headers);
 
