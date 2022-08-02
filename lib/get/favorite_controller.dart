@@ -34,7 +34,7 @@ final  FavoriteProductApiController favoriteProductApiController =  FavoriteProd
       int index = products.indexWhere((element) => element.id == product.id);
       products[index].isFavorite == false ? favoriteProducts.add(product) : favoriteProducts.removeWhere((element) => element.id == products[index].id);
       products[index].isFavorite = !products[index].isFavorite;
-      productDetails.value!.isFavorite = products[index].isFavorite ;
+     productDetails.value!.isFavorite = products[index].isFavorite ;
     }
     productDetails.refresh();
     products.refresh();

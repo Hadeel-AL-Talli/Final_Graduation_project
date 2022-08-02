@@ -33,14 +33,14 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 .textTheme
                 .labelMedium
                 ?.copyWith(fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
       ),
       body: FutureBuilder<List<ProudctDetails>>(
         future: _future,

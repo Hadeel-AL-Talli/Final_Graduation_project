@@ -189,6 +189,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   controller.addFavoriteProducts(
                                       product: controller.productDetails.value!,
                                       context: context);
+                                     
+                                      
                                 },
                                 child: Container(
                                   width: 55,
@@ -227,44 +229,44 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          Text(
-                              SharedPrefController().language == 'en'
-                                  ? snapshot.data!.nameEn
-                                  : snapshot.data!.nameAr,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(
-                                    fontFamily: 'Muli',
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          // Text(
+                          //     SharedPrefController().language == 'en'
+                          //         ? snapshot.data!.nameEn
+                          //         : snapshot.data!.nameAr,
+                          //     style: Theme.of(context)
+                          //         .textTheme
+                          //         .labelMedium
+                          //         ?.copyWith(
+                          //           fontFamily: 'Muli',
+                          //           fontSize: 20.sp,
+                          //           fontWeight: FontWeight.bold,
+                          //         )),
                           const Spacer(),
-                          GetX<FavoriteGetController>(
-                            builder: ((FavoriteGetController controller) {
-                              return GestureDetector(
-                                onTap: () {
-                                  controller.addFavoriteProducts(
-                                      product: controller.productDetails.value!,
-                                      context: context);
-                                },
-                                child: Container(
-                                  width: 55,
-                                  height: 55,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: controller
-                                              .productDetails.value!.isFavorite
-                                          ? Colors.red
-                                          : Colors.grey),
-                                  child: const Icon(
-                                    Icons.favorite,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
+                          // GetX<FavoriteGetController>(
+                          //   builder: ((FavoriteGetController controller) {
+                          //     return GestureDetector(
+                          //       onTap: () {
+                          //         controller.addFavoriteProducts(
+                          //             product: controller.productDetails.value!,
+                          //             context: context);
+                          //       },
+                          //       child: Container(
+                          //         width: 55,
+                          //         height: 55,
+                          //         decoration: BoxDecoration(
+                          //             shape: BoxShape.circle,
+                          //             color: controller
+                          //                     .productDetails.value!.isFavorite
+                          //                 ? Colors.red
+                          //                 : Colors.grey),
+                          //         child: const Icon(
+                          //           Icons.favorite,
+                          //           color: Colors.white,
+                          //         ),
+                          //       ),
+                          //     );
+                          //   }),
+                          // ),
                           //  return  IconButton(
                           //       icon:  Icon(
                           //         Icons.favorite_outlined,

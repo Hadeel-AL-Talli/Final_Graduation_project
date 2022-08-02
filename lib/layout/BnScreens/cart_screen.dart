@@ -23,11 +23,11 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
+        // leading: IconButton(
+        //     icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     }),
         backgroundColor: Colors.white,
         elevation: 2.0,
         title: Text(
