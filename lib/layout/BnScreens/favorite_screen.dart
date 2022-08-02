@@ -33,14 +33,14 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 .textTheme
                 .labelMedium
                 ?.copyWith(fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
       ),
       body: FutureBuilder<List<ProudctDetails>>(
         future: _future,
@@ -60,13 +60,13 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               ),
               itemBuilder: (context, index) {
                 return InkWell(
-                  // onTap: () {
-                  //   Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //           builder: (context) => ProductDetailsScreen(
-                  //               proudct: _favourite[index])));
-                  // },
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProductDetailsScreen(
+                                product: _favourite[index])));
+                  },
                   child: SizedBox(
                     height: 350,
                     child: Card(

@@ -8,6 +8,8 @@ import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 
 import '../../shared/network/local/shared_pref_controller.dart';
+import 'package:get/get.dart';
+
 
 class GetAddresses extends StatefulWidget {
   const GetAddresses({Key? key}) : super(key: key);
@@ -25,14 +27,15 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
   int _cityId = 1;
 
   late Future<List<GetAddressesModel>> _futureAddresses;
-
+    
   List<GetAddressesModel> _addresses = <GetAddressesModel>[];
-
+  
   @override
   void initState() {
     _future = DropDownController().getcities();
     super.initState();
     _futureAddresses = AddresssApiController().getAddresses();
+
   }
 
   @override
@@ -49,7 +52,7 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: Text(
-          "Addresses",
+          "Addresses".tr,
           style:
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
@@ -139,6 +142,7 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10),
                                     child: Text(
+                                      
                                       _addresses[index].city.nameEn,
                                       style: const TextStyle(
                                           fontSize: 16.0,
@@ -207,15 +211,19 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
                                   width: 5,
                                 ),
                                 IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        print('set state');
-                                        AddresssApiController().delAddresses(
-                                            context,
-                                            id: _addresses[index]
-                                                .id
-                                                .toString());
-                                      });
+                                    onPressed: (){
+                                    confirmDelete(_addresses[index].id.toString());
+                                      //  print('set state');
+                                      // await   AddresssApiController().delAddresses(
+                                      //       context,
+                                      //       id: _addresses[index]
+                                      //           .id
+                                      //           .toString());
+                                  
+                                   
+                                        
+                                               
+                                      
                                     },
                                     icon: Icon(
                                       Icons.delete,
@@ -251,4 +259,20 @@ class _GetAddressesState extends State<GetAddresses> with ApiHelper {
       ),
     );
   }
+  confirmDelete(String id){
+    showDialog(context: context, builder: (BuildContext context)=>AlertDialog(
+      content:Text( 'Are you sure ?'),
+      title: Text('Delete'),
+      actions: [
+        TextButton(onPressed: () async{
+await AddresssApiController().delAddresses(context, id: id);
+Navigator.push(context, MaterialPageRoute(builder: ((context) => GetAddresses())));
+        }, child: Text('Yes')),
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text('No'))
+      ],
+    ));
+  }
+ 
 }

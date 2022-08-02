@@ -13,6 +13,7 @@ import 'package:graduation_project/models/product.dart';
 import 'package:graduation_project/modules/Auth/forget_password.dart';
 import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
+import 'package:graduation_project/modules/Cart/controller/db_controller.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/modules/address/update_address.dart';
@@ -32,6 +33,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefController().initPref();
   await GetStorage.init();
+  await DbController().initDatabase();
   runApp(const MyApp());
 }
 

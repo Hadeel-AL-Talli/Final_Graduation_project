@@ -15,6 +15,7 @@ import 'package:graduation_project/models/city.dart';
 import 'package:graduation_project/shared/components/custom_text_feild.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
+import 'package:get/get.dart';
 
 class UpdateAddressScreen extends StatefulWidget {
   UpdateAddressScreen(
@@ -91,7 +92,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            "Update Address",
+            "Update Address".tr,
             style:
                 Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           ),
@@ -105,7 +106,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    'Name',
+                    "Name".tr,
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
@@ -130,7 +131,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    'Street Address',
+                    "Street Address".tr,
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
@@ -155,7 +156,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Text(
-                    'Phone Number',
+                    "Phone number".tr,
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
@@ -182,7 +183,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Text(
-                        'City',
+                        "City :".tr,
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
@@ -269,7 +270,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                         onPress: () async {
                           await performUpdateAddress();
                         },
-                        text: 'Update Address',
+                        text: "Update Address".tr,
                         color: KPrimaryColor),
                   ),
                 )

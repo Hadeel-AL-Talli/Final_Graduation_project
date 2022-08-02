@@ -22,7 +22,7 @@ class ProductWidget extends StatelessWidget {
     return GestureDetector(
       // onTap: function(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
         child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.0),
@@ -37,20 +37,24 @@ class ProductWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                    height: 180.h,
-                    width: 200.w,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        imageUrl,
-                        fit: BoxFit.cover,
-                      ),
-                    )),
+                Wrap(
+                  children: [
+                    Container(
+                        // height: 180.h,
+                        // width: 200.w,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.network(
+                            imageUrl,height: 200.h,width: double.infinity,
+                            fit: BoxFit.cover,
+                          ),
+                        )),
+                  ],
+                ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 Text(
                     // products is out demo list
@@ -66,18 +70,18 @@ class ProductWidget extends StatelessWidget {
                     Text(
                       '$price \$',
                       style: const TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 15.0,
                           height: 1.3,
                           fontFamily: 'Muli',
                           color: KPrimaryColor),
                     ),
                     const Spacer(),
-                    IconButton(
-                        icon: const Icon(
-                          Icons.favorite_border,
-                          color: KPrimaryColor,
-                        ),
-                        onPressed: () {})
+                    // IconButton(
+                    //     icon: const Icon(
+                    //       Icons.favorite_border,
+                    //       color: KPrimaryColor,
+                    //     ),
+                    //     onPressed: () {})
                   ],
                 )
               ],

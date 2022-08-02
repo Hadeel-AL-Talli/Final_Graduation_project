@@ -20,6 +20,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> with ApiHelper {
+  bool obscureText = true;
   DropDownController dropDownController = DropDownController();
   List<City> _cities = <City>[];
   late Future<List<City>> _future;
@@ -167,7 +168,16 @@ class _RegisterState extends State<Register> with ApiHelper {
                           hint: "password".tr,
                           controller: _passwordTextEditingController,
                           prefixIcon: Icons.lock,
-                          obscureText: true,
+                          obscureText: obscureText,
+                          
+                        suffix: 
+                     GestureDetector(onTap: (){
+                     setState(() {
+                       obscureText = !obscureText;
+                     });
+              },
+              child: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
+              ),
                         ),
                         SizedBox(
                           height: 10.h,

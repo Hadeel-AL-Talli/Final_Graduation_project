@@ -15,6 +15,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> with ApiHelper {
+  bool obscureText = true;
   late TextEditingController _phoneTextEditingController;
   late TextEditingController _passwordTextEditingController;
   late TapGestureRecognizer _tapGestureRecognizer;
@@ -139,7 +140,16 @@ class _SignInState extends State<SignIn> with ApiHelper {
                           hint: "password".tr,
                           controller: _passwordTextEditingController,
                           prefixIcon: Icons.lock,
-                          obscureText: true,
+                          obscureText: obscureText,
+                          
+                        suffix: 
+                     GestureDetector(onTap: (){
+                     setState(() {
+                       obscureText = !obscureText;
+                     });
+              },
+              child: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
+              ),
                         ),
                         SizedBox(
                           height: 16.h,

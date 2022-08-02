@@ -67,46 +67,8 @@ class _SettingsState extends State<Settings> {
                   Expanded(
                     child: ListView(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.all(7),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Theme.of(context).shadowColor,
-                                  // Theme.of(context).shadowColor,
-                                  // Colors.grey.withOpacity(0.2),
-                                  spreadRadius: 3.0,
-                                  blurRadius: 5.0)
-                            ],
-                            color: Theme.of(context).primaryColor,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ListTile(
-                              leading: Icon(
-                                Icons.notifications_active,
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.color,
-                              ),
-                              title: Text(
-                                "Notifications".tr,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.copyWith(
-                                        fontFamily: 'Muli',
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
+                   
+                       
                         Container(
                           margin: const EdgeInsets.all(7),
                           decoration: BoxDecoration(

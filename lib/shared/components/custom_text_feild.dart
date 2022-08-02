@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppTextField extends StatelessWidget {
   const AppTextField({
     Key? key,
+    this.suffix,
     required this.hint,
     required this.controller,
     required this.prefixIcon,
@@ -10,7 +11,7 @@ class AppTextField extends StatelessWidget {
     this.obscureText = false,
 
   }) : super(key: key);
-
+  final Widget? suffix;
   final String hint;
   final TextInputType keyboardType;
   final TextEditingController controller;
@@ -23,6 +24,7 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      
       style: TextStyle(color: Theme.of(context).textTheme.labelLarge?.color),
       decoration: InputDecoration(
           hintText: hint,
@@ -30,7 +32,7 @@ class AppTextField extends StatelessWidget {
                 fontFamily: 'Poppins',
                 fontSize: 15,
               ),
-
+suffixIcon: suffix,
           // TextStyle(fontFamily: 'Poppins'),
           prefixIcon: Icon(
             prefixIcon,

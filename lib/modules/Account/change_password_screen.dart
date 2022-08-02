@@ -18,6 +18,9 @@ class ChangePasswordScreen extends StatefulWidget {
 
 class _ChangePasswordScreenState extends State<ChangePasswordScreen>
     with ApiHelper {
+       bool obsecuretext1= true; 
+        bool obsecuretext2 = true; 
+         bool obsecuretext3 = true; 
   late TextEditingController _currentpasswordTextEditingController;
   late TextEditingController _passwordTextEditingController;
   late TextEditingController _confirmpasswordTextEditingController;
@@ -84,10 +87,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AppTextField(
+                        obscureText: obsecuretext1,
                         hint: "password".tr,
                         controller: _currentpasswordTextEditingController,
                         prefixIcon: Icons.lock,
                         keyboardType: TextInputType.text,
+                        suffix: 
+                     GestureDetector(onTap: (){
+                     setState(() {
+                       obsecuretext1 = !obsecuretext1;
+                     });
+              },
+              child: Icon(obsecuretext1 ? Icons.visibility : Icons.visibility_off),
+              ),
                       ),
                     ),
                     SizedBox(
@@ -99,7 +111,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                         hint: "New password".tr,
                         controller: _passwordTextEditingController,
                         prefixIcon: Icons.lock,
-                        obscureText: true,
+                        obscureText: obsecuretext2,
+                        suffix: 
+                     GestureDetector(onTap: (){
+                     setState(() {
+                       obsecuretext2 = !obsecuretext2;
+                     });
+              },
+              child: Icon(obsecuretext2 ? Icons.visibility : Icons.visibility_off),
+              ),
                       ),
                     ),
                     SizedBox(
@@ -111,6 +131,15 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen>
                         hint: "Confirm password".tr,
                         controller: _confirmpasswordTextEditingController,
                         prefixIcon: Icons.lock,
+                        obscureText: obsecuretext3,
+                        suffix: 
+                     GestureDetector(onTap: (){
+                     setState(() {
+                       obsecuretext3 = !obsecuretext3;
+                     });
+              },
+              child: Icon(obsecuretext3 ? Icons.visibility : Icons.visibility_off),
+              ),
                       ),
                     ),
                     SizedBox(

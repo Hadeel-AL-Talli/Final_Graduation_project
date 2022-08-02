@@ -9,7 +9,6 @@ class MyLocale extends Translations{
       "Pal-Pazzar":"بال بازار",
       "welcome": "أهلاً بك في بال بازار",
        "Settings":"الإعدادات",
-       "Notifications":"الإشعارات",
        "Language":"اللغة",
        "Change Password":"تغيير كلمة المرور ",
        "online store":"هو المتجر الإلكتروني الذي يقدم جميع المنتجات الفلسطينية المميزة في مكان واحد",
@@ -59,7 +58,14 @@ class MyLocale extends Translations{
        "Product Description":"وصف المنتج",
        "Add To Cart":"أضف إلى السلة",
        "Product Details":"تفاصيل المنتج",
-       "Favorite":"المفضلة"
+       "Favorite":"المفضلة",
+       "Add Address":"إضافة عنوان",
+       "Your Name":"اسمك",
+       "Street Address":"اسم الشارع",
+       "Address Info ...":"العنوان بالتفصيل",
+       "Your Phone Number":"رقم هاتفك",
+       "Addresses":"العناوين",
+       "Update Address":"تعديل العنوان"
       
       
        
@@ -121,7 +127,14 @@ class MyLocale extends Translations{
       "Product Description":"Product Description",
       "Add To Cart":"Add To Cart",
       "Product Details":"Product Details",
-      "Favorite":"Favorite"
+      "Favorite":"Favorite",
+      "Add Address":"Add Address",
+      "Your Name":"Your Name",
+      "Street Address":"Street Address",
+      "Address Info ...":"Address Info ...",
+      "Your Phone Number":"Your Phone Number",
+      "Addresses":"Addresses",
+      "Update Address":"Update Address"
 
     }
   };
