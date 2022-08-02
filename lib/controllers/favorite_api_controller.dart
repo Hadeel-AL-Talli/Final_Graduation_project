@@ -52,7 +52,7 @@ class FavoriteProductApiController with ApiHelper {
     }
     if (response.statusCode == 200) {
       // ignore: use_build_context_synchronously
-      showSnackBar(context, message: 'Added successfully');
+     // showSnackBar(context, message: 'Added successfully');
       return true;
     } else {
       // print(response.reasonPhrase);
