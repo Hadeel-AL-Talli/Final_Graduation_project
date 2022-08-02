@@ -63,7 +63,6 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
     _addressNameTextEditingController.text = widget.addressName!;
     _addressInfoTextEditingController.text = widget.addressDescription!;
     _addressPhoneNumberTextEditingController.text = widget.addressPhoneNumber!;
-    
 
     // _addressesModel.contact_number =
     //     _addressPhoneNumberTextEditingController.text;
@@ -122,7 +121,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                   child: AppTextField(
                     hint: '',
                     controller: _addressNameTextEditingController,
-                    prefixIcon: Icons.location_on,
+                    prefixIcon: Icons.person,
                     keyboardType: TextInputType.text,
                   ),
                 ),
@@ -147,7 +146,7 @@ class _UpdateAddressScreenState extends State<UpdateAddressScreen>
                   child: AppTextField(
                     hint: '',
                     controller: _addressInfoTextEditingController,
-                    prefixIcon: Icons.person,
+                    prefixIcon: Icons.location_on,
                     keyboardType: TextInputType.text,
                   ),
                 ),
