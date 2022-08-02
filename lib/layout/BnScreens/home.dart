@@ -44,12 +44,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-       title: Text('Pal-Pazzar',
-                        style: TextStyle(
-                            color: Color(0xffF59B14),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25.sp,
-                            fontFamily: 'Poppins')),
+        title: Text('Pal-Pazzar',
+            style: TextStyle(
+                color: Color(0xffF59B14),
+                fontWeight: FontWeight.w900,
+                fontSize: 23.sp,
+                fontFamily: 'Muli')),
         //title: Image.asset('images/logo.png', width: 50,),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -57,7 +57,6 @@ class _HomeState extends State<Home> {
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
           ),
-          
           child: IconButton(
               icon: const Icon(
                 Icons.search_rounded,
@@ -409,9 +408,7 @@ class _HomeState extends State<Home> {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () {
-
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
-
+                            // Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen(product: product[index])));
                           },
                           child: Padding(
                             padding: const EdgeInsets.only(

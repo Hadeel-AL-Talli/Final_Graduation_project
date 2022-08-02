@@ -14,6 +14,7 @@ import 'package:graduation_project/modules/Auth/forget_password.dart';
 import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
 import 'package:graduation_project/modules/Cart/controller/db_controller.dart';
+import 'package:graduation_project/modules/Order/get_orders.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/modules/address/update_address.dart';
@@ -76,6 +77,8 @@ class _MyAppState extends State<MyApp> {
             '/create_address_screen': (context) =>  const CreateAddressScreen(),
             '/get_addresses': (context) =>  const GetAddresses(),
             '/profile_screen': (context) =>  const ProfileScreen(),
+            '/get_orders': (context) =>  const GetOrders(),
+
 
 
 
