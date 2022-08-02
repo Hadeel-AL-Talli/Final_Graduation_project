@@ -85,7 +85,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                  snapshot.data!.images[0].imageUrl,
+                                  snapshot.data!.images![0].imageUrl,
                                 ),
                               ),
                               SizedBox(
@@ -97,7 +97,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                    snapshot.data!.images[1].imageUrl),
+                                    snapshot.data!.images![1].imageUrl),
                               ),
                               SizedBox(
                                 width: 10.w,
@@ -109,7 +109,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                    snapshot.data!.images[2].imageUrl),
+                                    snapshot.data!.images![2].imageUrl),
                               ),
                             ],
                           ),
@@ -170,8 +170,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                         children: [
                           Text(
                               SharedPrefController().language == 'en'
-                                  ? snapshot.data!.nameEn
-                                  : snapshot.data!.nameAr,
+                                  ? snapshot.data!.nameEn.toString()
+                                  : snapshot.data!.nameAr.toString(),
                               style: Theme.of(context)
                                   .textTheme
                                   .labelMedium
@@ -198,7 +198,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: controller
-                                              .productDetails.value!.isFavorite
+                                              .productDetails.value!.isFavorite!
                                           ? Colors.red
                                           : Colors.grey),
                                   child: const Icon(
@@ -313,8 +313,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       ),
                       child: Text(
                         SharedPrefController().language == 'en'
-                            ? snapshot.data!.infoEn
-                            : snapshot.data!.infoAr,
+                            ? snapshot.data!.infoEn.toString()
+                            : snapshot.data!.infoAr.toString(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontSize: 16,
                             fontFamily: 'Poppins',

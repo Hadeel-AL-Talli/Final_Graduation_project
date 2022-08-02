@@ -78,7 +78,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                       //   mainAxisAlignment: MainAxisAlignment.center,
                       //   children: [
                       child: Image.network(
-                        _favourite[index].imageUrl,
+                        _favourite[index].imageUrl.toString(),
                         width: double.infinity,
                         fit: BoxFit.cover,
                         height: 150,

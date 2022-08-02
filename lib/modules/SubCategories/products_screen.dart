@@ -36,7 +36,7 @@ class _ProudctScreenState extends State<ProudctScreen> {
   onSearch(String search) {
     setState(() {
       _foundProducts = _products
-          .where((element) => element.nameEn.toLowerCase().contains(search))
+          .where((element) => element.nameEn.toString().toLowerCase().contains(search))
           .toList();
     });
   }
@@ -150,11 +150,11 @@ class _ProudctScreenState extends State<ProudctScreen> {
                                                         _products[index])));
                                   },
                                   child: ProductWidget(
-                                      imageUrl: _products[index].imageUrl,
+                                      imageUrl: _products[index].imageUrl.toString(),
                                       name: SharedPrefController().language ==
                                               'en'
-                                          ? _products[index].nameEn
-                                          : _products[index].nameAr,
+                                          ? _products[index].nameEn.toString()
+                                          : _products[index].nameAr.toString(),
                                       price: _products[index].price.toString()),
                                 );
                               }),
@@ -186,11 +186,11 @@ class _ProudctScreenState extends State<ProudctScreen> {
                                                         index])));
                                   },
                                   child: ProductWidget(
-                                      imageUrl: _foundProducts[index].imageUrl,
+                                      imageUrl: _foundProducts[index].imageUrl.toString(),
                                       name: SharedPrefController().language ==
                                               'en'
-                                          ? _foundProducts[index].nameEn
-                                          : _foundProducts[index].nameAr,
+                                          ? _foundProducts[index].nameEn.toString()
+                                          : _foundProducts[index].nameAr.toString(),
                                       price: _foundProducts[index]
                                           .price
                                           .toString()),

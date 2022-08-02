@@ -52,13 +52,13 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
               children: [
                 ListTile(
                   title:Text(
-                      CartGetxController.to.cart[index].nameEn ,
+                      CartGetxController.to.cart[index].nameEn.toString() ,
                       style: const TextStyle(fontWeight: FontWeight.bold , color: Colors.red),
                     ),
  trailing: IconButton(
                   icon: Icon(Icons.delete, color: Colors.red.shade800),
                   onPressed: () async =>
-                      await delete(CartGetxController.to.cart[index].id),
+                      await delete(CartGetxController.to.cart[index].id!),
                 ),
                 ),
                 
