@@ -8,7 +8,7 @@ class CartGetxController extends GetxController{
   RxBool loading = false.obs;
   final CartDbController _cartDbController = CartDbController();
   static CartGetxController get to => Get.find<CartGetxController>();
-
+ var cartproduct= [];
 
   @override
   void onInit() {
@@ -28,10 +28,19 @@ class CartGetxController extends GetxController{
     if (newRowId != 0) {
       proudctDetails.id = newRowId;
       cart.add(proudctDetails);
+      cartproduct.add(proudctDetails);
      
     }
     print(newRowId);
     return newRowId != 0;
+  }
+
+  void addProduct(ProudctDetails proudctDetails){
+if(cartproduct.contains(proudctDetails)){
+  cartproduct.add(proudctDetails);
+}else {
+   cartproduct.length=1;
+}
   }
 
 Future<bool> deleteCartItem(int id) async{

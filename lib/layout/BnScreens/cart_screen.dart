@@ -1,10 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:graduation_project/layout/BnScreens/product_details_screen.dart';
 import 'package:graduation_project/models/product_details.dart';
 import 'package:graduation_project/modules/Cart/cart_widget.dart';
 import 'package:graduation_project/modules/Cart/get/cart_getx_controller.dart';
+import 'package:graduation_project/shared/components/custom_button.dart';
+import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
 import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,20 +23,20 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
   ProudctDetails? _proudctDetails;
    final CartGetxController controller =
       Get.put<CartGetxController>(CartGetxController());
+List<ProudctDetails> _products = <ProudctDetails>[];
+
+      int? quantity = 1 ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(
-        //     icon: Icon(Icons.arrow_back_ios, color: Colors.black),
-        //     onPressed: () {
-        //       Navigator.pop(context);
-        //     }),
-        backgroundColor: Colors.white,
-        elevation: 2.0,
+       
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text(
-          'Cart',
-          style: TextStyle(color: Colors.black),
+          "Cart".tr,
+          style:
+              Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
       ),
       body: Obx((){
@@ -48,21 +52,105 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
               vertical: 20.h,
             ),
             itemBuilder: (context, index) {
+              final item = CartGetxController.to.cartproduct;
             return Column(
               children: [
-                ListTile(
-                  title:Text(
-                      CartGetxController.to.cart[index].nameEn.toString() ,
-                      style: const TextStyle(fontWeight: FontWeight.bold , color: Colors.red),
-                    ),
- trailing: IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red.shade800),
+//                 ListTile(
+//                   title:Text(
+//                       CartGetxController.to.cart[index].nameEn.toString() ,
+//                       style: const TextStyle(fontWeight: FontWeight.bold , color: Colors.red),
+//                     ),
+//  trailing: IconButton(
+//                   icon: Icon(Icons.delete, color: Colors.red.shade800),
+//                   onPressed: () async =>
+//                       await delete(CartGetxController.to.cart[index].id!),
+//                 ),
+//                 ),
+               
+                Divider(thickness: 1,),
+          Row(
+            children: [
+              InkWell(
+                onTap: (){
+                 
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                     boxShadow: [
+                  BoxShadow(
+                      color: Theme.of(context).shadowColor,
+                      // Colors.grey.withOpacity(0.2),
+                      spreadRadius: 3.0,
+                      blurRadius: 5.0)
+                ],
+                color: Theme.of(context).primaryColor
+                  ),
+                  padding: EdgeInsets.all(5),
+                  width: 100.w,
+                  height: 100.h,
+                  child: CachedNetworkImage(imageUrl: CartGetxController.to.cart[index].imageUrl!)),
+              ),
+//SizedBox(width: 10.w,),
+
+                Expanded(
+                  child: Column(
+                    children: [
+                  
+                
+                       Text(SharedPrefController().language == 'en'?
+                        CartGetxController.to.cart[index].nameEn.toString() :CartGetxController.to.cart[index].nameAr.toString() ,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(fontSize: 15)),
+
+                             Text(CartGetxController.to.cart[index].price.toString() +'\$'
+                             ,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(fontSize: 18)),
+                    ],
+                  ),
+                ), 
+
+             Column(
+              
+              children: [
+                IconButton(
+                  icon: Icon(Icons.delete_outline, color: Colors.red.shade800),
                   onPressed: () async =>
                       await delete(CartGetxController.to.cart[index].id!),
                 ),
-                ),
-                
 
+               Row(
+               crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+              IconButton(onPressed: (){
+              //add product
+
+           //  CartGetxController.to.addProduct(_proudctDetails![index]);
+              print('add');
+              }, icon: Icon(Icons.add_circle)),
+Text(quantity.toString()
+                           ,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelMedium
+                          ?.copyWith(fontSize: 15)),
+                           TextButton(onPressed: (){}, child: Text('-' , style: Theme.of(context)
+                          .textTheme
+                          .labelMedium
+                          ?.copyWith(fontSize: 15)), 
+                          ),
+               ],)
+
+                
+              ],
+             )
+
+            ],
+          )
                     
               ],
             );
@@ -75,25 +163,18 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
         }
 
         else {
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.warning,
-                  size: 80,
-                  color: Colors.grey.shade400,
-                ),
-                Text(
-                  'NO DATA',
-                  style: TextStyle(
-                    color: Colors.grey.shade400,
-                    // fontSize: SizeConfig().scaleTextFont(20),
-                    fontSize: 20.sp,
-                  ),
-                )
-              ],
-            ),
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            Center(child: Text("Your Cart is Empty".tr, style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(fontSize: 20))),
+            SizedBox(height: 20.h,),
+          Center(child: CustomButton(onPress: (){
+            Navigator.pushNamed(context, '/main_screen');
+          }, text: "Start Shopping".tr, color: Color(0xffF59B14)))
+            ],
           );
         }
       }),
@@ -107,4 +188,7 @@ class _CartScreenState extends State<CartScreen> with ApiHelper{
     String message = deleted ? 'Deleted successfully' : 'Delete failed';
     showSnackBar(context, message: message, error: !deleted);
   }
+
+
+  
 }
