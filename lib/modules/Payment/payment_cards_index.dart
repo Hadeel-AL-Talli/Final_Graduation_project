@@ -119,15 +119,15 @@ class _PaymentCardsIndexState extends State<PaymentCardsIndex> with ApiHelper {
               confirmDelete(_cards[index].id.toString());
             }, icon: Icon(Icons.delete_outline, color: Colors.white,)),
           ),
-           Positioned(
-            left: 50.w,
-            bottom: 10.h,
-            child: IconButton(onPressed: (){
-              //update
+          //  Positioned(
+          //   left: 50.w,
+          //   bottom: 10.h,
+          //   child: IconButton(onPressed: (){
+          //     //update
               
             
-            }, icon: Icon(Icons.edit, color: Colors.white,)),
-          ),
+          //   }, icon: Icon(Icons.edit, color: Colors.white,)),
+          // ),
 
           
        ],
