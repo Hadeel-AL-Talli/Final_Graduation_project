@@ -140,8 +140,12 @@ class _PaymentCardsIndexState extends State<PaymentCardsIndex> with ApiHelper {
           }
 
           else {
-            return Center(
-              child :Text('No Cards Added')
+            return Column(
+            
+              children: [
+                Center(child: Image.asset('images/card.png')),
+                Center(child: Text('No Cards Added', style: Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),)),
+              ],
             );
           }
       },),
