@@ -95,7 +95,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
                 child: AppTextField(
                   hint: "Your Name".tr,
                   controller: _addressNameTextEditingController,
-                  prefixIcon: Icons.location_on,
+                  prefixIcon: Icons.person,
                   keyboardType: TextInputType.text,
                 ),
               ),
@@ -120,7 +120,7 @@ class _CreateAddressScreenState extends State<CreateAddressScreen>
                 child: AppTextField(
                   hint: "Address Info ...".tr,
                   controller: _addressInfoTextEditingController,
-                  prefixIcon: Icons.person,
+                  prefixIcon: Icons.location_on,
                   keyboardType: TextInputType.text,
                 ),
               ),

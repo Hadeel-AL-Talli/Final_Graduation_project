@@ -29,9 +29,9 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
+  CartGetxController cartGetxController = Get.put(CartGetxController());
   late Future<ProudctDetails?> _future;
-  //Exception :- Null is Not subType of String
-//CartGetxController cartcontroller = Get.put(CartGetxController());
+
 
   @override
   void initState() {
@@ -86,7 +86,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                  snapshot.data!.images[0].imageUrl,
+                                  snapshot.data!.images![0].imageUrl,
                                 ),
                               ),
                               SizedBox(
@@ -98,7 +98,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                    snapshot.data!.images[1].imageUrl),
+                                    snapshot.data!.images![1].imageUrl),
                               ),
                               SizedBox(
                                 width: 10.w,
@@ -110,11 +110,15 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Image.network(
-                                    snapshot.data!.images[2].imageUrl),
+                                    snapshot.data!.images![2].imageUrl),
                               ),
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+
                         SizedBox(
                           height: 20.h,
                         ),
@@ -165,14 +169,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          Container(
-                            width: 300,
+
+                          Expanded(
                             child: Text(
                                 SharedPrefController().language == 'en'
-                                    ? snapshot.data!.nameEn
-                                    : snapshot.data!.nameAr,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
+                                    ? snapshot.data!.nameEn.toString()
+                                    : snapshot.data!.nameAr.toString(),
+
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium
@@ -182,14 +185,21 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                       fontWeight: FontWeight.bold,
                                     )),
                           ),
-                          const Spacer(),
+
+                          // const Spacer(),
+                          SizedBox(width: 10,),
+
                           GetX<FavoriteGetController>(
+                            init: FavoriteGetController(),
                             builder: ((FavoriteGetController controller) {
+                            
                               return GestureDetector(
                                 onTap: () {
                                   controller.addFavoriteProducts(
                                       product: controller.productDetails.value!,
                                       context: context);
+                                     
+                                      
                                 },
                                 child: Container(
                                   width: 55,
@@ -197,7 +207,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: controller
-                                              .productDetails.value!.isFavorite
+                                              .productDetails.value!.isFavorite!
                                           ? Colors.red
                                           : Colors.grey),
                                   child: const Icon(
@@ -208,6 +218,64 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                               );
                             }),
                           ),
+                          //  return  IconButton(
+                          //       icon:  Icon(
+                          //         Icons.favorite_outlined,
+                          //         color:controller.productDetails.value!.isFavorite?
+                          //          KPrimaryColor : Colors.grey,
+                          //         size: 30,
+                          //       ),
+                          //       onPressed: () {
+                          //         controller.addFavoriteProducts(product: controller.productDetails.value!, context: context);
+                          //       });
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        children: [
+                          // Text(
+                          //     SharedPrefController().language == 'en'
+                          //         ? snapshot.data!.nameEn
+                          //         : snapshot.data!.nameAr,
+                          //     style: Theme.of(context)
+                          //         .textTheme
+                          //         .labelMedium
+                          //         ?.copyWith(
+                          //           fontFamily: 'Muli',
+                          //           fontSize: 20.sp,
+                          //           fontWeight: FontWeight.bold,
+                          //         )),
+                          const Spacer(),
+                          // GetX<FavoriteGetController>(
+                          //   builder: ((FavoriteGetController controller) {
+                          //     return GestureDetector(
+                          //       onTap: () {
+                          //         controller.addFavoriteProducts(
+                          //             product: controller.productDetails.value!,
+                          //             context: context);
+                          //       },
+                          //       child: Container(
+                          //         width: 55,
+                          //         height: 55,
+                          //         decoration: BoxDecoration(
+                          //             shape: BoxShape.circle,
+                          //             color: controller
+                          //                     .productDetails.value!.isFavorite
+                          //                 ? Colors.red
+                          //                 : Colors.grey),
+                          //         child: const Icon(
+                          //           Icons.favorite,
+                          //           color: Colors.white,
+                          //         ),
+                          //       ),
+                          //     );
+                          //   }),
+                          // ),
                           //  return  IconButton(
                           //       icon:  Icon(
                           //         Icons.favorite_outlined,
@@ -254,24 +322,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       ),
                       child: Text(
                         SharedPrefController().language == 'en'
-                            ? snapshot.data!.infoEn
-                            : snapshot.data!.infoAr,
+                            ? snapshot.data!.infoEn.toString()
+                            : snapshot.data!.infoAr.toString(),
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             fontSize: 16,
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w400),
                       ),
                     ),
-                    SizedBox(
-                      height: 80.h,
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () async {
-                          await create();
+
+                        onPress: () {
+                          cartGetxController.createCart(snapshot.data!);
+
                         },
-                        text: "Add To Cart".tr,
+                        text: "Add To Cart",
                         color: KPrimaryColor,
                       ),
                     )
@@ -297,10 +364,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
             }));
   }
 
-  Future<void> create() async {
-    bool created = await CartGetxController.to.createCart(widget.product);
-
-    String message = created ? 'Added successfully' : 'Failed to add';
-    showSnackBar(context, message: message, error: !created);
-  }
-}

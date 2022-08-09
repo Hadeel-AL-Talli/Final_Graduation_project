@@ -34,14 +34,14 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 .textTheme
                 .labelMedium
                 ?.copyWith(fontSize: 20)),
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(
+        //     Icons.arrow_back_ios,
+        //   ),
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        // ),
       ),
       body: FutureBuilder<List<ProudctDetails>>(
         future: _future,
@@ -68,6 +68,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             builder: (context) => ProductDetailsScreen(
                                 product: _favourite[index])));
                   },
+
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
@@ -129,8 +130,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             ),
                           ),
                         ],
-                      ),
-                    ),
+
                   ),
                 );
               },

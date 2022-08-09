@@ -74,12 +74,14 @@ class _MyAppState extends State<MyApp> {
             '/forget_password': (context) => const ForgetPassword(),
             '/home_screen': (context) => const Home(),
             '/main_screen': (context) => const MainScreen(),
+
             '/search_screen': (context) => SearchScreen(),
             '/create_address_screen': (context) => const CreateAddressScreen(),
             '/get_addresses': (context) => const GetAddresses(),
             '/profile_screen': (context) => const ProfileScreen(),
             '/get_orders': (context) => const GetOrders(),
             '/success_order': (context) => const SuccessOrder(),
+
           },
         );
       },

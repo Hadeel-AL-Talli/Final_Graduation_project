@@ -28,7 +28,12 @@ class CartDbController implements DbOperations<ProudctDetails>{
   Future<List<ProudctDetails>> read() async{
     // SELECT * FROM contacts;
     List<Map<String, dynamic>> rowsMap = await _database.query('cart');
-    return rowsMap.map((Map<String, dynamic> rowMap) => ProudctDetails.fromJson(rowMap)).toList();
+    print(rowsMap);
+    List<Map<String, Object?>> map = rowsMap;
+    List<ProudctDetails> listData = map.map((e) => ProudctDetails.fromJson(e)).toList();
+    return listData;
+    // return rowsMap.map((Map<String, dynamic> rowMap) => ProudctDetails.fromJson(rowMap)).toList();
+    // return rowsMap.map((Map<String, dynamic> rowMap) => ProudctDetails.fromJson(rowMap)).toList();
   }
 
   @override
@@ -42,5 +47,11 @@ class CartDbController implements DbOperations<ProudctDetails>{
     // TODO: implement update
     throw UnimplementedError();
   }
+
+Future<int> updateQuantity(ProudctDetails cart) async {
+ var dbClient = await _database;
+ return await dbClient.update('cart', cart.toJson(),
+     where: "id = ?", whereArgs: [cart.id]);
+}
 
 }

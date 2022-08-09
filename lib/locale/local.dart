@@ -65,8 +65,10 @@ class MyLocale extends Translations{
        "Address Info ...":"العنوان بالتفصيل",
        "Your Phone Number":"رقم هاتفك",
        "Addresses":"العناوين",
-       "Update Address":"تعديل العنوان"
-      
+       "Update Address":"تعديل العنوان",
+      "Cart":"السلة",
+      "Start Shopping":"ابدأ بالتسوق",
+      "Your Cart is Empty":"لا يوجد أي منتج لديك داخل السلة ! "
       
        
        
@@ -134,7 +136,10 @@ class MyLocale extends Translations{
       "Address Info ...":"Address Info ...",
       "Your Phone Number":"Your Phone Number",
       "Addresses":"Addresses",
-      "Update Address":"Update Address"
+      "Update Address":"Update Address",
+      "Cart":"Cart",
+      "Start Shopping":"Start Shopping",
+      "Your Cart is Empty":"Your Cart is Empty"
 
     }
   };

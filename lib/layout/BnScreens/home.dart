@@ -44,13 +44,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pal-Pazzar',
-            style: TextStyle(
-                color: Color(0xffF59B14),
-                fontWeight: FontWeight.w900,
-                fontSize: 23.sp,
-                fontFamily: 'Muli')),
-        //title: Image.asset('images/logo.png', width: 50,),
+
+       title: Text('Pal-Pazzar',
+                        style: TextStyle(
+                            color: Color(0xffF59B14),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.sp,
+                            fontFamily: 'Poppins')),
+        
+
+
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: Padding(
@@ -63,7 +66,8 @@ class _HomeState extends State<Home> {
                 size: 27,
               ),
               onPressed: () {
-                Get.to(SearchScreen());
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => SearchScreen())));
               }),
         ),
         actions: [

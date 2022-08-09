@@ -12,7 +12,7 @@ class Product {
   late String quantity;
   //late int overalRate;
   late String subCategoryId;
-  late int productRate;
+  //late int productRate;
   late Null offerPrice;
   late bool isFavorite;
   late String imageUrl;
@@ -30,7 +30,9 @@ class Product {
     quantity = json['quantity'].toString();
     //overalRate = json['overal_rate'];
     subCategoryId = json['sub_category_id'].toString();
+
     // productRate = json['product_rate'];
+
     offerPrice = json['offer_price'];
     isFavorite = json['is_favorite'];
     imageUrl = json['image_url'];
