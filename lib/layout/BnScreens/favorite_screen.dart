@@ -34,14 +34,14 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 .textTheme
                 .labelMedium
                 ?.copyWith(fontSize: 20)),
-        // leading: IconButton(
-        //   icon: const Icon(
-        //     Icons.arrow_back_ios,
-        //   ),
-        //   onPressed: () {
-        //     Navigator.pop(context);
-        //   },
-        // ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: FutureBuilder<List<ProudctDetails>>(
         future: _future,
@@ -68,7 +68,6 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             builder: (context) => ProductDetailsScreen(
                                 product: _favourite[index])));
                   },
-
                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.0),
@@ -87,7 +86,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(5),
                             child: Image(
-                              image: NetworkImage(_favourite[index].imageUrl),
+                              image: NetworkImage(_favourite[index].imageUrl.toString()),
                               width: 120,
                               height: 120.0,
                               fit: BoxFit.cover,
@@ -99,7 +98,7 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(_favourite[index].infoEn,
+                                Text(_favourite[index].infoEn.toString(),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: Theme.of(context)
@@ -130,7 +129,8 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                             ),
                           ),
                         ],
-
+                      ),
+                    ),
                   ),
                 );
               },
