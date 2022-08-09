@@ -17,6 +17,7 @@ import 'package:graduation_project/modules/Cart/controller/db_controller.dart';
 import 'package:graduation_project/modules/Order/get_orders.dart';
 import 'package:graduation_project/modules/Order/order_complition.dart';
 import 'package:graduation_project/modules/Order/success_order.dart';
+import 'package:graduation_project/modules/Payment/create_card.dart';
 import 'package:graduation_project/modules/Payment/payment_cards_index.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
@@ -82,7 +83,8 @@ class _MyAppState extends State<MyApp> {
             '/profile_screen': (context) => const ProfileScreen(),
             '/get_orders': (context) => const GetOrders(),
             '/success_order': (context) => const SuccessOrder(),
-            '/paymentCardsIndex':(context)=>PaymentCardsIndex()
+            '/paymentCardsIndex':(context)=>PaymentCardsIndex(),
+            '/create_card':(context)=> CreateCard()
 
           },
         );

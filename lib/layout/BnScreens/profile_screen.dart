@@ -13,6 +13,7 @@ import 'package:graduation_project/modules/Account/settings.dart';
 import 'package:graduation_project/modules/Order/get_orders.dart';
 import 'package:graduation_project/modules/Order/order_complition.dart';
 import 'package:graduation_project/modules/Payment/create_card.dart';
+import 'package:graduation_project/modules/Payment/payment_cards_index.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -221,7 +222,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontWeight: FontWeight.w600),
                       ),
                       onTap: () {
-                        Get.to(CreateCard());
+                        Get.to(PaymentCardsIndex());
                       },
                     ),
                   ),
