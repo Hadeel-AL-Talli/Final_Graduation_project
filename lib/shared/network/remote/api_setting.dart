@@ -38,7 +38,9 @@ class ApiSetting {
   static const createOrder = _apiUrl +'orders';
 
   static const orderDetails = _apiUrl +'orders/{id}';
+static const create_get_Card = _apiUrl +'payment-cards';
 
+  static const delete_update_Card = _apiUrl +'payment-cards/{id}';
 
 
   static const storeApiKey = '1915d427-70db-443b-ab9c-84a467c96887';
