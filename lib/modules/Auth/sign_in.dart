@@ -141,15 +141,20 @@ class _SignInState extends State<SignIn> with ApiHelper {
                           controller: _passwordTextEditingController,
                           prefixIcon: Icons.lock,
                           obscureText: obscureText,
-                          
-                        suffix: 
-                     GestureDetector(onTap: (){
-                     setState(() {
-                       obscureText = !obscureText;
-                     });
-              },
-              child: Icon(obscureText ? Icons.visibility : Icons.visibility_off),
-              ),
+                          suffix: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                obscureText = !obscureText;
+                              });
+                            },
+                            child: Icon(
+                              obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color:
+                                  Theme.of(context).textTheme.labelLarge?.color,
+                            ),
+                          ),
                         ),
                         SizedBox(
                           height: 16.h,

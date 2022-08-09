@@ -10,6 +10,8 @@ import 'package:graduation_project/modules/Account/contact_request.dart';
 import 'package:graduation_project/modules/Account/faq.dart';
 import 'package:graduation_project/modules/Account/personal_info.dart';
 import 'package:graduation_project/modules/Account/settings.dart';
+import 'package:graduation_project/modules/Order/get_orders.dart';
+import 'package:graduation_project/modules/Order/order_complition.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
@@ -134,7 +136,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(const GetOrders());
+                        // Get.to(const OrderComplition());
+                      },
                     ),
                   ),
                 ),

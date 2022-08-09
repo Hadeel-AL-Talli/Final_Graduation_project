@@ -35,6 +35,11 @@ class ApiSetting {
 
   static const deleteAddress = _apiUrl +'addresses/{id}';
 
+  static const createOrder = _apiUrl +'orders';
+
+  static const orderDetails = _apiUrl +'orders/{id}';
+
+
 
   static const storeApiKey = '1915d427-70db-443b-ab9c-84a467c96887';
 

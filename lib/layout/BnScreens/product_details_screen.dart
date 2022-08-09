@@ -32,6 +32,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
   CartGetxController cartGetxController = Get.put(CartGetxController());
   late Future<ProudctDetails?> _future;
 
+
   @override
   void initState() {
     // TODO: implement initState
@@ -168,11 +169,13 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
+
                           Expanded(
                             child: Text(
                                 SharedPrefController().language == 'en'
                                     ? snapshot.data!.nameEn.toString()
                                     : snapshot.data!.nameAr.toString(),
+
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelMedium
@@ -182,8 +185,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                                       fontWeight: FontWeight.bold,
                                     )),
                           ),
+
                           // const Spacer(),
                           SizedBox(width: 10,),
+
                           GetX<FavoriteGetController>(
                             init: FavoriteGetController(),
                             builder: ((FavoriteGetController controller) {
@@ -328,8 +333,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
+
                         onPress: () {
                           cartGetxController.createCart(snapshot.data!);
+
                         },
                         text: "Add To Cart",
                         color: KPrimaryColor,
@@ -356,4 +363,4 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
               }
             }));
   }
-}
+

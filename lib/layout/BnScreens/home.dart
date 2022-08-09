@@ -53,6 +53,7 @@ class _HomeState extends State<Home> {
                             fontFamily: 'Poppins')),
         
 
+
         centerTitle: true,
         automaticallyImplyLeading: false,
         leading: Padding(
