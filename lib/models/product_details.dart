@@ -5,7 +5,7 @@ class ProudctDetails {
   /*late*/ String? infoEn;
   /*late*/ String? infoAr;
   /*late*/ double? price;
-
+   int quantity=0;
   late String? subCategoryId;
 
   /*late*/
@@ -25,6 +25,7 @@ class ProudctDetails {
       this.isFavorite = false,
       this.imageUrl,
       this.images,
+     
       this.subCategory}); // ProudctDetails();
 
   Map<String, dynamic> toJson() {
@@ -36,6 +37,8 @@ class ProudctDetails {
     data['infoAr'] = this.infoAr;
     data['infoEn'] = this.infoEn;
     data['image_url'] = this.imageUrl;
+    data['quantity'] = this.quantity;
+  
     return data;
   }
 
@@ -56,7 +59,9 @@ class ProudctDetails {
       infoEn = json['info_en'] == null ? "" : json["info_en"];
       infoAr = json['info_ar'] == null ? "" : json["info_ar"];
       price = json['price'] == null ? 0 : double.parse(json['price'].toString());
+      quantity = json['quantity'] == null ? 0 : int.parse(json['quantity'].toString());
 
+      
       subCategoryId =
           json['sub_category_id'] == null ? "" : json["sub_category_id"];
       isFavorite = json['is_favorite'] == null ? false : json["is_favorite"];

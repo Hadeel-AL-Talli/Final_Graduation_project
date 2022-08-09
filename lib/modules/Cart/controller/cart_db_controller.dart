@@ -48,4 +48,10 @@ class CartDbController implements DbOperations<ProudctDetails>{
     throw UnimplementedError();
   }
 
+Future<int> updateQuantity(ProudctDetails cart) async {
+ var dbClient = await _database;
+ return await dbClient.update('cart', cart.toJson(),
+     where: "id = ?", whereArgs: [cart.id]);
+}
+
 }

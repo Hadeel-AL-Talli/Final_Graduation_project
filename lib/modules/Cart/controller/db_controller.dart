@@ -31,7 +31,8 @@ class DbController{
             'image_url TEXT NOT NULL,'
             'infoAr TEXT NOT NULL,'
             'infoEn TEXT NOT NULL,'
-            'price REAL NOT NULL'
+            'price REAL NOT NULL,'
+            'quantity INT'
             ')');
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) {},
