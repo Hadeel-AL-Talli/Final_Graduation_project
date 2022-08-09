@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:graduation_project/models/create_order.dart';
 import 'package:graduation_project/models/get_addresses_model.dart';
 import 'package:graduation_project/models/get_orders_model.dart';
 import 'package:graduation_project/models/order_details_model.dart';
@@ -10,18 +11,18 @@ import '../models/create_address.dart';
 import '../shared/network/remote/api_setting.dart';
 
 class OrderApiController with ApiHelper {
-  Future<bool> createAddress(BuildContext context,
-      {required CreateAddress address}) async {
-    var url = Uri.parse(ApiSetting.createAddress);
+  Future<bool> createOrderFun(BuildContext context,
+      {required CreateOrder order}) async {
+    var url = Uri.parse(ApiSetting.createOrder);
     var response = await http.post(url,
         body: {
-          'name': address.name,
-          'contact_number': address.contact_number,
-          'info': address.info,
-          'city_id': address.cityId.toString()
+          'cart': order.cart.toList(),
+          'payment_type': order.payment_type,
+          'address_id': order.address_id,
+          'card_id': order.card_id
         },
         headers: headers);
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       showSnackBar(
         context,
         message: jsonDecode(response.body)['message'],
@@ -39,7 +40,7 @@ class OrderApiController with ApiHelper {
     return false;
   }
 
-  Future<List<GetOrdersModel>> getOrders() async {
+  Future<List<OrderDetailsModel>> getOrders() async {
     var url = Uri.parse(ApiSetting.createOrder);
     print(url);
     var response = await http.get(url, headers: headers);
@@ -47,7 +48,7 @@ class OrderApiController with ApiHelper {
     if (response.statusCode == 200) {
       var ordersJsonArray = jsonDecode(response.body)['list'] as List;
       return ordersJsonArray
-          .map((jsonObject) => GetOrdersModel.fromJson(jsonObject))
+          .map((jsonObject) => OrderDetailsModel.fromJson(jsonObject))
           .toList();
     }
     return [];
@@ -60,9 +61,9 @@ class OrderApiController with ApiHelper {
     print(response.statusCode);
     if (response.statusCode == 200) {
       var productsJsonObject = jsonDecode(response.body)['data'];
-      return OrderDetailsModel.fromJson(productsJsonObject);
+      var object = OrderDetailsModel.fromJson(productsJsonObject);
+      print(object.id);
+      return object;
     }
   }
-
-  
 }

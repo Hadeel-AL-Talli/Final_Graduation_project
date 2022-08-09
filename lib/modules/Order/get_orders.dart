@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project/controllers/order_api_controller.dart';
 import 'package:graduation_project/models/get_orders_model.dart';
+import 'package:graduation_project/models/order_details_model.dart';
+import 'package:graduation_project/modules/Order/order_complition.dart';
 import 'package:graduation_project/modules/Order/order_details.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 
@@ -12,9 +14,9 @@ class GetOrders extends StatefulWidget {
 }
 
 class _GetOrdersState extends State<GetOrders> {
-  late Future<List<GetOrdersModel>> _futureOrders;
+  late Future<List<OrderDetailsModel>> _futureOrders;
 
-  List<GetOrdersModel> _orders = <GetOrdersModel>[];
+  List<OrderDetailsModel> _orders = <OrderDetailsModel>[];
 
   @override
   void initState() {
@@ -41,13 +43,14 @@ class _GetOrdersState extends State<GetOrders> {
               Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
         ),
       ),
-      body: FutureBuilder<List<GetOrdersModel>>(
+      body: FutureBuilder<List<OrderDetailsModel>>(
         future: _futureOrders,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             _orders = snapshot.data ?? [];
+            print(_orders);
             return GridView.builder(
               physics: const BouncingScrollPhysics(),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -63,7 +66,11 @@ class _GetOrdersState extends State<GetOrders> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => OrderDetails()));
+                            builder: (context) =>
+                                // OrderDetails(
+                                //       order: _orders[index],
+                                //     )
+                                OrderComplition(order: _orders[index])));
                   },
                   child: Container(
                     width: double.infinity,
@@ -117,7 +124,7 @@ class _GetOrdersState extends State<GetOrders> {
                                         color: KPrimaryColor),
                                   ),
                                   const Spacer(),
-                                  Text(_orders[index].status,
+                                  Text(_orders[index].status!,
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelLarge
@@ -145,7 +152,7 @@ class _GetOrdersState extends State<GetOrders> {
                                         color: KPrimaryColor),
                                   ),
                                   const Spacer(),
-                                  Text(_orders[index].payment_type,
+                                  Text(_orders[index].paymentType!,
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelLarge

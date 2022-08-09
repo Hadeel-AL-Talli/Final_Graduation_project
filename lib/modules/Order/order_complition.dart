@@ -1,19 +1,22 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:graduation_project/controllers/order_api_controller.dart';
+import 'package:graduation_project/models/create_order.dart';
+import 'package:graduation_project/shared/components/custom_button.dart';
+
 import 'package:graduation_project/models/order_details_model.dart';
+import 'package:graduation_project/shared/network/remote/api_helper.dart';
 import 'package:graduation_project/shared/network/style/colors.dart';
 
-class OrderDetails extends StatefulWidget {
-  const OrderDetails({Key? key, required this.order}) : super(key: key);
-
+class OrderComplition extends StatefulWidget {
+  const OrderComplition({Key? key, required this.order}) : super(key: key);
   final OrderDetailsModel order;
 
   @override
-  State<OrderDetails> createState() => _OrderDetailsState();
+  State<OrderComplition> createState() => _OrderComplitionState();
 }
 
-class _OrderDetailsState extends State<OrderDetails> {
+class _OrderComplitionState extends State<OrderComplition> with ApiHelper {
   late Future<OrderDetailsModel?> _futureOrderDetail;
 
   @override
@@ -22,6 +25,8 @@ class _OrderDetailsState extends State<OrderDetails> {
     _futureOrderDetail =
         OrderApiController().getOrderDetails(widget.order.id.toString());
   }
+
+  late AsyncSnapshot<OrderDetailsModel?> snapshotdata;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +42,7 @@ class _OrderDetailsState extends State<OrderDetails> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            'Order Details',
+            'Order Completion',
             style:
                 Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 20),
           ),
@@ -45,6 +50,7 @@ class _OrderDetailsState extends State<OrderDetails> {
         body: FutureBuilder<OrderDetailsModel?>(
           future: _futureOrderDetail,
           builder: (context, snapshot) {
+            snapshotdata = snapshot;
             if (snapshot.connectionState == ConnectionState.waiting) {
               print('waiting');
               return const Center(child: CircularProgressIndicator());
@@ -166,7 +172,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20, 10, 0, 10),
-                      child: Text('Shipping',
+                      child: Text('Delivery Address',
                           style: Theme.of(context)
                               .textTheme
                               .labelLarge
@@ -195,126 +201,71 @@ class _OrderDetailsState extends State<OrderDetails> {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 5),
                                   child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Order Number',
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            height: 1.3,
-                                            fontFamily: 'Muli',
-                                            color: KPrimaryColor),
+                                      const Icon(
+                                        Icons.location_on,
+                                        color: KPrimaryColor,
                                       ),
-                                      const Spacer(),
-                                      Text(
-                                          snapshot.data!.address!.id.toString(),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelLarge
-                                              ?.copyWith(
-                                                fontSize: 15,
-                                                height: 1.3,
-                                                fontFamily: 'Muli',
-                                              )),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 7,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: Row(
-                                    children: [
-                                      const Text(
-                                        'Date Shipping',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            height: 1.3,
-                                            fontFamily: 'Muli',
-                                            color: KPrimaryColor),
+                                      const SizedBox(
+                                        width: 5,
                                       ),
-                                      const Spacer(),
-                                      Text(snapshot.data!.date.toString(),
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelLarge
-                                              ?.copyWith(
-                                                fontSize: 15,
-                                                height: 1.3,
-                                                fontFamily: 'Muli',
-                                              )),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 7,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: Row(
-                                    children: [
-                                      const Text(
-                                        'Phone Number',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            height: 1.3,
-                                            fontFamily: 'Muli',
-                                            color: KPrimaryColor),
-                                      ),
-                                      const Spacer(),
-                                      Text(
-                                          snapshot
-                                              .data!.address!.contactNumber!,
-                                          // snapshot.data!.paymentCard!.type!,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelLarge
-                                              ?.copyWith(
-                                                fontSize: 15,
-                                                height: 1.3,
-                                                fontFamily: 'Muli',
-                                              )),
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 7,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 5),
-                                  child: Row(
-                                    children: [
-                                      const Text(
-                                        'Address',
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            height: 1.3,
-                                            fontFamily: 'Muli',
-                                            color: KPrimaryColor),
-                                      ),
-                                      const Spacer(),
-                                      Container(
-                                        alignment: Alignment.bottomRight,
-                                        width: 150,
-                                        child: Text(
-                                            snapshot.data!.address!.info!,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelLarge
-                                                ?.copyWith(
-                                                  fontSize: 15,
-                                                  height: 1.3,
-                                                  fontFamily: 'Muli',
-                                                )),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(snapshot.data!.address!.name!,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .labelLarge
+                                                  ?.copyWith(
+                                                    fontSize: 15,
+                                                    height: 1.3,
+                                                    fontFamily: 'Muli',
+                                                  )),
+                                          const SizedBox(
+                                            height: 7,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5),
+                                            child: Text(
+                                                snapshot.data!.address!
+                                                    .contactNumber!,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .labelLarge
+                                                    ?.copyWith(
+                                                      fontSize: 15,
+                                                      height: 1.3,
+                                                      fontFamily: 'Muli',
+                                                    )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5),
+                                            child: Container(
+                                              width: 290,
+                                              alignment: Alignment.bottomRight,
+                                              child: Text(
+                                                  '${snapshot.data!.address!.city!.nameEn}, ${snapshot.data!.address!.info!}',
+                                                  maxLines: 2,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .labelLarge
+                                                      ?.copyWith(
+                                                        fontSize: 15,
+                                                        height: 1.3,
+                                                        fontFamily: 'Muli',
+                                                      )),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -376,9 +327,6 @@ class _OrderDetailsState extends State<OrderDetails> {
                                 const SizedBox(
                                   height: 7,
                                 ),
-                                const SizedBox(
-                                  height: 7,
-                                ),
                                 Row(
                                   children: [
                                     const Text(
@@ -405,6 +353,20 @@ class _OrderDetailsState extends State<OrderDetails> {
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: CustomButton(
+                          onPress: () async {
+                            await performCreateOrder();
+                            Navigator.pushNamed(context, '/success_order');
+                          },
+                          text: "Complete Order",
+                          color: const Color(0xffF59B14)),
+                    ),
                   ],
                 ),
               );
@@ -428,66 +390,47 @@ class _OrderDetailsState extends State<OrderDetails> {
           },
         ));
   }
-}
 
-Widget paymentContainer(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    child: Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(width: 2, color: Theme.of(context).errorColor),
-          color: Theme.of(context).primaryColor),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(
-            children: [
-              const Text(
-                'Payment Method',
-                style: TextStyle(
-                    fontSize: 16.0,
-                    height: 1.3,
-                    fontFamily: 'Muli',
-                    color: KPrimaryColor),
-              ),
-              const Spacer(),
-              Text('Online',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        fontSize: 15,
-                        height: 1.3,
-                        fontFamily: 'Muli',
-                      )),
-            ],
-          ),
-          const SizedBox(
-            height: 7,
-          ),
-          const SizedBox(
-            height: 7,
-          ),
-          Row(
-            children: [
-              const Text(
-                'Total',
-                style: TextStyle(
-                    fontSize: 16.0,
-                    height: 1.3,
-                    fontFamily: 'Muli',
-                    color: KPrimaryColor),
-              ),
-              const Spacer(),
-              Text('\$766.86',
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                        fontSize: 15,
-                        height: 1.3,
-                        fontFamily: 'Muli',
-                      )),
-            ],
-          ),
-        ]),
-      ),
-    ),
-  );
+  Future<void> performCreateOrder() async {
+    if (checkData()) {
+      await createOrder();
+    }
+  }
+
+  bool checkData() {
+    if (snapshotdata.data!.paymentType!.isNotEmpty) {
+      return true;
+    }
+    showSnackBar(
+      context,
+      message: 'Enter required data!',
+      error: true,
+    );
+    return false;
+  }
+
+  Future<void> createOrder() async {
+    bool status =
+        await OrderApiController().createOrderFun(context, order: order);
+
+    if (status) {
+      print(order.payment_type);
+      print(order.address_id);
+      Navigator.pushReplacementNamed(context, '/success_order');
+      print(status);
+    } else {
+      print('there is worng in process');
+    }
+  }
+
+  CreateOrder get order {
+    CreateOrder order = CreateOrder();
+    order.cart = List<Cart>.generate(2, (int index) {
+      return Cart(808, 1);
+    });
+    order.payment_type = snapshotdata.data!.paymentType!;
+    order.address_id = '${snapshotdata.data!.address!.id!}';
+    order.card_id = '12';
+    return order;
+  }
 }

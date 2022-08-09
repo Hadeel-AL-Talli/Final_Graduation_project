@@ -30,7 +30,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
     with ApiHelper {
   FavoriteGetController controller = Get.put(FavoriteGetController());
   late Future<ProudctDetails?> _future;
-  //Exception :- Null is Not subType of String 
+  //Exception :- Null is Not subType of String
 //CartGetxController cartcontroller = Get.put(CartGetxController());
 
   @override
@@ -165,18 +165,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                       padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         children: [
-                          Text(
-                              SharedPrefController().language == 'en'
-                                  ? snapshot.data!.nameEn
-                                  : snapshot.data!.nameAr,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
-                                  ?.copyWith(
-                                    fontFamily: 'Muli',
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                  )),
+                          Container(
+                            width: 300,
+                            child: Text(
+                                SharedPrefController().language == 'en'
+                                    ? snapshot.data!.nameEn
+                                    : snapshot.data!.nameAr,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium
+                                    ?.copyWith(
+                                      fontFamily: 'Muli',
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                    )),
+                          ),
                           const Spacer(),
                           GetX<FavoriteGetController>(
                             builder: ((FavoriteGetController controller) {
@@ -263,7 +268,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: CustomButton(
-                        onPress: () async{
+                        onPress: () async {
                           await create();
                         },
                         text: "Add To Cart".tr,
@@ -292,11 +297,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen>
             }));
   }
 
-
   Future<void> create() async {
-    
     bool created = await CartGetxController.to.createCart(widget.product);
-    
+
     String message = created ? 'Added successfully' : 'Failed to add';
     showSnackBar(context, message: message, error: !created);
   }

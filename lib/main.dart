@@ -15,10 +15,11 @@ import 'package:graduation_project/modules/Auth/register.dart';
 import 'package:graduation_project/modules/Auth/sign_in.dart';
 import 'package:graduation_project/modules/Cart/controller/db_controller.dart';
 import 'package:graduation_project/modules/Order/get_orders.dart';
+import 'package:graduation_project/modules/Order/order_complition.dart';
+import 'package:graduation_project/modules/Order/success_order.dart';
 import 'package:graduation_project/modules/address/create_address.dart';
 import 'package:graduation_project/modules/address/get_addresses.dart';
 import 'package:graduation_project/modules/address/update_address.dart';
-
 
 import 'package:graduation_project/modules/launch_module/splash_screen.dart';
 import 'package:graduation_project/shared/network/local/shared_pref_controller.dart';
@@ -73,17 +74,12 @@ class _MyAppState extends State<MyApp> {
             '/forget_password': (context) => const ForgetPassword(),
             '/home_screen': (context) => const Home(),
             '/main_screen': (context) => const MainScreen(),
-            '/search_screen': (context) =>  SearchScreen(),
-            '/create_address_screen': (context) =>  const CreateAddressScreen(),
-            '/get_addresses': (context) =>  const GetAddresses(),
-            '/profile_screen': (context) =>  const ProfileScreen(),
-            '/get_orders': (context) =>  const GetOrders(),
-
-
-
-
-
-
+            '/search_screen': (context) => SearchScreen(),
+            '/create_address_screen': (context) => const CreateAddressScreen(),
+            '/get_addresses': (context) => const GetAddresses(),
+            '/profile_screen': (context) => const ProfileScreen(),
+            '/get_orders': (context) => const GetOrders(),
+            '/success_order': (context) => const SuccessOrder(),
           },
         );
       },
