@@ -54,7 +54,7 @@ return deleted;
 void addQuantity(int id) {
    final index = cart.indexWhere((element) => element.id == id);
    cart[index].quantity = cart[index].quantity + 1;
-   //_setPrefsItems();
+   _setPrefsItems();
   update();
  }
 void deleteQuantity(int id) {
@@ -107,6 +107,10 @@ int getQuantity(int quantity) {
    _totalPrice = prefs.getDouble('total_price') ?? 0;
    
  }
+Future<bool> clear() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+    return await prefs.clear();
+  }
 
 // void addTotalPrice(double productPrice) {
 //    _totalPrice = _totalPrice + productPrice;

@@ -25,6 +25,7 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
       Get.put<CartGetxController>(CartGetxController());
   List<ProudctDetails> _products = <ProudctDetails>[];
 //List<double> prices = [];
+double totalAmount = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +71,18 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
                         children: [
                           InkWell(
                             onTap: () {
+                              
+                              for (int i = 0; i < CartGetxController.to.cart.length; i++) {
+  totalAmount =(double.parse(CartGetxController
+                                        .to.cart[index].price.toString())*double.parse(CartGetxController
+                                        .to.cart[index].quantity.toString()));
+
+
+                                       // return totalAmount.toString();
+}
+print(totalAmount.toString());
+
+
 
 //                               double cartTotalPrice(){
 //   double total=0;
@@ -139,8 +152,11 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
                               IconButton(
                                 icon: Icon(Icons.delete_outline,
                                     color: Colors.red.shade800),
-                                onPressed: () async => await delete(
-                                    CartGetxController.to.cart[index].id!),
+                                onPressed: () async{ 
+                                 
+                                  await delete(
+                                    CartGetxController.to.cart[index].id!);
+                                }
                               ),
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,8 +174,11 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
                                       icon: Icon(Icons.add_circle,
                                           color: Color(0xffF59B14))),
                                   Text(
+                                  //  CartGetxController.to.getQuantity( CartGetxController.to.cart[index].quantity).toString(),
                                       CartGetxController.to.cart[index].quantity
                                           .toString(),
+
+                                     
                                       style: Theme.of(context)
                                           .textTheme
                                           .labelMedium
@@ -183,7 +202,11 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
                               )
                             ],
                           ),
+
+                       
                         ],
+
+                        
                       ),
 
                     ],
@@ -235,56 +258,60 @@ class _CartScreenState extends State<CartScreen> with ApiHelper {
             );
           }
         }),
-        bottomSheet:  Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                
-                InkWell(
-                  onTap: (){
-                    print('ddd');
-                    double total = CartGetxController().getTotalPrice(_proudctDetails!);
-                    print(total);
-                  },
-                  child: Container(
-                    // padding: EdgeInsets.symmetric(vertical: 20),
-                
-                    child: Text(
-                      "Total",
-                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            fontFamily: 'Muli',
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
+        bottomSheet:  Visibility(
+          visible: CartGetxController.to.cart.isNotEmpty ,
+          child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  
+                  InkWell(
+                    onTap: (){
+                      
+                    },
+                    child: Container(
+                      // padding: EdgeInsets.symmetric(vertical: 20),
+                  
+                      child: Text(
+                        "Total",
+                        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                              fontFamily: 'Muli',
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                                  // padding: EdgeInsets.symmetric(vertical: 20),
-                
-                                  child: Text(
-                                    '',
-                                    style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                                          fontFamily: 'Muli',
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-          
-
-         
+                  Container(
+                                    // padding: EdgeInsets.symmetric(vertical: 20),
                   
-               
-              ],
-           ),
+                                    child: Text(
+                                      '',
+                                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                            fontFamily: 'Muli',
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+            
+        
+           
+                    
+                 
+                ],
+             ),
+        ),
         bottomNavigationBar: 
-       
-            Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: CustomButton(
-                  color: Color(0xffF59B14),
-                  onPress: () {},
-                  text: 'Checkout',
+      
+              Visibility(
+                visible: CartGetxController.to.cart.isNotEmpty ,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: CustomButton(
+                    color: Color(0xffF59B14),
+                    onPress: () {},
+                    text: 'Checkout',
+                  ),
                 ),
               )
            // : Text('')
